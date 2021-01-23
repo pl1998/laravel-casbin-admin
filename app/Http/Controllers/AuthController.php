@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -16,7 +18,7 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['name', 'password']);
+        $credentials = request(['email', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
@@ -27,18 +29,31 @@ class AuthController extends Controller
 
     public function me()
     {
-        return response()->json(auth('api')->user());
+        return response()->json([
+            'code'=>200,
+            'message'=>'success',
+            'data'=>auth('api')->user()
+        ]);
     }
 
     public function logout()
     {
         auth('api')->logout();
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json([
+            'code' => 200,
+            'message' => 'Successfully logged out'
+        ]);
     }
 
     public function refresh()
     {
         return $this->respondWithToken(auth('api')->refresh());
+    }
+
+    public function update(UserUpdateRequest $request){
+
+       // $id = auth('api')->user()->getAuthIdentifier();
+        //dd($id);
     }
 
     /**
@@ -48,6 +63,7 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
+            'code'=>200,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60
