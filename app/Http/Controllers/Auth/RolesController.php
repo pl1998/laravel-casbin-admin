@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleStoreRequest;
 use App\Models\Permissions;
 use App\Models\Roles;
@@ -51,17 +51,24 @@ class RolesController extends Controller
      */
     public function store(RoleStoreRequest $request)
     {
-        list($name,$permissions,$status,$description) = $request->all();
+//        list($name,$permissions,$status,$description) = $request->all();
 
-        $id = Roles::query()->insertGetId([
-            'name'=>$name,
-            'status'=>$status,
-            'description'=>$description
-        ]);
+        $name = $request->get('name');
+        $status = $request->get('status');
+        $description = $request->get('description');
+        $node = $request->get('node');
+
+        return response()->json([
+            'code'=>200,
+            'message'=>'角色添加成功',
+            'data'=>$request->all()
+        ],200);
+
+        $id = Roles::query()->insertGetId(compact('name','status','description'));
 
         abort_if(!$id,500,'添加角色错误');
 
-        $permissions_all = Permissions::query()->whereIn('id',explode(',',$permissions))->select(['id'])->get();
+        $permissions_all = Permissions::query()->whereIn('id',explode(',',$permissions))->get(['id']);
 
         //批量添加权限
         foreach ($permissions_all as $value) {
@@ -75,12 +82,30 @@ class RolesController extends Controller
 
     }
 
-    public function update($id){
+    public function update($id)
+    {
 
     }
 
 
-    public function delete($id){
+    public function delete($id)
+    {
 
+    }
+
+    /**
+     * 获取所有的角色
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function allRule(Request $request)
+    {
+        $list = Roles::query()->get(['id','name']);
+        dd($list);
+        return response()->json([
+            'code'=>200,
+            'message'=>'success',
+            'data'=>$list
+        ],200);
     }
 }

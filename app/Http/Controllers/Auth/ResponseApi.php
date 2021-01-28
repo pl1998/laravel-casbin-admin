@@ -13,7 +13,7 @@ trait ResponseApi
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function success(array $data = null, string $message, $msgCode,int $httpCode=200)
+    public function success(array $data = null, string $message='success', $msgCode=200,int $httpCode=200)
     {
         return response()->json([
             'code' => $msgCode,

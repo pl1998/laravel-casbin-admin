@@ -43,30 +43,32 @@ Route::get('/401',function (){
 
 #用户相关
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::put('update','AuthController@update');
-    Route::post('me', 'AuthController@me')->name('me')->middleware(['jwt.auth']);
+    Route::post('login', 'Auth\AuthController@login');
+    Route::post('logout', 'Auth\AuthController@logout');
+    Route::post('refresh', 'Auth\AuthController@refresh');
+    Route::put('update','Auth\AuthController@update');
+    Route::post('me', 'Auth\AuthController@me')->name('me')->middleware(['jwt.auth']);
 });
 //系统管理
 Route::group(['middleware'=>['jwt.auth']],function (){
 
    Route::group(['prefix'=>'admin'],function (){
 
-       Route::get('/users','UsersController@index');      //用户列表
-       Route::post('/users','UsersController@store');     //添加新用户;
-       Route::put('users/{id}','UsersController@update'); //更新用户信息
+       Route::get('/users','Auth\UsersController@index');      //用户列表
+       Route::post('/users','Auth\UsersController@store');     //添加新用户;
+       Route::put('users/{id}','Auth\UsersController@update'); //更新用户信息
 
-       Route::get('/roles','RolesController@index');          //角色列表
-       Route::post('/roles','RolesController@store');         //添加角色
-       Route::put('/roles/{id}','RolesController@update');    //更新角色
-       Route::delete('/roles/{id}','RolesController@delete'); //删除角色
+       Route::get('/roles','Auth\RolesController@index');          //角色列表
+       Route::post('/roles','Auth\RolesController@store');         //添加角色
+       Route::put('/roles/{id}','Auth\RolesController@update');    //更新角色
+       Route::delete('/roles/{id}','Auth\RolesController@delete'); //删除角色
 
-       Route::get('/permissions','PermissionsController@index');          //权限列表
-       Route::post('/permissions','PermissionsController@store');         //添加权限
-       Route::put('/permissions/{id}','PermissionsController@update');    //更新权限
-       Route::delete('/permissions/{id}','PermissionsController@delete'); //删除权限
+       Route::get('/all_role','Auth\RolesController@allRule');    //获取所有角色
+
+       Route::get('/permissions','Auth\PermissionsController@index');          //权限列表
+       Route::post('/permissions','Auth\PermissionsController@store');         //添加权限
+       Route::put('/permissions/{id}','Auth\PermissionsController@update');    //更新权限
+       Route::delete('/permissions/{id}','Auth\PermissionsController@delete'); //删除权限
 
    });
 });

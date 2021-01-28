@@ -18,6 +18,7 @@ class UserStoreRequest extends FormRequest
             'email'=>'required|email|unique:users,email',
             //'avatar'=>'required',
             'password'=>'required|min:6|max:20|confirmed:password_confirmation',
+            'roles'=>'required'
             //'password_confirmation'=>'required|min:6|max:20'
         ];
     }
@@ -31,6 +32,7 @@ class UserStoreRequest extends FormRequest
             'name.max' => '用户名不能大于20位数',
             'name.unique' => '该用户名已存在',
             'email.required' => '邮箱不能为空',
+            'roles.required' => '角色不能为空',
             'email.email' => '不是一个正确的邮箱',
             'email.unique' => '该邮箱已存在',
             'avatar.required' => '头像不能为空',

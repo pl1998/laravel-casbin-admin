@@ -13,9 +13,9 @@ class RoleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:2|mix:20',
-            'permissions'=>'required',
-            'status'=>'required|boolean',
+            'name'=>'required|min:2|max:20',
+            'node'=>'required',
+           // 'status'=>'required|boolean',
             'description'=>'required',
         ];
     }
@@ -31,8 +31,8 @@ class RoleStoreRequest extends FormRequest
             'name.min'=>'角色名长度不能低于2位',
             'name.max'=>'角色名长度不能高于20位',
             'permissions.required'=>'权限不能为空',
-            'status.required'=>'状态不能为空',
-            'status.boolean'=>'状态应该是个boolean值',
+//            'status.required'=>'状态不能为空',
+//            'status.boolean'=>'状态应该是个boolean值',
             'description.required'=>'角色描述不能为空',
         ];
     }

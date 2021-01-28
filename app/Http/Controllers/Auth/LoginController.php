@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Service\PermissionService;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 
@@ -26,8 +27,9 @@ class LoginController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function me()
+    public function me(PermissionService $service)
     {
+        $data = $service->getPermissionMenu(auth('admin')->id());
         return response()->json(auth('admin')->user());
     }
 

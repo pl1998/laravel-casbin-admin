@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class UsersController extends Controller
         if ($name = \request('name')) {
             $query->where('name', 'like', "%$name%");
         }
+
         $total = $query->count();
 
         $list = $query->forPage($page, $pageSize)->get();
@@ -46,6 +48,7 @@ class UsersController extends Controller
      * @param UserStoreRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function store(UserStoreRequest $request)
     {
         $params = $request->all();
