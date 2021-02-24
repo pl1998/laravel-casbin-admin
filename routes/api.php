@@ -69,6 +69,7 @@ Route::group(['middleware'=>['jwt.auth']],function (){
        Route::post('/permissions','Auth\PermissionsController@store');         //添加权限
        Route::put('/permissions/{id}','Auth\PermissionsController@update');    //更新权限
        Route::delete('/permissions/{id}','Auth\PermissionsController@delete'); //删除权限
+       Route::get('/all_permissions','Auth\PermissionsController@allPermissions'); //获取所有权限
 
    });
 });

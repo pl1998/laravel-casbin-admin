@@ -18,13 +18,13 @@ class PermissionStoreRequest extends FormRequest
             'name' => 'required|min:2',
             'icon' => 'required',
             'path' => 'required',
-            'url'  => 'required',
-            'status'  => 'required|boolean',
+//            'url'  => 'required',
+//            'status'  => 'required|boolean',
             'method'  => 'required',
             'p_id'  => 'required',
             'hidden'  => 'required',
-            'is_menu'  => 'required',
-            'title'  => 'required',
+//            'is_menu'  => 'required',
+//            'title'  => 'required',
         ];
     }
 }

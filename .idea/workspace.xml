@@ -23,20 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="807d4f08-e1c0-4e36-8051-c91e0f8e0545" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Service/PermissionService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/functions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Exceptions/ValidationException.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/ValidationException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResponseApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResponseApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/PermissionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RolesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/RoleStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/RoleStoreRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserStoreRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/PermissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/PermissionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RolesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/PermissionStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/PermissionStoreRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Permissions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Service/PermissionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/PermissionService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -241,6 +234,13 @@
       <workItem from="1611734280786" duration="3777000" />
       <workItem from="1611743431293" duration="225000" />
       <workItem from="1611795574110" duration="1809000" />
+      <workItem from="1611801996573" duration="30000" />
+      <workItem from="1611803890617" duration="706000" />
+      <workItem from="1611819554073" duration="1570000" />
+      <workItem from="1611827727956" duration="776000" />
+      <workItem from="1613875759006" duration="33000" />
+      <workItem from="1614146393057" duration="1781000" />
+      <workItem from="1614152688320" duration="2965000" />
     </task>
     <servers />
   </component>
@@ -292,10 +292,11 @@
     <state x="420" y="181" width="597" height="537" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1611380467434" />
     <state x="420" y="190" width="597" height="490" key="find.popup/0.25.1440.822@0.25.1440.822" timestamp="1611309152733" />
     <state x="2000" y="227" width="796" height="598" key="find.popup/0.25.1440.875/1440.25.1920.1002@1440.25.1920.1002" timestamp="1611717466053" />
-    <state x="1953" y="243" width="894" height="753" key="search.everywhere.popup" timestamp="1611738199837">
+    <state x="1953" y="243" width="894" height="753" key="search.everywhere.popup" timestamp="1614154001254">
       <screen x="1440" y="25" width="1920" height="1002" />
     </state>
+    <state x="1953" y="235" width="894" height="812" key="search.everywhere.popup/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1614150440984" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1611380715971" />
-    <state x="1953" y="243" width="894" height="753" key="search.everywhere.popup/0.25.1440.875/1440.25.1920.1002@1440.25.1920.1002" timestamp="1611738199837" />
+    <state x="1953" y="243" width="894" height="753" key="search.everywhere.popup/0.25.1440.875/1440.25.1920.1002@1440.25.1920.1002" timestamp="1614154001254" />
   </component>
 </project>
