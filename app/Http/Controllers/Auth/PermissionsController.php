@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class PermissionsController extends Controller
 {
     /**
-     * 获取所有权限节点
+     * 获取权限列表
      * @param Request $request
      * @param PermissionService $service
      * @return \Illuminate\Http\JsonResponse
@@ -33,7 +33,7 @@ class PermissionsController extends Controller
     }
 
     /**
-     * 获取所有权限
+     * 获取所有权限节点
      * @param Request $request
      * @param PermissionService $service
      * @return \Illuminate\Http\JsonResponse
@@ -67,11 +67,12 @@ class PermissionsController extends Controller
         $p_id   = $request->post('p_id');
         $path   = $request->post('path');
         $is_menu = $request->post('root');
+        $url = $request->post('url');
 
         if($path && Permissions::query()->where(compact('path','method'))->exists()) {
             _error(403,'权限已存在');
         }
-        Permissions::query()->insert(compact('hidden','icon','method','name','path','p_id','is_menu','method'));
+        Permissions::query()->insert(compact('hidden','icon','method','name','path','p_id','is_menu','method','url'));
 
         return $this->success();
     }
@@ -91,11 +92,12 @@ class PermissionsController extends Controller
         $p_id = $request->post('p_id');
         $path = $request->post('path');
         $is_menu = $request->post('root');
+        $title = $request->post('name');
 
         if($path && Permissions::query()->where(compact('path','method'))->doesntExist()) {
             _error(403,'权限不存在');
         }
-        Permissions::query()->where('id',$id)->update(compact('hidden','icon','method','name','path','p_id','is_menu','method'));
+        Permissions::query()->where('id',$id)->update(compact('hidden','icon','method','name','path','p_id','is_menu','method','title'));
 
         return $this->success();
     }

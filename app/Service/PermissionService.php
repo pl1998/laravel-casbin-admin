@@ -43,16 +43,29 @@ class PermissionService
         $id = $this->getIdentifier($id);
         $permissions = Permissions::query()->where('status',1)
             ->whereIn('id',$nodeId)
-            ->get(['path','method']);
+            ->get(['path','method','p_id','id','name']);
         Enforcer::deletePermissionsForUser($id);
         foreach ($permissions as $value){
-            Enforcer::addPermissionForUser($id, $value['path'], $value['method']);
+            Enforcer::addPermissionForUser($id, $value['path'], $value['method'],$value['id']);
         }
     }
 
+
+    /**
+     * 根据角色id获取权限
+     * @param $id
+     * @return array
+     */
     public function getPermissions($id)
     {
-
+        $id = $this->getIdentifier($id);
+         $permissions = Enforcer::getPermissionsForUser($id);
+         if(empty($permissions)) return [[],[]];
+         $node[] = array_map(function ($value)  {
+            return (int)$value[3];
+         },$permissions);
+         $node = array_column($node,'0');
+         return [$node,$permissions];
     }
     //获取所有权限
     public function getAllPermission($keyword = null)
@@ -61,5 +74,14 @@ class PermissionService
             ->where('status',1)
             ->get(['id','name','icon','path','url','method','p_id','hidden','is_menu','title','status'])
             ->toArray();
+    }
+
+    /**
+     * 删除所属角色的权限
+     * @param $id
+     */
+    public function delPermissions($id){
+        $id = $this->getIdentifier($id);
+        Enforcer::deletePermissionsForUser($id);
     }
 }

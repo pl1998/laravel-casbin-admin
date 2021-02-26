@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\Admin;
+use App\Service\PermissionService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -28,12 +30,16 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function me()
+    public function me(PermissionService $service)
     {
+        $menu = $service->getPermissionMenu(auth('api')->id());
+        $user = auth('api')->user();
+        $user->menu = $menu;
+
         return response()->json([
             'code'=>200,
             'message'=>'success',
-            'data'=>auth('api')->user()
+            'data'=>$user
         ]);
     }
 
@@ -51,10 +57,10 @@ class AuthController extends Controller
         return $this->respondWithToken(auth('api')->refresh());
     }
 
-    public function update(UserUpdateRequest $request){
+    //更新用户信息
+    public function update($id,UserUpdateRequest $request)
+    {
 
-       // $id = auth('api')->user()->getAuthIdentifier();
-        //dd($id);
     }
 
     /**
