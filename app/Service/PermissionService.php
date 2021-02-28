@@ -18,7 +18,7 @@ class PermissionService
     {
         $permissions = get_tree($permission);
         foreach ($permissions as &$permission) {
-            if($permission['is_menu']==1){
+            if($permission['p_id']==0){
                 $permission['root'] = true;
             }else{
                 $permission['root'] = false;
@@ -30,7 +30,25 @@ class PermissionService
     public function getPermissionMenu($id)
     {
         $id = $this->getIdentifier($id);
-        return [];
+        $query = Permissions::query()->where('status', 1);
+        $permissions = $this->getPermissions($id);
+
+        if(!empty($permissions)) {
+            $permissions = $query->where(function ($query) use($permissions) {
+                $permissions = $permissions[1];
+                foreach ($permissions as $value){
+                    $query->whereOr('id',$value[3]);
+                }
+            })->get(['id','p_id','path','name','title','icon','method'])->toArray();
+
+            $permissionsMenu = get_tree($permissions);
+
+            return [$permissionsMenu, $permissions];
+
+        }else{
+            return [[],[]];
+        }
+
     }
 
     /**
@@ -70,6 +88,7 @@ class PermissionService
     //获取所有权限
     public function getAllPermission($keyword = null)
     {
+
         return Permissions::query()
             ->where('status',1)
             ->get(['id','name','icon','path','url','method','p_id','hidden','is_menu','title','status'])

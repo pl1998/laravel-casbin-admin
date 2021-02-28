@@ -13,4 +13,13 @@ class Permissions extends Model
 
     protected $table = 'admin_permissions';
 
+    public function getIsMenuAttribute($key)
+    {
+        if($key == 1){
+            return true;
+        }else{
+            return  false;
+        }
+    }
+
 }

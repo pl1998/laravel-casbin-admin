@@ -23,11 +23,16 @@ class UsersController extends Controller
     public function index(Request $request,RoleService $service)
     {
         $page = $request->get('page', 1);
-        $pageSize = $request->get('pageSize', 20);
+        $pageSize = $request->get('limit', 20);
+        $email = $request->get('email');
+        $name = $request->get('name');
 
         $query = User::query();
+        if($email) {
+            $query->where('email',$email);
+        }
 
-        if ($name = \request('name')) {
+        if ($name) {
             $query->where('name', 'like', "%$name%");
         }
 
@@ -44,7 +49,10 @@ class UsersController extends Controller
             'message' => 'success',
             'data'=>[
                 'list' => $list,
-                'total' => $total
+                'mate'=>[
+                    'total' => $total,
+                    'pageSize'=>$pageSize
+                ]
             ]
         ], 200);
     }
@@ -92,7 +100,6 @@ class UsersController extends Controller
         if(!$password) {
             $password = Hash::make($password);
         }
-
         $user = User::query()->where(compact('id'))->first();
 
         $user->email = $email;

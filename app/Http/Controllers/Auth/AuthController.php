@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Admin;
 use App\Service\PermissionService;
+use App\Service\RoleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -30,11 +31,30 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function me(PermissionService $service)
+    /**
+     * 获取用户信息
+     * @param PermissionService $permissionService
+     * @param RoleService $roleService
+     * @return JsonResponse
+     */
+    public function me(PermissionService $permissionService,RoleService $roleService)
     {
-        $menu = $service->getPermissionMenu(auth('api')->id());
+        $menu = $roleService->getRoles(auth('api')->id());
+        $permissions_menu_array = [];
+        $permissions_array = [];
+
+        foreach ($menu as $value){
+            list($permissionsMenu, $permissions) = $permissionService->getPermissionMenu($value->id);
+            $permissions_menu_array[] = $permissionsMenu;
+            $permissions_array[] = $permissions;
+        }
+
+        //将这个数组合并
+        $permissions_menu_array = array_reduce($permissions_menu_array,'array_merge',[]);
+
+
         $user = auth('api')->user();
-        $user->menu = $menu;
+        $user->menu = $permissions_menu_array;
 
         return response()->json([
             'code'=>200,
