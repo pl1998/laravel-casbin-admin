@@ -8,6 +8,7 @@ use App\Http\Requests\PermissionStoreRequest;
 use App\Models\Permissions;
 use App\Service\PermissionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PermissionsController extends Controller
 {
@@ -68,11 +69,12 @@ class PermissionsController extends Controller
         $path   = $request->post('path');
         $is_menu = $request->post('is_menu');
         $url = $request->post('url');
+        $title = $request->post('name');
 
-        if($path && Permissions::query()->where(compact('path','method'))->exists()) {
+        if($path && Permissions::query()->where(compact('path','method','p_id'))->exists()) {
             _error(403,'权限已存在');
         }
-        Permissions::query()->insert(compact('hidden','icon','method','name','path','p_id','is_menu','method','url'));
+        Permissions::query()->insert(compact('hidden','icon','method','name','path','p_id','is_menu','method','url','title'));
 
         return $this->success();
     }

@@ -11,6 +11,7 @@ use App\Service\RoleService;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use function PHPUnit\Framework\isEmpty;
 
 class UsersController extends Controller
 {
@@ -97,14 +98,12 @@ class UsersController extends Controller
         $name   = $request->post('name');
         $roles  = $request->post('roles');
         $password  = $request->post('password');
-        if(!$password) {
-            $password = Hash::make($password);
-        }
+
         $user = User::query()->where(compact('id'))->first();
 
         $user->email = $email;
         $user->name = $name;
-        !empty($password) && $user->password = $password;
+        !isEmpty($password) && $user->password = Hash::make($password);;
         $user->save();
         !empty($roles) && $service->setRoles($roles,$id);
 

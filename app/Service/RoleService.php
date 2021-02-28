@@ -25,6 +25,8 @@ class RoleService
             ->whereIn('id',$roleId)
             ->get(['id','name']);
 
+        Enforcer::deleteRolesForUser($id);
+
         foreach ($roles as $value){
             Enforcer::addRoleForUser($id, $value['id'], $value['name']);
         }

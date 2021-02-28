@@ -29,25 +29,38 @@ class PermissionService
 
     public function getPermissionMenu($id)
     {
-        $id = $this->getIdentifier($id);
-        $query = Permissions::query()->where('status', 1);
+        list($node,$permissions) = $this->getPermissions($id);
         $permissions = $this->getPermissions($id);
 
-        if(!empty($permissions)) {
+        if(auth('api')->user()->name == 'admin') {
+            $query = Permissions::query()->where('status', 1);
             $permissions = $query->where(function ($query) use($permissions) {
                 $permissions = $permissions[1];
                 foreach ($permissions as $value){
                     $query->whereOr('id',$value[3]);
                 }
-            })->get(['id','p_id','path','name','title','icon','method'])->toArray();
+            })->get(['id','p_id','path','name','title','icon','method','url'])->toArray();
 
             $permissionsMenu = get_tree($permissions);
 
             return [$permissionsMenu, $permissions];
+        } else {
 
-        }else{
-            return [[],[]];
+            if(!empty($permissions)) {
+                $query = Permissions::query()->where('status', 1);
+                $permissions = $permissions[1];
+                $nodeId = array_column($permissions,'3');
+                $permissions = $query->whereIn('id',$nodeId)->get(['id','p_id','path','name','title','icon','method','url'])->toArray();
+                $permissionsMenu = get_tree($permissions);
+                return [$permissionsMenu, $permissions];
+
+            }else{
+                return [[],[]];
+            }
         }
+
+
+
 
     }
 
@@ -59,11 +72,21 @@ class PermissionService
     public function setPermissions($nodeId,$id)
     {
         $id = $this->getIdentifier($id);
-        $permissions = Permissions::query()->where('status',1)
+
+        $permissions = Permissions::query()->with('getPid')->where('status',1)
             ->whereIn('id',$nodeId)
-            ->get(['path','method','p_id','id','name']);
+            ->groupBy('id')
+            ->get(['path','method','p_id','id','name'])->toArray();
+
+        $permissions_array=[];
+        foreach ($permissions as $val){
+            $permissions_array[$val['id']] = $val;
+            $permissions_array[$val['get_pid']['id']]=$val['get_pid'];
+        }
+
         Enforcer::deletePermissionsForUser($id);
-        foreach ($permissions as $value){
+
+        foreach ($permissions_array as $value){
             Enforcer::addPermissionForUser($id, $value['path'], $value['method'],$value['id']);
         }
     }
@@ -77,6 +100,7 @@ class PermissionService
     public function getPermissions($id)
     {
         $id = $this->getIdentifier($id);
+
          $permissions = Enforcer::getPermissionsForUser($id);
          if(empty($permissions)) return [[],[]];
          $node[] = array_map(function ($value)  {

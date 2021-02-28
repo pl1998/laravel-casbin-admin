@@ -11,6 +11,7 @@ use App\Service\PermissionService;
 use App\Service\RoleService;
 use Illuminate\Http\Request;
 use Lauthz\Facades\Enforcer;
+use function PHPUnit\Framework\isEmpty;
 
 class RolesController extends Controller
 {
@@ -87,6 +88,7 @@ class RolesController extends Controller
         $status      = $request->get('status');
         $description = $request->get('description');
         $node        = $request->get('node',[]);
+
         $updated_at  =  now()->toDate();
         if(Roles::query()->where(compact('id'))->doesntExist()) {
             _error(403,'角色不存在');
@@ -94,7 +96,8 @@ class RolesController extends Controller
 
         Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
 
-        !empty($node) && $service->setPermissions($node,$id);
+        if(!empty($node)) $service->setPermissions($node,$id);
+
 
         return response()->json([
             'code'=>200,

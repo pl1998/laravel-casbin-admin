@@ -22,4 +22,8 @@ class Permissions extends Model
         }
     }
 
+    public function getPid(){
+        return $this->hasOne(Permissions::class,'id','p_id');
+    }
+
 }
