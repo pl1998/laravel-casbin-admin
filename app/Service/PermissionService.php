@@ -33,7 +33,7 @@ class PermissionService
         $permissions = $this->getPermissions($id);
 
         if(auth('api')->user()->name == 'admin') {
-            $query = Permissions::query()->where('status', 1);
+            $query = Permissions::query()->where('status', 1)->where('is_menu',1);
             $permissions = $query->where(function ($query) use($permissions) {
                 $permissions = $permissions[1];
                 foreach ($permissions as $value){
@@ -47,7 +47,7 @@ class PermissionService
         } else {
 
             if(!empty($permissions)) {
-                $query = Permissions::query()->where('status', 1);
+                $query = Permissions::query()->where('status', 1)->where('is_menu',1);
                 $permissions = $permissions[1];
                 $nodeId = array_column($permissions,'3');
                 $permissions = $query->whereIn('id',$nodeId)->get(['id','p_id','path','name','title','icon','method','url'])->toArray();
