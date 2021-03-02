@@ -14,6 +14,10 @@ class PermissionService
         return "permission_".$id;
     }
 
+    protected function setIdentifier($id) {
+       return explode('_',$id)[1];
+    }
+
     public function permissionTreeNode($permission) :array
     {
         $permissions = get_tree($permission);
@@ -30,13 +34,16 @@ class PermissionService
     public function getPermissionMenu($id)
     {
         list($node,$permissions) = $this->getPermissions($id);
-        $permissions = $this->getPermissions($id);
+
+
 
         if(auth('api')->user()->name == 'admin') {
+
             $query = Permissions::query()->where('status', 1)->where('is_menu',1);
             $permissions = $query->where(function ($query) use($permissions) {
-                $permissions = $permissions[1];
+
                 foreach ($permissions as $value){
+
                     $query->whereOr('id',$value[3]);
                 }
             })->get(['id','p_id','path','name','title','icon','method','url'])->toArray();
@@ -45,23 +52,38 @@ class PermissionService
 
             return [$permissionsMenu, $permissions];
         } else {
-
             if(!empty($permissions)) {
-                $query = Permissions::query()->where('status', 1)->where('is_menu',1);
-                $permissions = $permissions[1];
-                $nodeId = array_column($permissions,'3');
-                $permissions = $query->whereIn('id',$nodeId)->get(['id','p_id','path','name','title','icon','method','url'])->toArray();
-                $permissionsMenu = get_tree($permissions);
-                return [$permissionsMenu, $permissions];
+                $query = Permissions::query()->with('getPid')->where('status', 1)->where('is_menu',1);
+
+                $permissions = $query->whereIn('id',$node)->get(['id','p_id','path','name','title','icon','method','url'])->toArray();
+
+                $permissions_array = [];
+
+                foreach ($permissions as $val) {
+                    $get_pid = $val['get_pid'];
+                    unset($val['get_pid']);
+                    $permissions_array[$val['id']] = $val;
+                    $permissions_array[$get_pid['id']] =$get_pid;
+                }
+
+
+                $permissionsMenu = get_tree($permissions_array);
+                return [$permissionsMenu, $permissions_array];
 
             }else{
                 return [[],[]];
             }
         }
+    }
 
+    public function getNodeId($permissions){
+        $node = array_column($permissions,'0');
+        $nodeId = [];
+        foreach ($node as $value){
+            $nodeId[] = $this->setIdentifier($value);
+        }
 
-
-
+        return $nodeId;
     }
 
     /**
@@ -73,20 +95,15 @@ class PermissionService
     {
         $id = $this->getIdentifier($id);
 
-        $permissions = Permissions::query()->with('getPid')->where('status',1)
-            ->whereIn('id',$nodeId)
+        $permissions = Permissions::query()->with('getPid')->where('status', 1)
+            ->whereIn('id', $nodeId)
             ->groupBy('id')
-            ->get(['path','method','p_id','id','name'])->toArray();
-
-        $permissions_array=[];
-        foreach ($permissions as $val){
-            $permissions_array[$val['id']] = $val;
-            $permissions_array[$val['get_pid']['id']]=$val['get_pid'];
-        }
+            ->get(['path', 'method', 'p_id', 'id', 'name'])->toArray();
 
         Enforcer::deletePermissionsForUser($id);
 
-        foreach ($permissions_array as $value){
+        foreach ($permissions as $value) {
+
             Enforcer::addPermissionForUser($id, $value['path'], $value['method'],$value['id']);
         }
     }
@@ -99,15 +116,18 @@ class PermissionService
      */
     public function getPermissions($id)
     {
+
         $id = $this->getIdentifier($id);
 
          $permissions = Enforcer::getPermissionsForUser($id);
+
          if(empty($permissions)) return [[],[]];
          $node[] = array_map(function ($value)  {
             return (int)$value[3];
          },$permissions);
-         $node = array_column($node,'0');
-         return [$node,$permissions];
+
+        sort($node[0]);
+         return [$node[0],$permissions];
     }
     //获取所有权限
     public function getAllPermission($keyword = null)

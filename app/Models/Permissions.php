@@ -23,7 +23,7 @@ class Permissions extends Model
     }
 
     public function getPid(){
-        return $this->hasOne(Permissions::class,'id','p_id');
+        return $this->hasOne(Permissions::class,'id','p_id')->select(['id','p_id','path','name','title','icon','method','url']);
     }
 
 }

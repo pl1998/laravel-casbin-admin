@@ -50,7 +50,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('me', 'Auth\AuthController@me')->name('me')->middleware(['jwt.auth']);
 });
 //系统管理
-Route::group(['middleware'=>['jwt.auth']],function (){
+Route::group(['middleware'=>['jwt.auth','log']],function (){
 
    Route::group(['prefix'=>'admin'],function (){
 
@@ -61,6 +61,7 @@ Route::group(['middleware'=>['jwt.auth']],function (){
        Route::get('/roles','Auth\RolesController@index');          //角色列表
        Route::post('/roles','Auth\RolesController@store');         //添加角色
        Route::put('/roles/{id}','Auth\RolesController@update');    //更新角色
+
        Route::delete('/roles/{id}','Auth\RolesController@delete'); //删除角色
 
        Route::get('/all_role','Auth\RolesController@allRule');    //获取所有角色
@@ -70,6 +71,11 @@ Route::group(['middleware'=>['jwt.auth']],function (){
        Route::put('/permissions/{id}','Auth\PermissionsController@update');    //更新权限
        Route::delete('/permissions/{id}','Auth\PermissionsController@delete'); //删除权限
        Route::get('/all_permissions','Auth\PermissionsController@allPermissions'); //获取所有权限
+
+
+       Route::get('/log','Auth\LogController@index');          //获取日志列表
+       Route::delete('/log/{id}','Auth\LogController@delete');          //删除日志
+
    });
 });
 

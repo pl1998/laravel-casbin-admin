@@ -36,7 +36,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Reporting Log statements
+    | Reporting LogController statements
     |--------------------------------------------------------------------------
     |
     | If this setting is `false` log statements won't be send as events to Flare,

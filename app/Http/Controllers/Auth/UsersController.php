@@ -94,9 +94,9 @@ class UsersController extends Controller
      */
     public function update($id,UserUpdateRequest $request,RoleService $service)
     {
-        $email  = $request->post('email');
-        $name   = $request->post('name');
-        $roles  = $request->post('roles');
+        $email     = $request->post('email');
+        $name      = $request->post('name');
+        $roles     = $request->post('roles');
         $password  = $request->post('password');
 
         $user = User::query()->where(compact('id'))->first();

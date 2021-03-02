@@ -36,6 +36,7 @@ class RolesController extends Controller
         $list = $query->forPage($page,$pageSize)->get();
 
         foreach ($list as &$value){
+
             list($node_id,$nodes) = $service->getPermissions($value->id);
 
             $value->node = $node_id;
@@ -70,7 +71,7 @@ class RolesController extends Controller
             _error(403,'角色已存在');
         }
 
-        $id          = Roles::query()->insertGetId(compact('name','status','description','created_at','updated_at'));
+        $id        = Roles::query()->insertGetId(compact('name','status','description','created_at','updated_at'));
 
         abort_if(!$id,500,'添加角色错误');
 
@@ -94,9 +95,12 @@ class RolesController extends Controller
             _error(403,'角色不存在');
         }
 
-        Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
+        //Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
 
-        if(!empty($node)) $service->setPermissions($node,$id);
+
+        if(!empty($node)) {
+            $service->setPermissions($node,$id);
+        }
 
 
         return response()->json([

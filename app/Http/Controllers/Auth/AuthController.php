@@ -45,13 +45,13 @@ class AuthController extends Controller
 
         foreach ($menu as $value){
             list($permissionsMenu, $permissions) = $permissionService->getPermissionMenu($value->id);
+
             $permissions_menu_array[] = $permissionsMenu;
             $permissions_array[] = $permissions;
         }
 
         //将这个数组合并
         $permissions_menu_array = array_reduce($permissions_menu_array,'array_merge',[]);
-
 
         $user = auth('api')->user();
         $user->menu = $permissions_menu_array;

@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 
 
+use Illuminate\Http\Request;
+
 class PermissionStoreRequest extends FormRequest
 {
 
@@ -12,11 +14,11 @@ class PermissionStoreRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'name' => 'required|min:2',
-            'icon' => 'required',
+//            'icon' => 'required',
             'path' => 'required',
 //            'url'  => 'required',
 //            'status'  => 'required|boolean',
