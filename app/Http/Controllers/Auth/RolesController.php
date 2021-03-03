@@ -91,11 +91,13 @@ class RolesController extends Controller
         $node        = $request->get('node',[]);
 
         $updated_at  =  now()->toDate();
+
         if(Roles::query()->where(compact('id'))->doesntExist()) {
             _error(403,'角色不存在');
         }
 
-        //Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
+        Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
+
 
 
         if(!empty($node)) {

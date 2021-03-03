@@ -50,7 +50,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('me', 'Auth\AuthController@me')->name('me')->middleware(['jwt.auth']);
 });
 //系统管理
-Route::group(['middleware'=>['jwt.auth','log']],function (){
+Route::group(['middleware'=>['jwt.auth','permission','log']],function (){
 
    Route::group(['prefix'=>'admin'],function (){
 

@@ -16,17 +16,26 @@ class PermissionStoreRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        return [
-            'name' => 'required|min:2',
-//            'icon' => 'required',
-            'path' => 'required',
-//            'url'  => 'required',
-//            'status'  => 'required|boolean',
-            'method'  => 'required',
-            'p_id'  => 'required',
-            'hidden'  => 'required',
-//            'is_menu'  => 'required',
-//            'title'  => 'required',
-        ];
+        if($request->status == 1) {
+            return [
+                'name' => 'required|min:2',
+                'icon' => 'required',
+                'path' => 'required',
+                'status'  => 'required|boolean',
+                'method'  => 'required',
+                'p_id'  => 'required',
+                'hidden'  => 'required',
+
+            ];
+        } else{
+            return [
+                'name' => 'required|min:2',
+                'url' => 'required',
+                'method'  => 'required',
+                'p_id'  => 'required',
+                'hidden'  => 'required',
+            ];
+        }
+
     }
 }

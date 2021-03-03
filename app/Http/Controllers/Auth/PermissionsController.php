@@ -71,7 +71,7 @@ class PermissionsController extends Controller
         $url     = $request->post('url');
         $title = $request->post('name');
 
-        if($path && Permissions::query()->where(compact('path','method','p_id'))->exists()) {
+        if($path && Permissions::query()->where(compact('path','method','p_id','is_menu'))->exists()) {
             _error(403,'权限已存在');
         }
 

@@ -31,11 +31,9 @@ class PermissionService
         return $permissions;
     }
 
-    public function getPermissionMenu($id)
+    public function getPermissionMenu($id) :array
     {
         list($node,$permissions) = $this->getPermissions($id);
-
-
 
         if(auth('api')->user()->name == 'admin') {
 
@@ -65,7 +63,6 @@ class PermissionService
                     $permissions_array[$val['id']] = $val;
                     $permissions_array[$get_pid['id']] =$get_pid;
                 }
-
 
                 $permissionsMenu = get_tree($permissions_array);
                 return [$permissionsMenu, $permissions_array];
@@ -98,13 +95,17 @@ class PermissionService
         $permissions = Permissions::query()->with('getPid')->where('status', 1)
             ->whereIn('id', $nodeId)
             ->groupBy('id')
-            ->get(['path', 'method', 'p_id', 'id', 'name'])->toArray();
+            ->get(['path', 'method', 'p_id', 'id', 'name','is_menu','url'])->toArray();
 
         Enforcer::deletePermissionsForUser($id);
 
         foreach ($permissions as $value) {
-
-            Enforcer::addPermissionForUser($id, $value['path'], $value['method'],$value['id']);
+            if($value['is_menu'] ==0) {
+                $path = $value['url'];
+            }else{
+                $path = $value['path'];
+            }
+            Enforcer::addPermissionForUser($id, $path, $value['method'],$value['id']);
         }
     }
 
@@ -114,7 +115,7 @@ class PermissionService
      * @param $id
      * @return array
      */
-    public function getPermissions($id)
+    public function getPermissions($id) : array
     {
 
         $id = $this->getIdentifier($id);
@@ -146,5 +147,31 @@ class PermissionService
     public function delPermissions($id){
         $id = $this->getIdentifier($id);
         Enforcer::deletePermissionsForUser($id);
+    }
+
+    /**
+     * 权限控制
+     * @param $id
+     * @param $method
+     * @param $route
+     * @return false
+     */
+    public function PermissionsAuth($id,$method,$route) : bool
+    {
+        list($node,$permissions) = $this->getPermissions($id);
+
+        dd($node);
+        $permissions = Permissions::query()->whereIn('id',$node)
+                            ->where('is_menu',0)
+                            ->get(['id','method'])
+                            ->map(function ($value){
+
+                            });
+
+        if($permissions->isEmpty()) {
+            return false;
+        } else {
+
+        }
     }
 }
