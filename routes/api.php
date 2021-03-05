@@ -53,7 +53,6 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware'=>['jwt.auth','permission','log']],function (){
 
    Route::group(['prefix'=>'admin'],function (){
-
        Route::get('/users','Auth\UsersController@index');      //用户列表
        Route::post('/users','Auth\UsersController@store');     //添加新用户;
        Route::put('users/{id}','Auth\UsersController@update'); //更新用户信息
@@ -71,7 +70,6 @@ Route::group(['middleware'=>['jwt.auth','permission','log']],function (){
        Route::put('/permissions/{id}','Auth\PermissionsController@update');    //更新权限
        Route::delete('/permissions/{id}','Auth\PermissionsController@delete'); //删除权限
        Route::get('/all_permissions','Auth\PermissionsController@allPermissions'); //获取所有权限
-
 
        Route::get('/log','Auth\LogController@index');          //获取日志列表
        Route::delete('/log/{id}','Auth\LogController@delete');          //删除日志

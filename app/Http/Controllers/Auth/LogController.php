@@ -17,7 +17,7 @@ class LogController extends Controller
         $limit = $request->get('limit',20);
         $query = Log::query();
         $total = $query->count();
-        $list = $query->forPage($page,$limit)->get();
+        $list = $query->forPage($page,$limit)->get([ 'url','ip','method','name','u_id']);
 
         return response()->json([
             'code' => 200,

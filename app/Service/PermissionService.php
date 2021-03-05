@@ -93,6 +93,7 @@ class PermissionService
         $id = $this->getIdentifier($id);
 
         $permissions = Permissions::query()->with('getPid')->where('status', 1)
+            ->where('p_id','<>',0)
             ->whereIn('id', $nodeId)
             ->groupBy('id')
             ->get(['path', 'method', 'p_id', 'id', 'name','is_menu','url'])->toArray();
@@ -122,12 +123,13 @@ class PermissionService
 
          $permissions = Enforcer::getPermissionsForUser($id);
 
+
          if(empty($permissions)) return [[],[]];
          $node[] = array_map(function ($value)  {
             return (int)$value[3];
          },$permissions);
 
-        sort($node[0]);
+         sort($node[0]);
          return [$node[0],$permissions];
     }
     //获取所有权限

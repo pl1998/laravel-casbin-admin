@@ -33,7 +33,9 @@ class ApiLog
             Log::query()->create([
                 'url'    => $request->route()->uri(),
                 'method' => $request->method(),
-                'ip'     => $request->getClientIp()
+                'ip'     => $request->getClientIp(),
+                'u_id'   => auth('api')->id(),
+                'name'   => auth('api')->user()->name
             ]);
         }
         return $next($request);

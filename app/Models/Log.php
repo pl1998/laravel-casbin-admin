@@ -20,6 +20,6 @@ class Log extends Model
 
 
     protected $fillable = [
-      'url','ip','method'
+      'url','ip','method','name','u_id'
     ];
 }

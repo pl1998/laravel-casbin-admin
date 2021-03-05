@@ -103,13 +103,17 @@ class UsersController extends Controller
 
         $user->email = $email;
         $user->name = $name;
-        !isEmpty($password) && $user->password = Hash::make($password);;
+        !empty($password) && $user->password = Hash::make($password);;
         $user->save();
-        !empty($roles) && $service->setRoles($roles,$id);
+        if(!empty($roles)) {
+            $roles = array_column($roles,'id');
+            $service->setRoles($roles,$id);
+        }
+
 
         return response()->json([
-           'code'=>200,
-           'message'=>'更新成功'
+            'code'=>200,
+            'message'=>'更新成功'
         ],200);
 
     }

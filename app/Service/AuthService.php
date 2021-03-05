@@ -32,6 +32,7 @@ class AuthService
        $role = $role->map(function ($val){
            return $val['id'];
        })->toArray();
+
        $node_array = [];
        foreach ($role as $value) {
           list($node,$permissions) = $this->permissionService->getPermissions($value);
@@ -41,11 +42,12 @@ class AuthService
        $where =[];
 
        if($method != '*') $where['method']=$method;
-       $where['url']= $route;
+       $where['url'] = $route;
 
        if(Permissions::query()->whereIn('id',$node_array[0])->where('is_menu',0)->where($where)->exists()){
            return true;
        }
+
        return false;
     }
 }
