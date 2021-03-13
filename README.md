@@ -1,6 +1,6 @@
 ## vue-element-admin + laravel + jwt + casbin 前后端分离 rbac鉴权权限 管理系统
   
-  * [线上demo](system.pltrue.top)
+  * [线上demo](http://system.pltrue.top)
   
   #### 使用了一下技术
 
