@@ -1,0 +1,38 @@
+{
+    "name": "casbin/psr3-bridge",
+    "keywords": [
+        "casbin",
+        "psr-3",
+        "logger",
+        "rbac",
+        "permission",
+        "acl"
+    ],
+    "description": "This library provides a PSR-3 compliant bridge for Casbin Logger.",
+    "authors": [
+        {
+            "name": "TechLee",
+            "email": "techlee@qq.com"
+        }
+    ],
+    "license": "Apache-2.0",
+    "require": {
+        "casbin/casbin": "^2.0|^3.0",
+        "psr/log": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0|~8.0",
+        "mockery/mockery": "^1.2",
+        "php-coveralls/php-coveralls": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Casbin\\Bridge\\Logger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Casbin\\Bridge\\Logger\\Tests\\": "tests/"
+        }
+    }
+}
