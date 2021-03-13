@@ -43,7 +43,12 @@ Route::get('/401',function (){
 
 #用户相关
 Route::group(['prefix' => 'auth'], function () {
+
+    Route::get('giteeCallback', 'Auth\OauthController@giteeCallback');
+
+
     Route::post('login', 'Auth\AuthController@login');
+
     Route::post('logout', 'Auth\AuthController@logout');
     Route::post('refresh', 'Auth\AuthController@refresh');
     Route::put('update','Auth\AuthController@update');

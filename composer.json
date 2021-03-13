@@ -10,11 +10,13 @@
     "require": {
         "php": "^7.2.5|^8.0",
         "casbin/laravel-authz": "^2.0",
+        "darkaonline/l5-swagger": "^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
+        "pltrue/thirdparty_oauth": "v1.6",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
