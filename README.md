@@ -1,6 +1,7 @@
 ## vue-element-admin + laravel + jwt + casbin 前后端分离 rbac鉴权权限 管理系统
   
   * [线上demo](http://system.pltrue.top)
+  * 账号:`admin@gmail.com` 密码:`123456`
   
   #### 使用了一下技术
 
@@ -51,6 +52,8 @@ git clone https://github.com/pl1998/laravel-casbin-admin.git
   npm run build:prod
 ```
 
-  * nignx 配置 以及 数据看文件都在项目根目录下
+  * nginx配置以及数据库文件都在项目根目录下
+  
+#### 觉得可以请给我点个 star haha~
 
 
