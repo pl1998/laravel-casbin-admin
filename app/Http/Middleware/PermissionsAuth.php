@@ -34,7 +34,7 @@ class PermissionsAuth
 
         if(!$bool) {
             $response = JsonResponse::fromJsonString(
-                collect(['data' => [], 'code' => 403, 'message' => "warning 没有访问权限 | "]
+                collect(['data' => [], 'code' => 403, 'message' => "没有访问权限"]
                 )->toJson(),200);
 
             throw new HttpResponseException($response);
