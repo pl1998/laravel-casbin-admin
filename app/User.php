@@ -70,7 +70,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getAvatarAttribute($key)
     {
-        if(empty($key)) $key= env('APP_URL').'/default-avatar.jpg';
+        if(empty($key)) $key= env('APP_URL').'/storage/default-avatar.jpg';
          return $key;
     }
 
