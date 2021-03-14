@@ -26,7 +26,7 @@ class FormRequest extends Request
     {
         $message = $validator->getMessageBag()->first();
         //$response = JsonResponse::create(['data' => [], 'code' => 400, 'message' => "warning | $message"],500);
-        $response = JsonResponse::fromJsonString(collect(['data' => [], 'code' => 400, 'message' => "warning $message | "]),200);
+        $response = JsonResponse::fromJsonString(collect(['data' => [], 'code' => 400, 'message' => "$message"]),200);
         throw new HttpResponseException($response);
     }
 }

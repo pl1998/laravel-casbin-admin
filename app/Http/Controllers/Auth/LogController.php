@@ -19,26 +19,22 @@ class LogController extends Controller
         $total = $query->count();
         $list = $query->forPage($page,$limit)->get([ 'url','ip','method','name','u_id']);
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'success',
-            'data'=>[
+
+        return $this->success(
+            [
                 'list' => $list,
                 'mate'=>[
                     'total' => $total,
                     'pageSize'=>$limit
                 ]
             ]
-        ],200);
+        );
+
     }
     public function delete($id)
     {
         Log::query()->where('id',$id)->delete();
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'success',
-            'data'=>[]
-        ],200);
+        return $this->success();
     }
 }

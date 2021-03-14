@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
 use App\Service\PermissionService;
 use App\Service\RoleService;
+use App\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 /**
@@ -57,9 +60,8 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {
-            return response()->json(['code' => 401,'message'=>'账号或密码错误'], 401);
+            return $this->fail('账号或密码错误');
         }
-
         return $this->respondWithToken($token);
     }
 
@@ -88,20 +90,14 @@ class AuthController extends Controller
         $user = auth('api')->user();
         $user->menu = $permissions_menu_array;
 
-        return response()->json([
-            'code'=>200,
-            'message'=>'success',
-            'data'=>$user
-        ]);
+        return $this->success($user);
+
     }
 
     public function logout()
     {
         auth('api')->logout();
-        return response()->json([
-            'code' => 200,
-            'message' => 'Successfully logged out'
-        ]);
+        return $this->success([],'Successfully logged out');
     }
 
     public function refresh()
@@ -109,10 +105,32 @@ class AuthController extends Controller
         return $this->respondWithToken(auth('api')->refresh());
     }
 
-    //更新用户信息
-    public function update($id,UserUpdateRequest $request)
+    /**
+     * @param UserUpdateRequest $request
+     * @return JsonResponse
+     * 更新用户信息
+     */
+    public function update(UserUpdateRequest $request)
     {
+        if(!empty($request->password) || !empty($request->old_password)) {
+            $old_password = Hash::make($request->old_password);
 
+            if(User::query()->where('id',auth('api')->id())->where('password',$old_password)->doesntExist()){
+                return $this->fail('密码错误');
+            }
+
+            $update['password'] = Hash::make($request->password);
+        }
+        $update['name'] = $request->name;
+        $update['avatar'] = $request->avatar;
+
+        User::query()->where('id',auth('api')->id())
+                     ->update($update);
+
+        return $this->success([
+            'name'=>$request->name,
+            'avatar'=>$request->avatar
+        ]);
     }
 
     /**
@@ -128,4 +146,6 @@ class AuthController extends Controller
             'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
     }
+
+
 }

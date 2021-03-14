@@ -53,6 +53,8 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('refresh', 'Auth\AuthController@refresh');
     Route::put('update','Auth\AuthController@update');
     Route::post('me', 'Auth\AuthController@me')->name('me')->middleware(['jwt.auth']);
+
+
 });
 //系统管理
 Route::group(['middleware'=>['jwt.auth','log']],function (){
@@ -81,6 +83,9 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
     Route::get('/admin/all_permissions','Auth\PermissionsController@allPermissions'); //获取所有权限
     Route::get('/admin/all_role','Auth\RolesController@allRule');    //获取所有角色
 });
+
+Route::post('upload_img','Auth\UsersController@updateImg');
+
 
 # 后台用户登录
 //Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {

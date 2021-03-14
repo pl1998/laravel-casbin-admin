@@ -24,13 +24,11 @@ class PermissionsController extends Controller
         $allPermission = $service->getAllPermission($keyword);
         $list = $service->permissionTreeNode($allPermission);
 
-        return response()->json([
-            'code'=>200,
-            'message'=>'success',
-            'data'=>[
-                'list'=>$list
-            ]
+
+        return $this->success([
+            'list'=>$list
         ]);
+
     }
 
     /**

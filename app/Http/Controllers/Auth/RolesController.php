@@ -43,14 +43,10 @@ class RolesController extends Controller
             $value->nodes = $nodes;
         }
 
-        return response()->json([
-            'code'=>200,
-            'message'=>'success',
-            'data'=>[
-                'list'=>$list,
-                'total'=>$total
-            ]
-        ],200);
+        return $this->success([
+            'list'=>$list,
+            'total'=>$total
+        ]);
     }
 
     /**
@@ -77,10 +73,7 @@ class RolesController extends Controller
 
         !empty($node) &&  $service->setPermissions($node,$id);
 
-        return response()->json([
-            'code'=>200,
-            'message'=>'角色添加成功'
-        ],200);
+        return $this->success([],'角色添加成功');
     }
 
     public function update($id,Request $request,PermissionService $service)
@@ -105,10 +98,8 @@ class RolesController extends Controller
         }
 
 
-        return response()->json([
-            'code'=>200,
-            'message'=>'更新成功'
-        ],200);
+        return $this->success([],'更新成功');
+
     }
 
     /**
@@ -132,10 +123,7 @@ class RolesController extends Controller
     public function allRule()
     {
         $list = Roles::query()->where('status',1)->get(['id','name']);
-        return response()->json([
-            'code'=>200,
-            'message'=>'success',
-            'data'=>$list
-        ],200);
+
+        return $this->success($list);
     }
 }

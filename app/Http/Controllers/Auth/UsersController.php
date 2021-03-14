@@ -45,17 +45,13 @@ class UsersController extends Controller
             $value->roles_node = $service->getRoles($value->id);
         }
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'success',
-            'data'=>[
-                'list' => $list,
-                'mate'=>[
-                    'total' => $total,
-                    'pageSize'=>$pageSize
-                ]
+        return $this->success([
+            'list' => $list,
+            'mate'=>[
+                'total' => $total,
+                'pageSize'=>$pageSize
             ]
-        ], 200);
+        ]);
     }
 
     /**
@@ -78,10 +74,8 @@ class UsersController extends Controller
 
         $service->setRoles($roles,$id);
 
-        return response()->json([
-            'code'=>200,
-            'message'=>'success'
-        ],200);
+        return $this->success();
+
 
     }
 
@@ -111,10 +105,20 @@ class UsersController extends Controller
         }
 
 
-        return response()->json([
-            'code'=>200,
-            'message'=>'更新成功'
-        ],200);
+        return $this->success([],'更新成功');
 
     }
+
+    public function updateImg(Request $request)
+    {
+
+        if(!$request->file('file')) return $this->fail('文件不存在');
+
+        $path = $request->file('file')->store('public');
+
+        return $this->success([
+            'url'=>env('APP_URL').'/storage/'.explode('/',$path)[1]
+        ]);
+    }
+
 }
