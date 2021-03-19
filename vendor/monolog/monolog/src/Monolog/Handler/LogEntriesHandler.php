@@ -24,7 +24,7 @@ class LogEntriesHandler extends SocketHandler
     protected $logToken;
 
     /**
-     * @param string     $token  LogController token supplied by LogEntries
+     * @param string     $token  Log token supplied by LogEntries
      * @param bool       $useSSL Whether or not SSL encryption should be used.
      * @param string|int $level  The minimum logging level to trigger this handler
      * @param bool       $bubble Whether or not messages that are handled should bubble up the stack.

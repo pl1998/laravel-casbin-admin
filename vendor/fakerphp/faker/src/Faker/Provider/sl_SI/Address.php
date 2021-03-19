@@ -16,7 +16,7 @@ class Address extends \Faker\Provider\Address
         'Horjul', 'Hoče - Slivnica', 'Hrastnik', 'Hrpelje - Kozina', 'Idrija', 'Ig', 'Ilirska Bistrica', 'Ivančna Gorica',
         'Izola', 'Jesenice', 'Jezersko', 'Juršinci', 'Kamnik', 'Kanal ob Soči', 'Kidričevo', 'Kobarid', 'Kobilje', 'Komen',
         'Komenda', 'Koper', 'Kostanjevica na Krki', 'Kostel', 'Kozje', 'Kočevje', 'Kranj', 'Kranjska Gora', 'Križevci', 'Krško',
-        'Kungota', 'Kuzma', 'Laško', 'Lenart', 'Lendava', 'Litija', 'Ljubljana', 'Ljubno', 'Ljutomer', 'LogController - Dragomer', 'Logatec',
+        'Kungota', 'Kuzma', 'Laško', 'Lenart', 'Lendava', 'Litija', 'Ljubljana', 'Ljubno', 'Ljutomer', 'Log - Dragomer', 'Logatec',
         'Lovrenc na Pohorju', 'Loška Dolina', 'Loški Potok', 'Lukovica', 'Luče', 'Majšperk', 'Makole', 'Maribor', 'Markovci',
         'Medvode', 'Mengeš', 'Metlika', 'Mežica', 'Miklavž na Dravskem polju', 'Miren - Kostanjevica', 'Mirna Peč', 'Mislinja',
         'Mokronog - Trebelno', 'Moravske Toplice', 'Moravče', 'Mozirje', 'Murska Sobota', 'Muta', 'Naklo', 'Nazarje', 'Nova Gorica',
@@ -53,7 +53,7 @@ class Address extends \Faker\Provider\Address
         'Stara cesta', 'Vegova ulica', 'Prežihova ulica', 'Sončna ulica',
 
         'Gradišče', 'Pristava', 'Brezje', 'Dolenja vas', 'Potok', 'Ravne',
-        'Brdo', 'Dobrava', 'Draga', 'Javorje', 'Kal', 'Laze', 'LogController', 'Planina', 'Podkraj', 'Selce', 'Trnovec', 'Bistrica', 'Gorenja vas',
+        'Brdo', 'Dobrava', 'Draga', 'Javorje', 'Kal', 'Laze', 'Log', 'Planina', 'Podkraj', 'Selce', 'Trnovec', 'Bistrica', 'Gorenja vas',
         'Gorica', 'Lipa', 'Nova vas', 'Podgora', 'Podgorje', 'Podgrad', 'Ponikve', 'Sela', 'Selo', 'Škocjan', 'Vrh'
     ];
 

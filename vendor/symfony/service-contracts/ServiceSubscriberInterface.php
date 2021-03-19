@@ -33,19 +33,19 @@ interface ServiceSubscriberInterface
      *
      * For mandatory dependencies:
      *
-     *  * ['logger' => 'Psr\LogController\LoggerInterface'] means the objects use the "logger" name
-     *    internally to fetch a service which must implement Psr\LogController\LoggerInterface.
-     *  * ['loggers' => 'Psr\LogController\LoggerInterface[]'] means the objects use the "loggers" name
-     *    internally to fetch an iterable of Psr\LogController\LoggerInterface instances.
-     *  * ['Psr\LogController\LoggerInterface'] is a shortcut for
-     *  * ['Psr\LogController\LoggerInterface' => 'Psr\LogController\LoggerInterface']
+     *  * ['logger' => 'Psr\Log\LoggerInterface'] means the objects use the "logger" name
+     *    internally to fetch a service which must implement Psr\Log\LoggerInterface.
+     *  * ['loggers' => 'Psr\Log\LoggerInterface[]'] means the objects use the "loggers" name
+     *    internally to fetch an iterable of Psr\Log\LoggerInterface instances.
+     *  * ['Psr\Log\LoggerInterface'] is a shortcut for
+     *  * ['Psr\Log\LoggerInterface' => 'Psr\Log\LoggerInterface']
      *
      * otherwise:
      *
-     *  * ['logger' => '?Psr\LogController\LoggerInterface'] denotes an optional dependency
-     *  * ['loggers' => '?Psr\LogController\LoggerInterface[]'] denotes an optional iterable dependency
-     *  * ['?Psr\LogController\LoggerInterface'] is a shortcut for
-     *  * ['Psr\LogController\LoggerInterface' => '?Psr\LogController\LoggerInterface']
+     *  * ['logger' => '?Psr\Log\LoggerInterface'] denotes an optional dependency
+     *  * ['loggers' => '?Psr\Log\LoggerInterface[]'] denotes an optional iterable dependency
+     *  * ['?Psr\Log\LoggerInterface'] is a shortcut for
+     *  * ['Psr\Log\LoggerInterface' => '?Psr\Log\LoggerInterface']
      *
      * @return array The required service types, optionally keyed by service names
      */

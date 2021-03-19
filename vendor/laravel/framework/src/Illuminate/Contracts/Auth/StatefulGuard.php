@@ -14,7 +14,7 @@ interface StatefulGuard extends Guard
     public function attempt(array $credentials = [], $remember = false);
 
     /**
-     * LogController a user into the application without sessions or cookies.
+     * Log a user into the application without sessions or cookies.
      *
      * @param  array  $credentials
      * @return bool
@@ -22,7 +22,7 @@ interface StatefulGuard extends Guard
     public function once(array $credentials = []);
 
     /**
-     * LogController a user into the application.
+     * Log a user into the application.
      *
      * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
      * @param  bool  $remember
@@ -31,7 +31,7 @@ interface StatefulGuard extends Guard
     public function login(Authenticatable $user, $remember = false);
 
     /**
-     * LogController the given user ID into the application.
+     * Log the given user ID into the application.
      *
      * @param  mixed  $id
      * @param  bool  $remember
@@ -40,7 +40,7 @@ interface StatefulGuard extends Guard
     public function loginUsingId($id, $remember = false);
 
     /**
-     * LogController the given user ID into the application without sessions or cookies.
+     * Log the given user ID into the application without sessions or cookies.
      *
      * @param  mixed  $id
      * @return \Illuminate\Contracts\Auth\Authenticatable|bool
@@ -55,7 +55,7 @@ interface StatefulGuard extends Guard
     public function viaRemember();
 
     /**
-     * LogController the user out of the application.
+     * Log the user out of the application.
      *
      * @return void
      */

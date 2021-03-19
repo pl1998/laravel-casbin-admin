@@ -2,7 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
+use Illuminate\Support\Facades\Redis;
 
 if(!function_exists('test')) {
     function test(){
@@ -50,5 +50,12 @@ if (!function_exists('recursive_make_tree')) {
             }
         }
         return $tree;
+    }
+}
+
+if(!function_exists('redis')) {
+    function redis()
+    {
+        return Redis::connection()->client();
     }
 }

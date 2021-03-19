@@ -8,7 +8,7 @@ use Monolog\Logger as Monolog;
 trait ParsesLogConfiguration
 {
     /**
-     * The LogController levels.
+     * The Log levels.
      *
      * @var array
      */

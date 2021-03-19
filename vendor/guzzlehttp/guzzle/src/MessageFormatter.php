@@ -38,7 +38,7 @@ use Psr\Http\Message\ResponseInterface;
 class MessageFormatter implements MessageFormatterInterface
 {
     /**
-     * Apache Common LogController Format.
+     * Apache Common Log Format.
      *
      * @link https://httpd.apache.org/docs/2.4/logs.html#common
      *
@@ -54,7 +54,7 @@ class MessageFormatter implements MessageFormatterInterface
     private $template;
 
     /**
-     * @param string $template LogController message template
+     * @param string $template Log message template
      */
     public function __construct(?string $template = self::CLF)
     {

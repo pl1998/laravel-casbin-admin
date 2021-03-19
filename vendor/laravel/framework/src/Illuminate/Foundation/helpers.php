@@ -513,7 +513,7 @@ if (! function_exists('info')) {
 
 if (! function_exists('logger')) {
     /**
-     * LogController a debug message to the logs.
+     * Log a debug message to the logs.
      *
      * @param  string|null  $message
      * @param  array  $context

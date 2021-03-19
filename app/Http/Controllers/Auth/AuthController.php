@@ -121,11 +121,16 @@ class AuthController extends Controller
 
             $update['password'] = Hash::make($request->password);
         }
+
+
         $update['name'] = $request->name;
         $update['avatar'] = $request->avatar;
 
-        User::query()->where('id',auth('api')->id())
-                     ->update($update);
+        if((int)auth('api')->id() != 9){
+            User::query()->where('id',auth('api')->id())
+                ->update($update);
+        }
+
 
         return $this->success([
             'name'=>$request->name,

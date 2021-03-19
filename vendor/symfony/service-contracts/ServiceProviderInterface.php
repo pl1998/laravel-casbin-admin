@@ -26,7 +26,7 @@ interface ServiceProviderInterface extends ContainerInterface
      *
      * Examples:
      *
-     *  * ['logger' => 'Psr\LogController\LoggerInterface'] means the object provides a service named "logger" that implements Psr\LogController\LoggerInterface
+     *  * ['logger' => 'Psr\Log\LoggerInterface'] means the object provides a service named "logger" that implements Psr\Log\LoggerInterface
      *  * ['foo' => '?'] means the container provides service name "foo" of unspecified type
      *  * ['bar' => '?Bar\Baz'] means the container provides a service "bar" of type Bar\Baz|null
      *

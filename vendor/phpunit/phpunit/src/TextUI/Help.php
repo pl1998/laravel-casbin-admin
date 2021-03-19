@@ -40,7 +40,7 @@ final class Help
             ['arg' => '--coverage-crap4j <file>', 'desc' => 'Generate code coverage report in Crap4J XML format'],
             ['arg' => '--coverage-html <dir>', 'desc' => 'Generate code coverage report in HTML format'],
             ['arg' => '--coverage-php <file>', 'desc' => 'Export PHP_CodeCoverage object to file'],
-            ['arg' => '--coverage-text <file>', 'desc' => 'Generate code coverage report in text format [default: standard output]'],
+            ['arg' => '--coverage-text=<file>', 'desc' => 'Generate code coverage report in text format [default: standard output]'],
             ['arg' => '--coverage-xml <dir>', 'desc' => 'Generate code coverage report in PHPUnit XML format'],
             ['arg' => '--coverage-cache <dir>', 'desc' => 'Cache static analysis results'],
             ['arg' => '--warm-coverage-cache', 'desc' => 'Warm static analysis cache'],
@@ -51,8 +51,8 @@ final class Help
         ],
 
         'Logging Options' => [
-            ['arg' => '--log-junit <file>', 'desc' => 'LogController test execution in JUnit XML format to file'],
-            ['arg' => '--log-teamcity <file>', 'desc' => 'LogController test execution in TeamCity format to file'],
+            ['arg' => '--log-junit <file>', 'desc' => 'Log test execution in JUnit XML format to file'],
+            ['arg' => '--log-teamcity <file>', 'desc' => 'Log test execution in TeamCity format to file'],
             ['arg' => '--testdox-html <file>', 'desc' => 'Write agile documentation in HTML format to file'],
             ['arg' => '--testdox-text <file>', 'desc' => 'Write agile documentation in Text format to file'],
             ['arg' => '--testdox-xml <file>', 'desc' => 'Write agile documentation in XML format to file'],

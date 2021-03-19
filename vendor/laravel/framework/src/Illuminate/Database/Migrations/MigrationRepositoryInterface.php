@@ -34,7 +34,7 @@ interface MigrationRepositoryInterface
     public function getMigrationBatches();
 
     /**
-     * LogController that a migration was run.
+     * Log that a migration was run.
      *
      * @param  string  $file
      * @param  int  $batch

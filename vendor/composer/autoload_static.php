@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
+class ComposerStaticInit876fbdb3ed7dfa748c5f56ff816238e1
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -31,11 +31,30 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
+        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '0ccdf99b8f62f02c52cba55802e0c2e7' => __DIR__ . '/..' . '/zircote/swagger-php/src/functions.php',
+        '9ba6ea2fc24a1ea09e48feb96804a505' => __DIR__ . '/..' . '/spiral/goridge/src/functions.php',
+        '07d7f1a47144818725fd8d91a907ac57' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/create_uploaded_file.php',
+        'da94ac5d3ca7d2dbab84ce561ce72bfd' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_headers_from_sapi.php',
+        '3d97c8dcdfba8cb85d3b34f116bb248b' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_method_from_sapi.php',
+        'e6f3bc6883e449ab367280b34158c05b' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_protocol_version_from_sapi.php',
+        'd59fbae42019aedf227094ac49a46f50' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_uri_from_sapi.php',
+        'de95e0ac670b27c84ef8c5ac41fc1b34' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_server.php',
+        'b6c2870932b0250c10334a86dcb33c7f' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.php',
+        'd02cf21124526632320d6f20b1bbf905' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.php',
+        'd919fc9d5ad52cfb7f322f7fe36458ab' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/create_uploaded_file.legacy.php',
+        'e397f74f8af3b1e56166a6e99f216ee7' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_headers_from_sapi.legacy.php',
+        'd154b49fab8e4da34fb553a2d644918c' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_method_from_sapi.legacy.php',
+        '9d3db23ca418094bcf0b641a0c9559ed' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_protocol_version_from_sapi.legacy.php',
+        'b0b88a3b89caae681462c58ff19a7059' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/marshal_uri_from_sapi.legacy.php',
+        'cc8e14526dc240491e17a838cb78508c' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_server.legacy.php',
+        '786bf90caabc9e09b6ad4cc5ca8f0e30' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/normalize_uploaded_files.legacy.php',
+        '751a5a3f463e4be759be31748b61737c' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/functions/parse_cookie_header.legacy.php',
         'ac0aa5b57142c92aeadc397fa46b9d39' => __DIR__ . '/..' . '/darkaonline/l5-swagger/src/helpers.php',
+        'd7f4f7522f962c095f835c50e6136087' => __DIR__ . '/..' . '/hprose/hprose/src/init.php',
         '3adb193d4261a019502ea897e056f4fe' => __DIR__ . '/../..' . '/app/functions.php',
     );
 
@@ -96,6 +115,8 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Cache\\' => 24,
+            'Spiral\\RoadRunner\\' => 18,
+            'Spiral\\Goridge\\' => 15,
         ),
         'R' => 
         array (
@@ -139,12 +160,18 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
             'Lcobucci\\JWT\\' => 13,
             'Lauthz\\' => 7,
             'Laravel\\Tinker\\' => 15,
+            'Laminas\\ZendFrameworkBridge\\' => 28,
+            'Laminas\\Diactoros\\' => 18,
             'L5Swagger\\' => 10,
         ),
         'I' => 
         array (
             'Illuminate\\' => 11,
             'IPTools\\' => 8,
+        ),
+        'H' => 
+        array (
+            'Hprose\\' => 7,
         ),
         'G' => 
         array (
@@ -351,6 +378,14 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         array (
             0 => __DIR__ . '/..' . '/symfony/cache',
         ),
+        'Spiral\\RoadRunner\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spiral/roadrunner/src',
+        ),
+        'Spiral\\Goridge\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spiral/goridge/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -374,6 +409,7 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -451,6 +487,14 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Laminas\\ZendFrameworkBridge\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src',
+        ),
+        'Laminas\\Diactoros\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-diactoros/src',
+        ),
         'L5Swagger\\' => 
         array (
             0 => __DIR__ . '/..' . '/darkaonline/l5-swagger/src',
@@ -462,6 +506,10 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'IPTools\\' => 
         array (
             0 => __DIR__ . '/..' . '/s1lentium/iptools/src',
+        ),
+        'Hprose\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hprose/hprose/src/Hprose',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -573,6 +621,7 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'App\\Exceptions\\ValidationException' => __DIR__ . '/../..' . '/app/Exceptions/ValidationException.php',
         'App\\Http\\Controllers\\Auth\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthController.php',
         'App\\Http\\Controllers\\Auth\\LogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LogController.php',
+        'App\\Http\\Controllers\\Auth\\OauthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/OauthController.php',
         'App\\Http\\Controllers\\Auth\\PermissionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PermissionsController.php',
         'App\\Http\\Controllers\\Auth\\ResponseApi' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResponseApi.php',
         'App\\Http\\Controllers\\Auth\\RolesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RolesController.php',
@@ -607,6 +656,7 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'App\\Service\\AuthService' => __DIR__ . '/../..' . '/app/Service/AuthService.php',
         'App\\Service\\PermissionService' => __DIR__ . '/../..' . '/app/Service/PermissionService.php',
         'App\\Service\\RoleService' => __DIR__ . '/../..' . '/app/Service/RoleService.php',
+        'App\\Service\\RpcService' => __DIR__ . '/../..' . '/app/Service/RpcService.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
@@ -1026,7 +1076,6 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'Facade\\Ignition\\Middleware\\AddLogs' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/AddLogs.php',
         'Facade\\Ignition\\Middleware\\AddQueries' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/AddQueries.php',
         'Facade\\Ignition\\Middleware\\AddSolutions' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/AddSolutions.php',
-        'Facade\\Ignition\\Middleware\\CustomizeGrouping' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/CustomizeGrouping.php',
         'Facade\\Ignition\\Middleware\\SetNotifierName' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/SetNotifierName.php',
         'Facade\\Ignition\\QueryRecorder\\Query' => __DIR__ . '/..' . '/facade/ignition/src/QueryRecorder/Query.php',
         'Facade\\Ignition\\QueryRecorder\\QueryRecorder' => __DIR__ . '/..' . '/facade/ignition/src/QueryRecorder/QueryRecorder.php',
@@ -1673,6 +1722,49 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Hprose\\BytesIO' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/BytesIO.php',
+        'Hprose\\ClassManager' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/ClassManager.php',
+        'Hprose\\Client' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Client.php',
+        'Hprose\\Completer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Completer.php',
+        'Hprose\\Deferred' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Deferred.php',
+        'Hprose\\FakeReaderRefer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/FakeReaderRefer.php',
+        'Hprose\\FakeWriterRefer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/FakeWriterRefer.php',
+        'Hprose\\Filter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Filter.php',
+        'Hprose\\Filter\\JSONRPC\\ClientFilter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Filter/JSONRPC/ClientFilter.php',
+        'Hprose\\Filter\\JSONRPC\\ServiceFilter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Filter/JSONRPC/ServiceFilter.php',
+        'Hprose\\Filter\\XMLRPC\\ClientFilter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Filter/XMLRPC/ClientFilter.php',
+        'Hprose\\Filter\\XMLRPC\\ServiceFilter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Filter/XMLRPC/ServiceFilter.php',
+        'Hprose\\Formatter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Formatter.php',
+        'Hprose\\Future' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Future.php',
+        'Hprose\\Future\\CallableWrapper' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Future/CallableWrapper.php',
+        'Hprose\\Future\\UncatchableException' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Future/UncatchableException.php',
+        'Hprose\\Future\\Wrapper' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Future/Wrapper.php',
+        'Hprose\\HandlerManager' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/HandlerManager.php',
+        'Hprose\\Http\\Client' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Http/Client.php',
+        'Hprose\\Http\\Server' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Http/Server.php',
+        'Hprose\\Http\\Service' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Http/Service.php',
+        'Hprose\\InvokeSettings' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/InvokeSettings.php',
+        'Hprose\\Promise' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Promise.php',
+        'Hprose\\Proxy' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Proxy.php',
+        'Hprose\\RawReader' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/RawReader.php',
+        'Hprose\\Reader' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Reader.php',
+        'Hprose\\ReaderRefer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/ReaderRefer.php',
+        'Hprose\\RealReaderRefer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/RealReaderRefer.php',
+        'Hprose\\RealWriterRefer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/RealWriterRefer.php',
+        'Hprose\\ResultMode' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/ResultMode.php',
+        'Hprose\\Service' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Service.php',
+        'Hprose\\Socket\\Client' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/Client.php',
+        'Hprose\\Socket\\DataBuffer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/DataBuffer.php',
+        'Hprose\\Socket\\FullDuplexTransporter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/FullDuplexTransporter.php',
+        'Hprose\\Socket\\HalfDuplexTransporter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/HalfDuplexTransporter.php',
+        'Hprose\\Socket\\Server' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/Server.php',
+        'Hprose\\Socket\\Service' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/Service.php',
+        'Hprose\\Socket\\Timer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/Timer.php',
+        'Hprose\\Socket\\Transporter' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Socket/Transporter.php',
+        'Hprose\\Tags' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Tags.php',
+        'Hprose\\TimeoutException' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/TimeoutException.php',
+        'Hprose\\Writer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/Writer.php',
+        'Hprose\\WriterRefer' => __DIR__ . '/..' . '/hprose/hprose/src/Hprose/WriterRefer.php',
         'IPTools\\IP' => __DIR__ . '/..' . '/s1lentium/iptools/src/IP.php',
         'IPTools\\Network' => __DIR__ . '/..' . '/s1lentium/iptools/src/Network.php',
         'IPTools\\PropertyTrait' => __DIR__ . '/..' . '/s1lentium/iptools/src/PropertyTrait.php',
@@ -2559,6 +2651,57 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'L5Swagger\\L5SwaggerFacade' => __DIR__ . '/..' . '/darkaonline/l5-swagger/src/L5SwaggerFacade.php',
         'L5Swagger\\L5SwaggerServiceProvider' => __DIR__ . '/..' . '/darkaonline/l5-swagger/src/L5SwaggerServiceProvider.php',
         'L5Swagger\\SecurityDefinitions' => __DIR__ . '/..' . '/darkaonline/l5-swagger/src/SecurityDefinitions.php',
+        'Laminas\\Diactoros\\AbstractSerializer' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/AbstractSerializer.php',
+        'Laminas\\Diactoros\\CallbackStream' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/CallbackStream.php',
+        'Laminas\\Diactoros\\ConfigProvider' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/ConfigProvider.php',
+        'Laminas\\Diactoros\\Exception\\DeserializationException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/DeserializationException.php',
+        'Laminas\\Diactoros\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/ExceptionInterface.php',
+        'Laminas\\Diactoros\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/InvalidArgumentException.php',
+        'Laminas\\Diactoros\\Exception\\InvalidStreamPointerPositionException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/InvalidStreamPointerPositionException.php',
+        'Laminas\\Diactoros\\Exception\\RuntimeException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/RuntimeException.php',
+        'Laminas\\Diactoros\\Exception\\SerializationException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/SerializationException.php',
+        'Laminas\\Diactoros\\Exception\\UnreadableStreamException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UnreadableStreamException.php',
+        'Laminas\\Diactoros\\Exception\\UnrecognizedProtocolVersionException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UnrecognizedProtocolVersionException.php',
+        'Laminas\\Diactoros\\Exception\\UnrewindableStreamException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UnrewindableStreamException.php',
+        'Laminas\\Diactoros\\Exception\\UnseekableStreamException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UnseekableStreamException.php',
+        'Laminas\\Diactoros\\Exception\\UntellableStreamException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UntellableStreamException.php',
+        'Laminas\\Diactoros\\Exception\\UnwritableStreamException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UnwritableStreamException.php',
+        'Laminas\\Diactoros\\Exception\\UploadedFileAlreadyMovedException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UploadedFileAlreadyMovedException.php',
+        'Laminas\\Diactoros\\Exception\\UploadedFileErrorException' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Exception/UploadedFileErrorException.php',
+        'Laminas\\Diactoros\\HeaderSecurity' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/HeaderSecurity.php',
+        'Laminas\\Diactoros\\MessageTrait' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/MessageTrait.php',
+        'Laminas\\Diactoros\\Module' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Module.php',
+        'Laminas\\Diactoros\\PhpInputStream' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/PhpInputStream.php',
+        'Laminas\\Diactoros\\RelativeStream' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/RelativeStream.php',
+        'Laminas\\Diactoros\\Request' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Request.php',
+        'Laminas\\Diactoros\\RequestFactory' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/RequestFactory.php',
+        'Laminas\\Diactoros\\RequestTrait' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/RequestTrait.php',
+        'Laminas\\Diactoros\\Request\\ArraySerializer' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Request/ArraySerializer.php',
+        'Laminas\\Diactoros\\Request\\Serializer' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Request/Serializer.php',
+        'Laminas\\Diactoros\\Response' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response.php',
+        'Laminas\\Diactoros\\ResponseFactory' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/ResponseFactory.php',
+        'Laminas\\Diactoros\\Response\\ArraySerializer' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/ArraySerializer.php',
+        'Laminas\\Diactoros\\Response\\EmptyResponse' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/EmptyResponse.php',
+        'Laminas\\Diactoros\\Response\\HtmlResponse' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/HtmlResponse.php',
+        'Laminas\\Diactoros\\Response\\InjectContentTypeTrait' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/InjectContentTypeTrait.php',
+        'Laminas\\Diactoros\\Response\\JsonResponse' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/JsonResponse.php',
+        'Laminas\\Diactoros\\Response\\RedirectResponse' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/RedirectResponse.php',
+        'Laminas\\Diactoros\\Response\\Serializer' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/Serializer.php',
+        'Laminas\\Diactoros\\Response\\TextResponse' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/TextResponse.php',
+        'Laminas\\Diactoros\\Response\\XmlResponse' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Response/XmlResponse.php',
+        'Laminas\\Diactoros\\ServerRequest' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/ServerRequest.php',
+        'Laminas\\Diactoros\\ServerRequestFactory' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/ServerRequestFactory.php',
+        'Laminas\\Diactoros\\Stream' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Stream.php',
+        'Laminas\\Diactoros\\StreamFactory' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/StreamFactory.php',
+        'Laminas\\Diactoros\\UploadedFile' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/UploadedFile.php',
+        'Laminas\\Diactoros\\UploadedFileFactory' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/UploadedFileFactory.php',
+        'Laminas\\Diactoros\\Uri' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/Uri.php',
+        'Laminas\\Diactoros\\UriFactory' => __DIR__ . '/..' . '/laminas/laminas-diactoros/src/UriFactory.php',
+        'Laminas\\ZendFrameworkBridge\\Autoloader' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Autoloader.php',
+        'Laminas\\ZendFrameworkBridge\\ConfigPostProcessor' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/ConfigPostProcessor.php',
+        'Laminas\\ZendFrameworkBridge\\Module' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Module.php',
+        'Laminas\\ZendFrameworkBridge\\Replacements' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/Replacements.php',
+        'Laminas\\ZendFrameworkBridge\\RewriteRules' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/RewriteRules.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -2567,6 +2710,7 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'Lauthz\\Commands\\GroupAdd' => __DIR__ . '/..' . '/casbin/laravel-authz/src/Commands/GroupAdd.php',
         'Lauthz\\Commands\\PolicyAdd' => __DIR__ . '/..' . '/casbin/laravel-authz/src/Commands/PolicyAdd.php',
         'Lauthz\\Commands\\RoleAssign' => __DIR__ . '/..' . '/casbin/laravel-authz/src/Commands/RoleAssign.php',
+        'Lauthz\\Contracts\\BatchDatabaseAdapter' => __DIR__ . '/..' . '/casbin/laravel-authz/src/Contracts/BatchDatabaseAdapter.php',
         'Lauthz\\Contracts\\DatabaseAdapter' => __DIR__ . '/..' . '/casbin/laravel-authz/src/Contracts/DatabaseAdapter.php',
         'Lauthz\\Contracts\\Factory' => __DIR__ . '/..' . '/casbin/laravel-authz/src/Contracts/Factory.php',
         'Lauthz\\EnforcerManager' => __DIR__ . '/..' . '/casbin/laravel-authz/src/EnforcerManager.php',
@@ -3604,6 +3748,7 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'PharIo\\Version\\GreaterThanOrEqualToVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/GreaterThanOrEqualToVersionConstraint.php',
         'PharIo\\Version\\InvalidPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidPreReleaseSuffixException.php',
         'PharIo\\Version\\InvalidVersionException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidVersionException.php',
+        'PharIo\\Version\\NoPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/NoPreReleaseSuffixException.php',
         'PharIo\\Version\\OrVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/OrVersionConstraintGroup.php',
         'PharIo\\Version\\PreReleaseSuffix' => __DIR__ . '/..' . '/phar-io/version/src/PreReleaseSuffix.php',
         'PharIo\\Version\\SpecificMajorAndMinorVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/SpecificMajorAndMinorVersionConstraint.php',
@@ -3990,11 +4135,17 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'Psr\\Http\\Client\\NetworkExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/NetworkExceptionInterface.php',
         'Psr\\Http\\Client\\RequestExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/RequestExceptionInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
+        'Psr\\Http\\Message\\RequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/RequestFactoryInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
+        'Psr\\Http\\Message\\ResponseFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ResponseFactoryInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
+        'Psr\\Http\\Message\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
         'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
+        'Psr\\Http\\Message\\StreamFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/StreamFactoryInterface.php',
         'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
+        'Psr\\Http\\Message\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
+        'Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UriFactoryInterface.php',
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
@@ -4483,6 +4634,32 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spiral\\Goridge\\Exceptions\\GoridgeException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/GoridgeException.php',
+        'Spiral\\Goridge\\Exceptions\\InvalidArgumentException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/InvalidArgumentException.php',
+        'Spiral\\Goridge\\Exceptions\\PrefixException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/PrefixException.php',
+        'Spiral\\Goridge\\Exceptions\\RPCException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/RPCException.php',
+        'Spiral\\Goridge\\Exceptions\\RelayException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/RelayException.php',
+        'Spiral\\Goridge\\Exceptions\\RelayFactoryException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/RelayFactoryException.php',
+        'Spiral\\Goridge\\Exceptions\\ServiceException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/ServiceException.php',
+        'Spiral\\Goridge\\Exceptions\\TransportException' => __DIR__ . '/..' . '/spiral/goridge/src/Exceptions/TransportException.php',
+        'Spiral\\Goridge\\RPC' => __DIR__ . '/..' . '/spiral/goridge/src/RPC.php',
+        'Spiral\\Goridge\\Relay' => __DIR__ . '/..' . '/spiral/goridge/src/Relay.php',
+        'Spiral\\Goridge\\RelayInterface' => __DIR__ . '/..' . '/spiral/goridge/src/RelayInterface.php',
+        'Spiral\\Goridge\\SendPackageRelayInterface' => __DIR__ . '/..' . '/spiral/goridge/src/SendPackageRelayInterface.php',
+        'Spiral\\Goridge\\SocketRelay' => __DIR__ . '/..' . '/spiral/goridge/src/SocketRelay.php',
+        'Spiral\\Goridge\\StreamRelay' => __DIR__ . '/..' . '/spiral/goridge/src/StreamRelay.php',
+        'Spiral\\Goridge\\StringableRelayInterface' => __DIR__ . '/..' . '/spiral/goridge/src/StringableRelayInterface.php',
+        'Spiral\\RoadRunner\\Diactoros\\ServerRequestFactory' => __DIR__ . '/..' . '/spiral/roadrunner/src/Diactoros/ServerRequestFactory.php',
+        'Spiral\\RoadRunner\\Diactoros\\StreamFactory' => __DIR__ . '/..' . '/spiral/roadrunner/src/Diactoros/StreamFactory.php',
+        'Spiral\\RoadRunner\\Diactoros\\UploadedFileFactory' => __DIR__ . '/..' . '/spiral/roadrunner/src/Diactoros/UploadedFileFactory.php',
+        'Spiral\\RoadRunner\\Exception\\MetricException' => __DIR__ . '/..' . '/spiral/roadrunner/src/Exception/MetricException.php',
+        'Spiral\\RoadRunner\\Exception\\RoadRunnerException' => __DIR__ . '/..' . '/spiral/roadrunner/src/Exception/RoadRunnerException.php',
+        'Spiral\\RoadRunner\\Exceptions\\RoadRunnerException' => __DIR__ . '/..' . '/spiral/roadrunner/src/Exceptions/RoadRunnerException.php',
+        'Spiral\\RoadRunner\\HttpClient' => __DIR__ . '/..' . '/spiral/roadrunner/src/HttpClient.php',
+        'Spiral\\RoadRunner\\Metrics' => __DIR__ . '/..' . '/spiral/roadrunner/src/Metrics.php',
+        'Spiral\\RoadRunner\\MetricsInterface' => __DIR__ . '/..' . '/spiral/roadrunner/src/MetricsInterface.php',
+        'Spiral\\RoadRunner\\PSR7Client' => __DIR__ . '/..' . '/spiral/roadrunner/src/PSR7Client.php',
+        'Spiral\\RoadRunner\\Worker' => __DIR__ . '/..' . '/spiral/roadrunner/src/Worker.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Cache\\Adapter\\AbstractAdapter' => __DIR__ . '/..' . '/symfony/cache/Adapter/AbstractAdapter.php',
         'Symfony\\Component\\Cache\\Adapter\\AbstractTagAwareAdapter' => __DIR__ . '/..' . '/symfony/cache/Adapter/AbstractTagAwareAdapter.php',
@@ -5189,6 +5366,7 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'Symfony\\Component\\Translation\\MessageCatalogue' => __DIR__ . '/..' . '/symfony/translation/MessageCatalogue.php',
         'Symfony\\Component\\Translation\\MessageCatalogueInterface' => __DIR__ . '/..' . '/symfony/translation/MessageCatalogueInterface.php',
         'Symfony\\Component\\Translation\\MetadataAwareInterface' => __DIR__ . '/..' . '/symfony/translation/MetadataAwareInterface.php',
+        'Symfony\\Component\\Translation\\PluralizationRules' => __DIR__ . '/..' . '/symfony/translation/PluralizationRules.php',
         'Symfony\\Component\\Translation\\PseudoLocalizationTranslator' => __DIR__ . '/..' . '/symfony/translation/PseudoLocalizationTranslator.php',
         'Symfony\\Component\\Translation\\Reader\\TranslationReader' => __DIR__ . '/..' . '/symfony/translation/Reader/TranslationReader.php',
         'Symfony\\Component\\Translation\\Reader\\TranslationReaderInterface' => __DIR__ . '/..' . '/symfony/translation/Reader/TranslationReaderInterface.php',
@@ -5414,6 +5592,7 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
         'UserSeeder' => __DIR__ . '/../..' . '/database/seeds/UserSeeder.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+        'Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
@@ -5520,10 +5699,10 @@ class ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit0984ac9580fd19ecddca2a7b9d031e48::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit876fbdb3ed7dfa748c5f56ff816238e1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit876fbdb3ed7dfa748c5f56ff816238e1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit876fbdb3ed7dfa748c5f56ff816238e1::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit876fbdb3ed7dfa748c5f56ff816238e1::$classMap;
 
         }, null, ClassLoader::class);
     }

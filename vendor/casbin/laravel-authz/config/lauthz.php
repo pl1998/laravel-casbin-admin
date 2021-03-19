@@ -39,7 +39,7 @@ return [
             // changes whether Lauthz will log messages to the Logger.
             'enabled' => false,
 
-            // Casbin Logger, Supported: \Psr\LogController\LoggerInterface|string
+            // Casbin Logger, Supported: \Psr\Log\LoggerInterface|string
             'logger' => 'log',
         ],
 

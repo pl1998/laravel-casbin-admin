@@ -51,7 +51,7 @@ class LogManager implements LoggerInterface
     protected $dateFormat = 'Y-m-d H:i:s';
 
     /**
-     * Create a new LogController manager instance.
+     * Create a new Log manager instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
      * @return void
@@ -189,7 +189,7 @@ class LogManager implements LoggerInterface
         $config = $this->configurationFor($name);
 
         if (is_null($config)) {
-            throw new InvalidArgumentException("LogController [{$name}] is not defined.");
+            throw new InvalidArgumentException("Log [{$name}] is not defined.");
         }
 
         if (isset($this->customCreators[$config['driver']])) {

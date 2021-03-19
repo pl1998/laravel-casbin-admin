@@ -677,7 +677,7 @@ class Connection implements ConnectionInterface
     }
 
     /**
-     * LogController a query in the connection's query log.
+     * Log a query in the connection's query log.
      *
      * @param  string  $query
      * @param  array  $bindings

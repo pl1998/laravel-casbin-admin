@@ -200,7 +200,7 @@ class JWTGuard implements Guard
     }
 
     /**
-     * LogController a user into the application using their credentials.
+     * Log a user into the application using their credentials.
      *
      * @param  array  $credentials
      *
@@ -218,7 +218,7 @@ class JWTGuard implements Guard
     }
 
     /**
-     * LogController the given User into the application.
+     * Log the given User into the application.
      *
      * @param  mixed  $id
      *

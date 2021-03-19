@@ -78,7 +78,7 @@ class AuthenticateSession
     }
 
     /**
-     * LogController the user out of the application.
+     * Log the user out of the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return void

@@ -48,7 +48,7 @@ class DynamoDbFailedJobProvider implements FailedJobProviderInterface
     }
 
     /**
-     * LogController a failed job into storage.
+     * Log a failed job into storage.
      *
      * @param  string  $connection
      * @param  string  $queue

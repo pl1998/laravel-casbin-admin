@@ -335,7 +335,7 @@ class MailManager implements FactoryContract
     }
 
     /**
-     * Create an instance of the LogController Swift Transport driver.
+     * Create an instance of the Log Swift Transport driver.
      *
      * @param  array  $config
      * @return \Illuminate\Mail\Transport\LogTransport

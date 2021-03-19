@@ -7,7 +7,7 @@ namespace Casbin\Log;
 use Casbin\Log\Logger\DefaultLogger;
 
 /**
- * Class LogController.
+ * Class Log.
  *
  * @author techlee@qq.com
  */

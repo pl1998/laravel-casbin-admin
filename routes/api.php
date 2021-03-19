@@ -45,16 +45,11 @@ Route::get('/401',function (){
 Route::group(['prefix' => 'auth'], function () {
 
     Route::get('giteeCallback', 'Auth\OauthController@giteeCallback');
-
-
     Route::post('login', 'Auth\AuthController@login');
-
     Route::post('logout', 'Auth\AuthController@logout');
     Route::post('refresh', 'Auth\AuthController@refresh');
     Route::put('update','Auth\AuthController@update');
     Route::post('me', 'Auth\AuthController@me')->name('me')->middleware(['jwt.auth']);
-
-
 });
 //系统管理
 Route::group(['middleware'=>['jwt.auth','log']],function (){

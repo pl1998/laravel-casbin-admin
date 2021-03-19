@@ -2,6 +2,30 @@
 
 All notable changes to `ignition` will be documented in this file
 
+## 2.5.14 - 2021-03-03
+
+- fix ignition not working when there is no argv
+
+## 2.5.13 - 2021-02-16
+
+- remove custom grouping
+
+## 2.5.12 - 2021-02-15
+
+- fix wrong config usage (#354)
+
+## 2.5.11 - 2021-02-05
+
+- fix memory leaks caused by log and query recorder (#344)
+
+## 2.5.10 - 2021-02-02
+
+- fix tinker logs not being sent to Flare
+
+## 2.5.9 - 2021-01-26
+
+- fix logged context not being sent to Flare
+
 ## 2.5.8 - 2020-12-29
 
 - fix double `$` on PHP 8 (#338)

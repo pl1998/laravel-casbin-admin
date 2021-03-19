@@ -40,7 +40,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController an emergency message to the logs.
+     * Log an emergency message to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -52,7 +52,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController an alert message to the logs.
+     * Log an alert message to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -64,7 +64,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController a critical message to the logs.
+     * Log a critical message to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -76,7 +76,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController an error message to the logs.
+     * Log an error message to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -88,7 +88,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController a warning message to the logs.
+     * Log a warning message to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -100,7 +100,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController a notice to the logs.
+     * Log a notice to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -112,7 +112,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController an informational message to the logs.
+     * Log an informational message to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -124,7 +124,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController a debug message to the logs.
+     * Log a debug message to the logs.
      *
      * @param  string  $message
      * @param  array  $context
@@ -136,7 +136,7 @@ class Logger implements LoggerInterface
     }
 
     /**
-     * LogController a message to the logs.
+     * Log a message to the logs.
      *
      * @param  string  $level
      * @param  string  $message
