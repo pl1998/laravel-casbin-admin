@@ -36,7 +36,7 @@ class Sha384 extends Ecdsa
     /**
      * {@inheritdoc}
      */
-    public function getKeyLength()
+    public function getSignatureLength()
     {
         return 96;
     }

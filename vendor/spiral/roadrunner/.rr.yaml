@@ -1,7 +1,0 @@
-app:
-  commmand: "php app.php"
-  user: ""
-  group: ""
-  env:
-    DEBUG: true
-    APP_KEY: "..."

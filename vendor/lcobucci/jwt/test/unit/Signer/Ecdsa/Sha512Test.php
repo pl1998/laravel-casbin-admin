@@ -11,13 +11,13 @@ namespace Lcobucci\JWT\Signer\Ecdsa;
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  * @since 2.1.0
  */
-class Sha512Test extends \PHPUnit\Framework\TestCase
+class Sha512Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa
-     * @uses Lcobucci\JWT\Signer\OpenSSL
+     * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser
      *
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha512::getAlgorithmId
      */
@@ -32,7 +32,7 @@ class Sha512Test extends \PHPUnit\Framework\TestCase
      * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa
-     * @uses Lcobucci\JWT\Signer\OpenSSL
+     * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser
      *
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha512::getAlgorithm
      */
@@ -47,14 +47,14 @@ class Sha512Test extends \PHPUnit\Framework\TestCase
      * @test
      *
      * @uses Lcobucci\JWT\Signer\Ecdsa
-     * @uses Lcobucci\JWT\Signer\OpenSSL
+     * @uses Lcobucci\JWT\Signer\Ecdsa\KeyParser
      *
-     * @covers Lcobucci\JWT\Signer\Ecdsa\Sha512::getKeyLength
+     * @covers Lcobucci\JWT\Signer\Ecdsa\Sha512::getSignatureLength
      */
-    public function getKeyLengthMustBeCorrect()
+    public function getSignatureLengthMustBeCorrect()
     {
         $signer = new Sha512();
 
-        $this->assertEquals(132, $signer->getKeyLength());
+        $this->assertEquals(132, $signer->getSignatureLength());
     }
 }

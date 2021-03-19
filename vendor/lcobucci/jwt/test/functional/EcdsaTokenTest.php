@@ -21,7 +21,7 @@ use Lcobucci\JWT\Keys;
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  * @since 2.1.0
  */
-class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
+class EcdsaTokenTest extends \PHPUnit_Framework_TestCase
 {
     use Keys;
 
@@ -52,9 +52,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function builderShouldRaiseExceptionWhenKeyIsInvalid()
     {
@@ -64,7 +63,7 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
                        ->setAudience('http://client.abc.com')
                        ->setIssuer('http://api.abc.com')
                        ->set('user', $user)
-                       ->getToken($this->signer, new Key('testing'));
+                       ->sign($this->signer, new Key('testing'));
     }
 
     /**
@@ -81,9 +80,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function builderShouldRaiseExceptionWhenKeyIsNotEcdsaCompatible()
     {
@@ -93,7 +91,7 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
                        ->setAudience('http://client.abc.com')
                        ->setIssuer('http://api.abc.com')
                        ->set('user', $user)
-                       ->getToken($this->signer, static::$rsaKeys['private']);
+                       ->sign($this->signer, static::$rsaKeys['private']);
     }
 
     /**
@@ -108,9 +106,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function builderCanGenerateAToken()
     {
@@ -147,6 +144,7 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Parsing\Encoder
      * @covers Lcobucci\JWT\Parsing\Decoder
      * @covers Lcobucci\JWT\Signer\Ecdsa
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      */
     public function parserCanReadAToken(Token $generated)
     {
@@ -171,9 +169,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function verifyShouldReturnFalseWhenKeyIsNotRight(Token $token)
     {
@@ -195,10 +192,9 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha512
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function verifyShouldReturnFalseWhenAlgorithmIsDifferent(Token $token)
     {
@@ -208,7 +204,7 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      *
-     * @expectedException \InvalidArgumentException
+     * @expectedException \RuntimeException
      *
      * @depends builderCanGenerateAToken
      *
@@ -222,9 +218,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function verifyShouldRaiseExceptionWhenKeyIsNotEcdsaCompatible(Token $token)
     {
@@ -246,9 +241,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function verifyShouldReturnTrueWhenKeyIsRight(Token $token)
     {
@@ -267,9 +261,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha256
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      */
     public function everythingShouldWorkWithAKeyWithParams()
     {
@@ -296,9 +289,8 @@ class EcdsaTokenTest extends \PHPUnit\Framework\TestCase
      * @covers Lcobucci\JWT\Signer\Key
      * @covers Lcobucci\JWT\Signer\BaseSigner
      * @covers Lcobucci\JWT\Signer\Ecdsa
-     * @covers \Lcobucci\JWT\Signer\Ecdsa\MultibyteStringConverter
+     * @covers Lcobucci\JWT\Signer\Ecdsa\KeyParser
      * @covers Lcobucci\JWT\Signer\Ecdsa\Sha512
-     * @covers \Lcobucci\JWT\Signer\OpenSSL
      * @covers Lcobucci\JWT\Signer\Keychain
      * @covers Lcobucci\JWT\Claim\Factory
      * @covers Lcobucci\JWT\Claim\Basic

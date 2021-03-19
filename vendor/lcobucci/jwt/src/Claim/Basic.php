@@ -12,8 +12,6 @@ use Lcobucci\JWT\Claim;
 /**
  * The default claim
  *
- * @deprecated This class will be removed on v4
- *
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  * @since 2.0.0
  */

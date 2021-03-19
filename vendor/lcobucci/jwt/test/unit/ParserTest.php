@@ -15,7 +15,7 @@ use RuntimeException;
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  * @since 0.1.0
  */
-class ParserTest extends \PHPUnit\Framework\TestCase
+class ParserTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var Decoder|\PHPUnit_Framework_MockObject_MockObject
@@ -37,9 +37,9 @@ class ParserTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $this->decoder = $this->createMock(Decoder::class);
-        $this->claimFactory = $this->createMock(ClaimFactory::class, [], [], '', false);
-        $this->defaultClaim = $this->createMock(Claim::class);
+        $this->decoder = $this->getMock(Decoder::class);
+        $this->claimFactory = $this->getMock(ClaimFactory::class, [], [], '', false);
+        $this->defaultClaim = $this->getMock(Claim::class);
 
         $this->claimFactory->expects($this->any())
                            ->method('create')
