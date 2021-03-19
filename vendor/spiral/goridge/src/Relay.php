@@ -3,7 +3,7 @@
 /**
  * Dead simple, high performance, drop-in bridge to Golang RPC with zero dependencies
  *
- * @author Wolfy-J
+ * @author Valentin V
  */
 
 declare(strict_types=1);
@@ -12,59 +12,38 @@ namespace Spiral\Goridge;
 
 use Throwable;
 
-abstract class Relay implements RelayInterface
+abstract class Relay
 {
-    public const TCP_SOCKET = 'tcp';
+    public const TCP_SOCKET  = 'tcp';
     public const UNIX_SOCKET = 'unix';
-    public const PIPES = 'pipes';
-    protected const CONNECTION_EXP = '/(?P<protocol>[^:\/]+):\/\/(?P<arg1>[^:]+)(:(?P<arg2>[^:]+))?/';
+    public const STREAM      = 'pipes';
 
-    /**
-     * Create relay using string address.
-     *
-     * Example:
-     *
-     * Relay::create("pipes");
-     * Relay::create("tpc://localhost:6001");
-     *
-     *
-     * @param string $connection
-     * @return RelayInterface
-     */
+    private const CONNECTION = '/(?P<protocol>[^:\/]+):\/\/(?P<arg1>[^:]+)(:(?P<arg2>[^:]+))?/';
+
     public static function create(string $connection): RelayInterface
     {
-        if ($connection === self::PIPES) {
-            return new StreamRelay(STDIN, STDOUT);
+        if (!preg_match(self::CONNECTION, strtolower($connection), $match)) {
+            throw new Exceptions\RelayFactoryException('unsupported connection format');
         }
 
-        if (!preg_match(self::CONNECTION_EXP, $connection, $match)) {
-            throw new Exception\RelayFactoryException('unsupported connection format');
-        }
-
-        $protocol = strtolower($match['protocol']);
-
-        switch ($protocol) {
+        switch ($match['protocol']) {
             case self::TCP_SOCKET:
                 //fall through
             case self::UNIX_SOCKET:
-                $socketType = $protocol === self::TCP_SOCKET
-                    ? SocketRelay::SOCK_TCP
-                    : SocketRelay::SOCK_UNIX;
+                return new SocketRelay(
+                    $match['arg1'],
+                    isset($match['arg2']) ? (int)$match['arg2'] : null,
+                    $match['protocol'] === self::TCP_SOCKET ? SocketRelay::SOCK_TCP : SocketRelay::SOCK_UNIX
+                );
 
-                $port = isset($match['arg2'])
-                    ? (int)$match['arg2']
-                    : null;
-
-                return new SocketRelay($match['arg1'], $port, $socketType);
-
-            case self::PIPES:
+            case self::STREAM:
                 if (!isset($match['arg2'])) {
-                    throw new Exception\RelayFactoryException('unsupported stream connection format');
+                    throw new Exceptions\RelayFactoryException('unsupported stream connection format');
                 }
 
                 return new StreamRelay(self::openIn($match['arg1']), self::openOut($match['arg2']));
             default:
-                throw new Exception\RelayFactoryException('unknown connection protocol');
+                throw new Exceptions\RelayFactoryException('unknown connection protocol');
         }
     }
 
@@ -77,12 +56,12 @@ abstract class Relay implements RelayInterface
         try {
             $resource = fopen("php://$input", 'rb');
             if ($resource === false) {
-                throw new Exception\RelayFactoryException('could not initiate `in` stream resource');
+                throw new Exceptions\RelayFactoryException('could not initiate `in` stream resource');
             }
 
             return $resource;
         } catch (Throwable $e) {
-            throw new Exception\RelayFactoryException(
+            throw new Exceptions\RelayFactoryException(
                 'could not initiate `in` stream resource',
                 $e->getCode(),
                 $e
@@ -99,12 +78,12 @@ abstract class Relay implements RelayInterface
         try {
             $resource = fopen("php://$output", 'wb');
             if ($resource === false) {
-                throw new Exception\RelayFactoryException('could not initiate `out` stream resource');
+                throw new Exceptions\RelayFactoryException('could not initiate `out` stream resource');
             }
 
             return $resource;
         } catch (Throwable $e) {
-            throw new Exception\RelayFactoryException(
+            throw new Exceptions\RelayFactoryException(
                 'could not initiate `out` stream resource',
                 $e->getCode(),
                 $e

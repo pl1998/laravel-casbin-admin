@@ -16,7 +16,6 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\JWTAuth;
 
-/** @deprecated */
 abstract class BaseMiddleware
 {
     /**
