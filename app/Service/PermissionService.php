@@ -151,29 +151,4 @@ class PermissionService
         Enforcer::deletePermissionsForUser($id);
     }
 
-    /**
-     * 权限控制
-     * @param $id
-     * @param $method
-     * @param $route
-     * @return false
-     */
-    public function PermissionsAuth($id,$method,$route) : bool
-    {
-        list($node,$permissions) = $this->getPermissions($id);
-
-        dd($node);
-        $permissions = Permissions::query()->whereIn('id',$node)
-                            ->where('is_menu',0)
-                            ->get(['id','method'])
-                            ->map(function ($value){
-
-                            });
-
-        if($permissions->isEmpty()) {
-            return false;
-        } else {
-
-        }
-    }
 }
