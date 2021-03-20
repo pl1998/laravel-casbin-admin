@@ -1,5 +1,12 @@
 <h1 align="center">laravel-casbin-admin</h1>
 
+<p align="center">
+
+<a href="https://packagist.org/packages/pltrue/thirdparty_oauth"><img src="https://img.shields.io/badge/license-MIT-green" /></a> 
+<a href="https://packagist.org/packages/pltrue/thirdparty_oauth"><img src="https://img.shields.io/badge/php-v7.2+-blue" /></a> 
+</p>
+
+
 
 基于 [vue-element-admin](https://panjiachen.github.io/vue-element-admin-site/zh/) 
 [laravel](https://laravel.com/)
