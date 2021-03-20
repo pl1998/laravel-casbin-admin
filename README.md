@@ -75,6 +75,6 @@ $ npm run build:prod #打包编译
 $ cp -r dist 后端项目/resources/dist 目录下
 
 ```
-### 最好我点个star吗～❤️
+### 最后可以给我点个star吗～❤️
 
 
