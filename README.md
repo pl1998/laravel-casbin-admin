@@ -1,15 +1,18 @@
-## vue-element-admin + laravel + jwt + casbin 前后端分离 rbac鉴权权限 管理系统
+<h1 align="center">laravel-casbin-admin</h1>
+
+
+基于 [vue-element-admin](https://panjiachen.github.io/vue-element-admin-site/zh/) 
+[laravel](https://laravel.com/)
+[jwt]()
+[casbin](https://github.com/php-casbin/laravel-authz) 
+整合的前后端分离的rbac权限管理系统
   
+## 演示站点 
   * [线上demo](http://system.pltrue.top)
   * 账号:`admin@gmail.com` 密码:`123456`
   
-  #### 使用了一下技术
 
-   * [vue-element-admin-是一个后台前端解决方案，它基于 vue 和 element-ui实现](https://panjiachen.github.io/vue-element-admin-site/zh/)
-   * [laravel-是一套简洁、优雅的PHP Web开发框架](https://laravel.com/)
-   * [casbin-跨平台的访问控制框架](https://github.com/php-casbin/laravel-authz)
-
-   #### 后台界面登录
+#### 后台界面登录
 
 
 ![alt 属性文本](img/login.png)
@@ -33,27 +36,38 @@
 ![alt 属性文本](img/log.png)
 
 
-#### 安装使用
+### 安装使用
 ```shell script
-git clone https://github.com/pl1998/laravel-casbin-admin.git
+$ git clone https://github.com/pl1998/laravel-casbin-admin.git
 ```
-#### 后端环境配置 
-····省略
+### 后端环境配置 
 ```shell script
- cd /laravel-casbin-admin/web/vue-element-admin/
+$ cd /laravel-casbin-admin/web/vue-element-admin/
+$ cp .env.example .env #配置文件
+$ composer update #更新包
+$ php artisan key:gen #更新密钥
+$ chown -R 777 storage #更改权限目录
 ```
-  * 调整前端域名 ``.env.development,.env.production``
-  * 启动项目
-```
- npm run dev
-```
-  * 打包
+> nginx配置文件、以及数据库文件在项目根目录下 可以打开作为参考:基于宝塔安装 本地环境是[laradock](https://laradock-docs.linganmin.cn/)
+### 前端配置
 ```shell script
-  npm run build:prod
-```
+$ git clone  https://github.com/pl1998/vue_system.git # 克隆项目
+$ cd vue_system
+$ vim .env.development #测试环境域名
+ -- 如下
+VUE_APP_HOST = 'http://system.pltrue.top/api'
+$ vim .env.production  #正式环境域名
+ -- 如下
+VUE_APP_HOST = 'http://system.pltrue.top/api'
 
-  * nginx配置以及数据库文件都在项目根目录下
-  
-#### 觉得可以请给我点个 star haha~
+```
+### 打包项目
+```shell script
+$ npm run dev #本地热开发
+$ npm run build:prod #打包编译
+$ cp -r dist 后端项目/resources/dist 目录下
+
+```
+### 最好我点个star吗～❤️
 
 

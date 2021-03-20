@@ -22,18 +22,12 @@ Route::options('/{all}', function (Request $request) {
     header("Access-Control-Allow-Credentials: true");
     header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
     header('Access-Control-Allow-Headers: Origin, Access-Control-Request-Headers, SERVER_NAME, Access-Control-Allow-Headers, cache-control, token, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie');
+
 })->where(['all' => '([a-zA-Z0-9-]|/)+']);
 
 /**
  * namespace App\Http\Middleware\Authenticate;修改中间件方法 或者直接提供该路由响应无权限
  */
-Route::get('/401',function (){
-    return response()->json([
-        'code'=>401,
-        'message'=>'无权限'
-    ],401);
-})->name('401');
-
 
 
 #用户相关
