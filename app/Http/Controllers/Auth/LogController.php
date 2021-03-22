@@ -17,7 +17,7 @@ class LogController extends Controller
         $limit = $request->get('limit',20);
         $query = Log::query();
         $total = $query->count();
-        $list = $query->forPage($page,$limit)->get([ 'url','ip','method','name','u_id','created_at']);
+        $list = $query->forPage($page,$limit)->get([ 'url','ip','method','name','u_id','created_at','address']);
 
 
         return $this->success(
