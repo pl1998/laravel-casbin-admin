@@ -55,7 +55,7 @@ $ composer update #更新包
 $ php artisan key:gen #更新密钥
 $ chown -R 777 storage #更改权限目录
 ```
-> nginx配置文件、以及数据库文件在项目根目录下 可以打开作为参考:基于宝塔安装 本地环境是[laradock](https://laradock-docs.linganmin.cn/)
+> nginx配置文件、以及数据库文件在项目根目录下 可以打开作为参考:线上宝塔部署 本地环境是[laradock](https://laradock-docs.linganmin.cn/)
 ### 前端配置
 ```shell script
 $ git clone  https://github.com/pl1998/vue_system.git # 克隆项目
