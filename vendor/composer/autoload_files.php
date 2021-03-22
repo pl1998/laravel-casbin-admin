@@ -54,5 +54,6 @@ return array(
     '0ccdf99b8f62f02c52cba55802e0c2e7' => $vendorDir . '/zircote/swagger-php/src/functions.php',
     'ac0aa5b57142c92aeadc397fa46b9d39' => $vendorDir . '/darkaonline/l5-swagger/src/helpers.php',
     'd7f4f7522f962c095f835c50e6136087' => $vendorDir . '/hprose/hprose/src/init.php',
+    '1e298922c3e2134d42dcdb03e6d5f55a' => $vendorDir . '/torann/geoip/src/helpers.php',
     '3adb193d4261a019502ea897e056f4fe' => $baseDir . '/app/functions.php',
 );

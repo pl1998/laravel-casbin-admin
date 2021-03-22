@@ -15,10 +15,11 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
         "hprose/hprose": "^2.0",
-        "laravel/framework": "^7.29",
+        "laravel/framework": "^7.30.4",
         "laravel/tinker": "^2.5",
         "pltrue/thirdparty_oauth": "v1.6",
         "spiral/roadrunner": "^2.0",
+        "torann/geoip": "1.2.1",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

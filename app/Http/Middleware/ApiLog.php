@@ -29,12 +29,13 @@ class ApiLog
     public function handle($request, Closure $next)
     {
         if(!in_array($request->route()->uri(),static::$url) && in_array($request->method(),static::$method)){
-
+            $ips = geoip($request->getClientIp())->toArray();
             Log::query()->create([
                 'url'    => $request->route()->uri(),
                 'method' => $request->method(),
                 'ip'     => $request->getClientIp(),
                 'u_id'   => auth('api')->id(),
+                'address'   =>$ips['country'].'-'.$ips['city'].'-'.$ips['state_name'],
                 'name'   => auth('api')->user()->name
             ]);
         }
