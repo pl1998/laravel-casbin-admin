@@ -16,4 +16,5 @@ database/.DS_Store
 resources/.DS_Store
 storage/.DS_Store
 tests/.DS_Store
+vendor
 
