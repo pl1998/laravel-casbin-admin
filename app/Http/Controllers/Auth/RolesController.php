@@ -64,7 +64,10 @@ class RolesController extends Controller
         $updated_at  =  now()->toDate();
 
         if(Roles::query()->where(compact('name','status'))->exists()) {
+
             _error(403,'角色已存在');
+
+
         }
 
         $id        = Roles::query()->insertGetId(compact('name','status','description','created_at','updated_at'));

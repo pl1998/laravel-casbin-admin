@@ -72,7 +72,7 @@ class PermissionsController extends Controller
         if($path && Permissions::query()->where(compact('path','method','p_id','is_menu'))->exists()) {
             _error(403,'权限已存在');
         }
-        
+
 
         Permissions::query()->insert(compact('hidden','icon','method','name','path','p_id','is_menu','method','url','title'));
 
@@ -100,6 +100,7 @@ class PermissionsController extends Controller
         if($path && Permissions::query()->where(compact('path','method'))->doesntExist()) {
             _error(403,'权限不存在');
         }
+
 
         Permissions::query()->where('id',$id)->update(compact('hidden','icon','method','name','path','p_id','is_menu','method','title','url'));
 

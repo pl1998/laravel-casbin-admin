@@ -22,18 +22,11 @@ Route::options('/{all}', function (Request $request) {
     header("Access-Control-Allow-Credentials: true");
     header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
     header('Access-Control-Allow-Headers: Origin, Access-Control-Request-Headers, SERVER_NAME, Access-Control-Allow-Headers, cache-control, token, X-Requested-With, Content-Type, Accept, Connection, User-Agent, Cookie');
-
 })->where(['all' => '([a-zA-Z0-9-]|/)+']);
-
-/**
- * namespace App\Http\Middleware\Authenticate;修改中间件方法 或者直接提供该路由响应无权限
- */
 
 
 #用户相关
 Route::group(['prefix' => 'auth'], function () {
-
-    Route::get('giteeCallback', 'Auth\OauthController@giteeCallback');
     Route::post('login', 'Auth\AuthController@login');
     Route::post('logout', 'Auth\AuthController@logout');
     Route::post('refresh', 'Auth\AuthController@refresh');
@@ -58,23 +51,11 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
        Route::put('/permissions/{id}','Auth\PermissionsController@update');    //更新权限
        Route::delete('/permissions/{id}','Auth\PermissionsController@delete'); //删除权限
 
-
        Route::get('/log','Auth\LogController@index');          //获取日志列表
        Route::delete('/log/{id}','Auth\LogController@delete');          //删除日志
 
    });
-
     Route::get('/admin/all_permissions','Auth\PermissionsController@allPermissions'); //获取所有权限
     Route::get('/admin/all_role','Auth\RolesController@allRule');    //获取所有角色
 });
-
 Route::post('upload_img','Auth\UsersController@updateImg');
-
-
-# 后台用户登录
-//Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-//    Route::post('login', 'LoginController@login');
-//    Route::post('logout', 'LoginController@logout');
-//    Route::post('refresh', 'LoginController@refresh');
-//    Route::post('me', 'LoginController@me')->middleware(['jwt.role:admin', 'jwt.auth'])->name('me');
-//});
