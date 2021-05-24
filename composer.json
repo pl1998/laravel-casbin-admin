@@ -8,19 +8,13 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": "^7.3|^8.0",
         "casbin/laravel-authz": "^2.0",
-        "darkaonline/l5-swagger": "^8.0",
-        "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
-        "hprose/hprose": "^2.0",
         "laravel/framework": "^8.0",
         "laravel/legacy-factories": "^1.1",
         "laravel/tinker": "^2.5",
-        "pltrue/thirdparty_oauth": "v1.6",
-        "spiral/roadrunner": "^2.0",
-        "torann/geoip": "^3.0.1",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
