@@ -15,9 +15,7 @@ class ApiLog
     ];
 
     //记录访问的方法
-
     protected static $method = ['DELETE','POST','PUT','PUTCH'];
-
     /**
      * 日志访问中间件
      * Handle an incoming request.
@@ -28,17 +26,26 @@ class ApiLog
      */
     public function handle($request, Closure $next)
     {
-//        if(!in_array($request->route()->uri(),static::$url) && in_array($request->method(),static::$method)){
-//            $ips = geoip($request->getClientIp())->toArray();
-//            Log::query()->create([
-//                'url'    => $request->route()->uri(),
-//                'method' => $request->method(),
-//                'ip'     => $request->getClientIp(),
-//                'u_id'   => auth('api')->id(),
-//                'address'   =>$ips['country'].'-'.$ips['city'].'-'.$ips['state_name'],
-//                'name'   => auth('api')->user()->name
-//            ]);
-//        }
+
+        /**
+         * 是否开启日志记录
+         */
+        if(env('OPERATION_LOG')==false) {
+            return $next($request);
+        }
+        /**
+         * 功能过滤
+         */
+        if(!in_array($request->route()->uri(),static::$url) && in_array($request->method(),static::$method)){
+            Log::query()->create([
+                'url'    => $request->route()->uri(),
+                'method' => $request->method(),
+                'ip'     => $request->getClientIp(),
+                'u_id'   => auth('api')->id(),
+                'address'   =>'',
+                'name'   => auth('api')->user()->name
+            ]);
+        }
         return $next($request);
     }
 }
