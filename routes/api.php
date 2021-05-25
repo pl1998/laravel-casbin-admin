@@ -48,7 +48,7 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
 
    });
     Route::get('/admin/all_permissions',[PermissionsController::class,'allPermissions']); //获取所有权限
-    Route::get('/admin/all_role',[PermissionsController::class,'allRule']);    //获取所有角色
+    Route::get('/admin/all_role',[RolesController::class,'allRule']);    //获取所有角色
 });
 
 //头像更新
