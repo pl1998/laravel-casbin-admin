@@ -18,19 +18,12 @@ use App\Http\Controllers\Auth\LogController;
 |
 */
 
-/**
- * 设置允许前端跨域
- */
-
-
-#用户相关
-
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('login', [AuthController::class,'login']);
-    Route::post('logout', [AuthController::class,'logout']);
-    Route::post('refresh', [AuthController::class,'refresh']);
-    Route::put('update',[AuthController::class,'update']);
-    Route::post('me', [AuthController::class,'me'])->name('me')->middleware(['jwt.auth']);
+    Route::post('login', [AuthController::class,'login']);  //登录
+    Route::post('logout', [AuthController::class,'logout']); //注销
+    Route::post('refresh', [AuthController::class,'refresh']); //刷新用户状态
+    Route::put('update',[AuthController::class,'update']); //更新用户信息
+    Route::post('me', [AuthController::class,'me'])->name('me')->middleware(['jwt.auth']); //
 });
 //系统管理
 Route::group(['middleware'=>['jwt.auth','log']],function (){
@@ -57,4 +50,6 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
     Route::get('/admin/all_permissions',[PermissionsController::class,'allPermissions']); //获取所有权限
     Route::get('/admin/all_role',[PermissionsController::class,'allRule']);    //获取所有角色
 });
+
+//头像更新
 Route::post('upload_img',[UsersController::class,'updateImg']);
