@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\LogController;
 |
 */
 
+
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class,'login']);  //登录
     Route::post('logout', [AuthController::class,'logout']); //注销

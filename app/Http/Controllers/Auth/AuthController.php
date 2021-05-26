@@ -8,13 +8,7 @@ use App\Service\PermissionService;
 use App\Service\RoleService;
 use App\User;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
-
-/**
- * @OA\Info(title="cms后端api", version="1.0")
- */
 
 class AuthController extends Controller
 {
@@ -23,38 +17,6 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login']]);
     }
 
-    /**
-     * @SWG\Post(
-     *     path="/api/auth/login",
-     *     description="返回token信息",
-     *     @SWG\Parameter(
-     *         description="需要的邮箱",
-     *         in="formData",
-     *         name="email",
-     *         required=true,
-     *         type="string",
-     *     ),
-     *     @SWG\Parameter(
-     *         description="需要的密码",
-     *         in="formData",
-     *         name="password",
-     *         required=true,
-     *         type="string",
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="successful operation",
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="密码或邮箱不存在"
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Pet not found"
-     *     )
-     * )
-     */
     public function login()
     {
         $credentials = request(['email', 'password']);

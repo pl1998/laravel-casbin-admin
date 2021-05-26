@@ -23,7 +23,7 @@ class PermissionsAuth
      */
     public function handle($request, Closure $next)
     {
-        if(auth('api')->user()->email == 'pltruenine@163.com') {
+        if(auth('api')->user()->name == 'pltruenine@163.com') {
             return $next($request);
         }
 
