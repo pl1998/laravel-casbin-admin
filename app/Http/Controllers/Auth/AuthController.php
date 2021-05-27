@@ -8,6 +8,7 @@ use App\Service\PermissionService;
 use App\Service\RoleService;
 use App\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -72,27 +73,30 @@ class AuthController extends Controller
      * @return JsonResponse
      * 更新用户信息
      */
-    public function update(UserUpdateRequest $request)
+    public function update(Request $request)
     {
+        $request->validate([
+           'name' => ['min:2','max:20'],
+           'new_password' => ['min:6','max:20'],
+           'confirm_password' => ['min:6','max:20','confirmed:confirm_password'],
+           'password' => ['min:6','max:20'],
+        ]);
+
         if(!empty($request->password) || !empty($request->old_password)) {
-            $old_password = Hash::make($request->old_password);
-
-            if(User::query()->where('id',auth('api')->id())->where('password',$old_password)->doesntExist()){
-                return $this->fail('密码错误');
+            $credentials = ['email'=>auth('api')->user()->email,'password'=>$request->password];
+            if (! $token = auth('api')->attempt($credentials)) {
+                return $this->fail('旧密码错误');
             }
-
-            $update['password'] = Hash::make($request->password);
+            $update['password'] = Hash::make($request->new_password);
         }
-
 
         $update['name'] = $request->name;
         $update['avatar'] = $request->avatar;
 
-        if((int)auth('api')->id() != 9){
+        if((int)auth('api')->user()->email != 'admin@gmail.com'){
             User::query()->where('id',auth('api')->id())
                 ->update($update);
         }
-
 
         return $this->success([
             'name'=>$request->name,
