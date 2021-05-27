@@ -70,7 +70,7 @@ class PermissionsController extends Controller
         $title = $request->post('name');
 
         if($path && Permissions::query()->where(compact('path','method','p_id','is_menu'))->exists()) {
-            _error(403,'权限已存在');
+            return $this->fail('权限不存在');
         }
 
 
@@ -97,10 +97,9 @@ class PermissionsController extends Controller
         $title = $request->post('name');
         $url = $request->post('url');
 
-        if($path && Permissions::query()->where(compact('path','method'))->doesntExist()) {
-            _error(403,'权限不存在');
+        if($path && Permissions::query()->where(compact('id'))->doesntExist()) {
+            return $this->fail('权限不存在');
         }
-
 
         Permissions::query()->where('id',$id)->update(compact('hidden','icon','method','name','path','p_id','is_menu','method','title','url'));
 

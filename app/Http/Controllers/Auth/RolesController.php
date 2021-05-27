@@ -64,10 +64,7 @@ class RolesController extends Controller
         $updated_at  =  now()->toDate();
 
         if(Roles::query()->where(compact('name','status'))->exists()) {
-
-            _error(403,'角色已存在');
-
-
+            return $this->fail('角色已存在');
         }
 
         $id        = Roles::query()->insertGetId(compact('name','status','description','created_at','updated_at'));
@@ -89,7 +86,7 @@ class RolesController extends Controller
         $updated_at  =  now()->toDate();
 
         if(Roles::query()->where(compact('id'))->doesntExist()) {
-            _error(403,'角色不存在');
+            return $this->fail('角色不存在');
         }
 
         Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
