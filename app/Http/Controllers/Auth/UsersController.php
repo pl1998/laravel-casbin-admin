@@ -110,6 +110,7 @@ class UsersController extends Controller
 
     public function updateImg(Request $request)
     {
+
         $request->validate([
            'file' => ['required','image']
         ]);
