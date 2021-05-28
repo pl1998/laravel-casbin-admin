@@ -76,10 +76,10 @@ class Handler extends ExceptionHandler
                 $exception->getStatusCode() == 403){
                 return $this->fail('没有访问权限，请联系管理员',10007,null,$exception->getStatusCode());
             }
-            return $this->fail($exception->getMessage().' '.$exception->getFile(). ' '.$exception->getLine(),10001,null);
-        }else{
-            return parent::render($request, $exception);
+           // return $this->fail($exception->getMessage().' '.$exception->getFile(). ' '.$exception->getLine(),10001,null);
         }
+
+        return parent::render($request, $exception);
 //        return parent::render($request, $exception);
     }
 }
