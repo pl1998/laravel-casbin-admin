@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\UsersController;
 use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\Auth\PermissionsController;
 use App\Http\Controllers\Auth\LogController;
+use App\Http\Controllers\Auth\CaptchaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,5 +53,8 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
     Route::get('/admin/all_role',[RolesController::class,'allRule']);    //获取所有角色
 });
 
-//头像更新
-Route::post('upload_img',[UsersController::class,'updateImg']);
+
+Route::post('upload_img',[UsersController::class,'updateImg']); //头像更新
+
+Route::post('captcha',[CaptchaController::class,'captcha']);      //获取验证码
+

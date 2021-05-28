@@ -11,7 +11,8 @@ use App\Service\RoleService;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use function PHPUnit\Framework\isEmpty;
+
+
 
 class UsersController extends Controller
 {
@@ -103,16 +104,15 @@ class UsersController extends Controller
             $roles = array_column($roles,'id');
             $service->setRoles($roles,$id);
         }
-
-
         return $this->success([],'更新成功');
 
     }
 
     public function updateImg(Request $request)
     {
-
-        if(!$request->file('file')) return $this->fail('文件不存在');
+        $request->validate([
+           'file' => ['required','image']
+        ]);
 
         $path = $request->file('file')->store('public');
 

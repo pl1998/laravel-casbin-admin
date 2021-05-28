@@ -16,6 +16,7 @@
         "laravel/framework": "^8.0",
         "laravel/legacy-factories": "^1.1",
         "laravel/tinker": "^2.5",
+        "mews/captcha": "^3.2",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

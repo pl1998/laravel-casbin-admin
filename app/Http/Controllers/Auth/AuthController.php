@@ -18,10 +18,26 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login']]);
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        $request->validate([
+           'key'=>['required'],
+           'captcha'=>['required'],
+           'email'=>['required','email'],
+           'password'=>['required','min:6|max:20'],
+        ],[
+            'key.required'=>'参数不合格',
+            'captcha.required'=>'验证码不能为空',
+            'captcha.min'=>'验证码不能为空',
+            'key.captcha'=>'验证码不合格',
+        ]);
 
+        if(!captcha_api_check(\request('captcha'),\request('key')))
+        {
+            return $this->fail('验证码错误',40001);
+        }
+
+        $credentials = request(['email', 'password']);
         if (! $token = auth('api')->attempt($credentials)) {
             return $this->fail('账号或密码错误');
         }

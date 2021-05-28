@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Lauthz\LauthzServiceProvider::class,
-
+        Mews\Captcha\CaptchaServiceProvider::class,
     ],
 
     /*
@@ -229,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Enforcer' => Lauthz\Facades\Enforcer::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class
 
     ],
 
