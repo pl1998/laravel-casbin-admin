@@ -73,7 +73,6 @@ class PermissionsController extends Controller
             return $this->fail('权限不存在');
         }
 
-
         Permissions::query()->insert(compact('hidden','icon','method','name','path','p_id','is_menu','method','url','title'));
 
         return $this->success();
@@ -88,7 +87,7 @@ class PermissionsController extends Controller
     public function update($id,Request $request)
     {
         $hidden = $request->post('hidden',1);
-        $icon = $request->post('icon');
+        $icon   = $request->post('icon');
         $method = $request->post('method','*');
         $name = $request->post('name');
         $p_id = $request->post('p_id');

@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RolesController;
 use App\Http\Controllers\Auth\PermissionsController;
 use App\Http\Controllers\Auth\LogController;
 use App\Http\Controllers\Auth\CaptchaController;
+use App\Http\Controllers\Auth\SystemController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -47,6 +48,9 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
 
        Route::get('/log',[LogController::class,'index']);          //获取日志列表
        Route::delete('/log/{id}',[LogController::class,'delete']);          //删除日志
+       Route::get('/system',[SystemController::class,'info']);          //系统信息
+
+
 
    });
     Route::get('/admin/all_permissions',[PermissionsController::class,'allPermissions']); //获取所有权限
