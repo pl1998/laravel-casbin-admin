@@ -32,7 +32,7 @@ class SystemController extends Controller
             ['name' => '最大执行时间', 'value' => get_cfg_var("max_execution_time") . "秒 "],
             ['name' => '脚本运行占用最大内存', 'value' => get_cfg_var("memory_limit") ? get_cfg_var("memory_limit") : "无"],
             ['name' => '服务器解译引擎', 'value' => $_SERVER['SERVER_SOFTWARE']],
-            ['name' => '服务器CPU数量', 'value' => $_SERVER['SERVER_SOFTWARE']],
+            ['name' => '服务器CPU数量', 'value' => $_SERVER['PROCESSOR_IDENTIFIER']],
             ['name' => '服务器Web端口', 'value' => $_SERVER['SERVER_PORT']],
             ['name' => '请求页面时通信协议的名称和版本', 'value' => $_SERVER['SERVER_PROTOCOL']]
             ];

@@ -14,10 +14,11 @@
 [laravel](https://laravel.com/)
 [jwt]()
 [casbin](https://github.com/php-casbin/laravel-authz) 
-整合的前后端分离的rbac权限管理系统
-### 功能和介绍
 
-   * 系统采用前后端分离架构，是一个企业后台解决方案。 前端框架基于`vue-element-admin` ,后台框架使用的是PHP最热门的框架`laravel` 
+整合的前后端分离的rbac权限管理系统
+### 介绍
+
+   * 系统采用前后端分离架构，是一个企业后台解决方案。 前端框架基于`vue-element-admin`,后台框架使用的是PHP最热门的框架`laravel` 
    控制权限使用的是`casbin`轻量访问控制框架 
    * 如何这是你第一个学习的前后端分离项目的项目 你可以学习到laravel的一些最新用法 路由、中间件、验证器、前后端分离下 JWT校验、以及laravel的全局异常处理、业务和服务分离。
      以及如何编写后台最常见的的RBAC权限控制
@@ -26,7 +27,11 @@
    * 打了这么多字～ 最后可以给我点个star吗～ ❤️
  
  
- 
+### 功能
+ * rbac 权限控制
+ * web shell 命令行终端
+
+
 ### 演示站点 
   * [线上demo](http://system.pltrue.top)
   * 账号:`admin@gmail.com` 密码:`123456`
@@ -51,8 +56,13 @@
 
 ![alt 属性文本](img/user_update.png)
 
+#### 系统日志
 
 ![alt 属性文本](img/log.png)
+
+#### web shell 命令行(需要安装node环境)
+
+![alt 属性文本](img/command.png)
 
 
 
