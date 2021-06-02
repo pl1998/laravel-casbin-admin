@@ -15,7 +15,7 @@ class ApiLog
     ];
 
     //记录访问的方法
-    protected static $method = ['DELETE','POST','PUT','PUTCH'];
+    protected static $method = ['DELETE','POST','PUT','PUTCH','GET'];
     /**
      * 日志访问中间件
      * Handle an incoming request.
