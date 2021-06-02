@@ -19,6 +19,9 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "node-pty": "^0.10.1"
+        "datajs": "^1.0.3",
+        "node-pty": "^0.10.1",
+        "sync-request": "^6.1.0",
+        "ws": "^6.2.1"
     }
 }

@@ -39,4 +39,13 @@ class SystemController extends Controller
 
         return $this->success($server_config);
     }
+
+    /**
+     * 系统终端认证接口 该接口有node服务调用 验证成功创建终端
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function terminal()
+    {
+        return $this->success();
+    }
 }

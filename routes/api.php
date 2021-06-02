@@ -50,7 +50,7 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
        Route::delete('/log/{id}',[LogController::class,'delete']);          //删除日志
        Route::get('/system',[SystemController::class,'info']);          //系统信息
 
-
+       Route::get('/terminal',[SystemController::class,'terminal']);          //系统终端认证 注意防止漏洞
 
    });
     Route::get('/admin/all_permissions',[PermissionsController::class,'allPermissions']); //获取所有权限
