@@ -2,12 +2,12 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lauthz\Facades\Enforcer;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use function PHPUnit\Framework\isEmpty;
+
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -42,9 +42,11 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+//    protected $casts = [
+//        'email_verified_at' => 'datetime',
+//        'created_at' => 'datetime',
+//        'updated_at' => 'datetime',
+//    ];
 
     /**
      * 获取会储存到 jwt 声明中的标识

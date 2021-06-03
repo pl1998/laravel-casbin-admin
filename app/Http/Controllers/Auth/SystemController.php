@@ -21,7 +21,7 @@ class SystemController extends Controller
             ['name' => '服务器端口', 'value' => $_SERVER['SERVER_PORT']],
             ['name' => '服务器版本', 'value' => php_uname('s') . php_uname('r')],
             ['name' => '服务器操作系统', 'value' => php_uname()],
-            ['name' => '服务器IP地址', 'value' => $_SERVER['SERVER_ADDR']],
+//            ['name' => '服务器IP地址', 'value' => $_SERVER['SERVER_ADDR']],
             ['name' => 'PHP版本', 'value' => PHP_VERSION],
             ['name' => '获取PHP安装路径', 'value' => DEFAULT_INCLUDE_PATH],
             ['name' => 'Zend版本', 'value' => Zend_Version()],
@@ -33,7 +33,7 @@ class SystemController extends Controller
             ['name' => '脚本运行占用最大内存', 'value' => get_cfg_var("memory_limit") ? get_cfg_var("memory_limit") : "无"],
             ['name' => '服务器解译引擎', 'value' => $_SERVER['SERVER_SOFTWARE']],
 //            ['name' => '服务器CPU数量', 'value' => $_SERVER['PROCESSOR_IDENTIFIER']],
-            ['name' => '服务器Web端口', 'value' => $_SERVER['SERVER_PORT']],
+//            ['name' => '服务器Web端口', 'value' => $_SERVER['SERVER_PORT']],
             ['name' => '请求页面时通信协议的名称和版本', 'value' => $_SERVER['SERVER_PROTOCOL']]
             ];
 
