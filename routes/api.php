@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PermissionsController;
 use App\Http\Controllers\Auth\LogController;
 use App\Http\Controllers\Auth\CaptchaController;
 use App\Http\Controllers\Auth\SystemController;
+use App\Http\Controllers\Auth\DingController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,18 +21,22 @@ use App\Http\Controllers\Auth\SystemController;
 |
 */
 
-
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class,'login']);  //登录
+    Route::any('dingLogin', [DingController::class,'DingLogin']);  //钉钉授权登录
+    Route::any('dingBing', [DingController::class,'dingBing']);  //钉钉绑定
+    Route::get('bindQrcode', [DingController::class,'bindQrcode']);  //钉钉扫码
     Route::post('logout', [AuthController::class,'logout']); //注销
     Route::post('refresh', [AuthController::class,'refresh']); //刷新用户状态
     Route::put('update',[AuthController::class,'update']); //更新用户信息
     Route::post('me', [AuthController::class,'me'])->name('me')->middleware(['jwt.auth']); //
 });
+
 //系统管理
 Route::group(['middleware'=>['jwt.auth','log']],function (){
 
    Route::group(['prefix'=>'admin','middleware'=>['permission']],function (){
+
        Route::get('/users',[UsersController::class,'index']);      //用户列表
        Route::post('/users',[UsersController::class,'store']);     //添加新用户;
        Route::put('users/{id}',[UsersController::class,'update']); //更新用户信息
@@ -46,19 +51,18 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
        Route::put('/permissions/{id}',[PermissionsController::class,'update']);    //更新权限
        Route::delete('/permissions/{id}',[PermissionsController::class,'delete']); //删除权限
 
-       Route::get('/log',[LogController::class,'index']);          //获取日志列表
+       Route::get('/log',[LogController::class,'index']);                   //获取日志列表
        Route::delete('/log/{id}',[LogController::class,'delete']);          //删除日志
-       Route::get('/system',[SystemController::class,'info']);          //系统信息
+       Route::get('/system',[SystemController::class,'info']);              //系统信息
 
-       Route::get('/terminal',[SystemController::class,'terminal']);          //系统终端认证 注意防止漏洞
+       Route::get('/terminal',[SystemController::class,'terminal']);         //系统终端认证 注意防止漏洞
 
    });
     Route::get('/admin/all_permissions',[PermissionsController::class,'allPermissions']); //获取所有权限
     Route::get('/admin/all_role',[RolesController::class,'allRule']);    //获取所有角色
     Route::post('upload_img',[UsersController::class,'updateImg']); //头像更新
+    Route::post('sshCertification',[UsersController::class,'sshCertification']); //头像更新
 });
-
-
 
 Route::post('captcha',[CaptchaController::class,'captcha']);      //获取验证码
 

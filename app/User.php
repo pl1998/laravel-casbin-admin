@@ -97,4 +97,8 @@ class User extends Authenticatable implements JWTSubject
      return $key;
     }
 
+    public function getUseridByUnionid()
+    {
+
+    }
 }

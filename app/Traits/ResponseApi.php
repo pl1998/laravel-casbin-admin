@@ -1,8 +1,10 @@
 <?php
 
 
-namespace App\Http\Controllers\Auth;
+namespace App\Traits;
 
+
+use Illuminate\Http\JsonResponse;
 
 trait ResponseApi
 {
@@ -29,6 +31,19 @@ trait ResponseApi
             'message' => $message,
             'data' => $data
         ], $httpCode);
+    }
+    /**
+     * @param $token
+     * @return JsonResponse
+     */
+    public function respondWithToken($token)
+    {
+        return response()->json([
+            'code'=>200,
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
     }
 
 }

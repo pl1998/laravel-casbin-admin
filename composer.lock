@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a6eefbaf4f51249a229115235b4fa6a",
+    "content-hash": "3eb07194756a4a1d04270ae8e6ac07e1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2427,6 +2427,61 @@
                 }
             ],
             "time": "2020-07-20T17:29:33+00:00"
+        },
+        {
+            "name": "pl1998/dingtalk",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pl1998/DingTalk.git",
+                "reference": "1bbe374871784a876df15d3f10128d7167fa5a28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pl1998/DingTalk/zipball/1bbe374871784a876df15d3f10128d7167fa5a28",
+                "reference": "1bbe374871784a876df15d3f10128d7167fa5a28",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "laravel/framework": "~5.5|~6.0|~7.0|~8.0",
+                "php": "^7.1.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ThinkCar\\DingTalk\\DingTalkServiceProvider"
+                    ],
+                    "aliases": {
+                        "DingAuth": "ThinkCar\\DingTalk\\Facades\\DingAuth",
+                        "Robot": "ThinkCar\\DingTalk\\Facades\\Robot",
+                        "WorkNotice": "ThinkCar\\DingTalk\\Facades\\WorkNotice"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ThinkCar\\DingTalk\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "潘章一",
+                    "email": "373500914@qq.com.com"
+                }
+            ],
+            "description": "这是一个钉钉tool",
+            "support": {
+                "source": "https://github.com/pl1998/DingTalk/tree/1.0.2"
+            },
+            "time": "2021-04-26T02:25:58+00:00"
         },
         {
             "name": "psr/cache",

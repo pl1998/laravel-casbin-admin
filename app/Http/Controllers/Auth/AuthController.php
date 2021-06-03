@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
 use App\Service\PermissionService;
 use App\Service\RoleService;
+
 use App\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,14 +14,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','DingLogin']]);
     }
 
     public function login(Request $request)
     {
-
         $request->validate([
            'key'=>'required',
            'captcha'=>'required',
@@ -126,17 +127,6 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * @param $token
-     * @return JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'code'=>200,
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
-    }
+
+
 }

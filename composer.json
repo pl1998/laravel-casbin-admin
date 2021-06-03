@@ -17,6 +17,7 @@
         "laravel/legacy-factories": "^1.1",
         "laravel/tinker": "^2.5",
         "mews/captcha": "^3.2",
+        "pl1998/dingtalk": "^1.0",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
