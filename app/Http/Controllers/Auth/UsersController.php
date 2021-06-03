@@ -69,7 +69,9 @@ class UsersController extends Controller
         $roles  = $request->post('roles');
         $password = Hash::make($request->post('password'));
 
-        $id = User::query()->insertGetId(compact('avatar','email','name','password'));
+
+        $created_at = now()->toDateTimeString();
+        $id = User::query()->insertGetId(compact('avatar','email','name','password','created_at'));
 
         abort_if(!$id,500,'添加用户错误');
 
