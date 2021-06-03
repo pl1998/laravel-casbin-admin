@@ -27,10 +27,9 @@
    * 打了这么多字～ 最后可以给我点个star吗～ ❤️
  
  
-### 功能
+### 主要功能
  * rbac 权限控制
  * web shell 命令行终端
-
 
 ### 演示站点 
   * [线上demo](http://system.pltrue.top)
@@ -64,6 +63,7 @@
 
 ![alt 属性文本](img/command.png)
 
+#### 加我微信 邀请加入交流群 暗号「casbin-admin」
 
-
+![alt 属性文本](img/wx.jpeg)
 

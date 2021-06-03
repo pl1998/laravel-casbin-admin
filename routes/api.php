@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LogController;
 use App\Http\Controllers\Auth\CaptchaController;
 use App\Http\Controllers\Auth\SystemController;
 use App\Http\Controllers\Auth\DingController;
+use App\Http\Controllers\Auth\WeiBoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,12 +27,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::any('dingLogin', [DingController::class,'DingLogin']);  //钉钉授权登录
     Route::any('dingBing', [DingController::class,'dingBing']);  //钉钉绑定
     Route::get('bindQrcode', [DingController::class,'bindQrcode']);  //钉钉扫码
+    Route::get('weiboCallBack', [WeiBoController::class,'weiboCallBack']);  //微博扫码
     Route::post('logout', [AuthController::class,'logout']); //注销
     Route::post('refresh', [AuthController::class,'refresh']); //刷新用户状态
     Route::put('update',[AuthController::class,'update']); //更新用户信息
     Route::post('me', [AuthController::class,'me'])->name('me')->middleware(['jwt.auth']); //
 });
-
 //系统管理
 Route::group(['middleware'=>['jwt.auth','log']],function (){
 

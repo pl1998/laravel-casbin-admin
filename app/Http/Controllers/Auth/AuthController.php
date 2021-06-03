@@ -25,7 +25,7 @@ class AuthController extends Controller
         $request->validate([
            'key'=>'required',
            'captcha'=>'required',
-           'email'=>'required|email',
+           'email'=>'required|min:2|max:20',
            'password'=>'required|min:6|max:20',
         ],[
             'key.required'=>'参数不合格',

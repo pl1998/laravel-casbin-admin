@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3eb07194756a4a1d04270ae8e6ac07e1",
+    "content-hash": "ed2083d9afc81517f659f0ae80fa38e6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2482,6 +2482,59 @@
                 "source": "https://github.com/pl1998/DingTalk/tree/1.0.2"
             },
             "time": "2021-04-26T02:25:58+00:00"
+        },
+        {
+            "name": "pltrue/thirdparty_oauth",
+            "version": "v1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pl1998/thirdparty_oauth.git",
+                "reference": "b6d941a55db0a757336c84f1c8ca5e6d6909a99c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pl1998/thirdparty_oauth/zipball/b6d941a55db0a757336c84f1c8ca5e6d6909a99c",
+                "reference": "b6d941a55db0a757336c84f1c8ca5e6d6909a99c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": "6.3.1|^7.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pl1998\\ThirdpartyOauth\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pl1998\\ThirdpartyOauth\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "pl1998",
+                    "email": "pltruenine@163.com"
+                }
+            ],
+            "description": "这是一个第三方授权登录扩展包。目前支持GITHUB、GITEE、谷歌、微博、微信、QQ等授权登录",
+            "support": {
+                "issues": "https://github.com/pl1998/thirdparty_oauth/issues",
+                "source": "https://github.com/pl1998/thirdparty_oauth/tree/v1.7"
+            },
+            "time": "2021-04-19T10:11:05+00:00"
         },
         {
             "name": "psr/cache",

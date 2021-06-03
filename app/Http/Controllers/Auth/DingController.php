@@ -102,7 +102,11 @@ class DingController extends Controller
                 $ding = Ding::where('unionid', $user['unionid'])->first();
                 if ($ding && $ding->User) {
                     $token =   auth('api')->login($ding->User);
-                    return $this->respondWithToken($token);
+                    return view('loading', [
+                        'token' => $token,
+                        'domain' => env('APP_CALLBACK','https://pltrue.top/'),
+                        'app_name' => '微博',
+                    ]);
                 }
             }
             return $this->fail('用户不存在',403,[
