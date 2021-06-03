@@ -26,7 +26,6 @@ class ApiLog
      */
     public function handle($request, Closure $next)
     {
-
         /**
          * 是否开启日志记录
          */

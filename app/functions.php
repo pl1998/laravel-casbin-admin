@@ -1,30 +1,10 @@
 <?php
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Redis;
 
-if(!function_exists('test')) {
-    function test(){
-        echo 111;
-    }
-}
 
-if(!function_exists('_error')) {
-    /**
-     * 响应报错信息
-     * @param $status
-     * @param string $message
-     * @param array $data]
-     */
-    function _error($status, string $message,array $data = []) {
-        $response = new JsonResponse(compact('status','message','data'));
-        throw new HttpResponseException($response);
-    }
-}
 
 if (!function_exists('recursive_make_tree')) {
-
     /**
      * @param $list
      * @param string $pk

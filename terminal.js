@@ -25,7 +25,6 @@ wss.on('connection', (ws) => {
         ws.send(data)
     });
 });
-
 /**
  * 同步调用PHP接口进行校验
  * @param info
