@@ -11,7 +11,7 @@
  Target Server Version : 50732
  File Encoding         : 65001
 
- Date: 03/06/2021 16:39:27
+ Date: 04/06/2021 09:05:37
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `admin_log` (
   `name` varchar(30) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of admin_log
@@ -44,6 +44,38 @@ INSERT INTO `admin_log` VALUES (2, 'api/admin/users', 'GET', '172.19.0.1', '2021
 INSERT INTO `admin_log` VALUES (3, 'api/upload_img', 'POST', '172.19.0.1', '2021-06-03 13:55:15', NULL, '2021-06-03 13:55:15', 1, 'admin', NULL);
 INSERT INTO `admin_log` VALUES (4, 'api/admin/system', 'GET', '172.19.0.1', '2021-06-03 15:42:08', NULL, '2021-06-03 15:42:08', 1, 'admin', NULL);
 INSERT INTO `admin_log` VALUES (5, 'api/admin/terminal', 'GET', '172.19.0.1', '2021-06-03 15:42:18', NULL, '2021-06-03 15:42:18', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (6, 'api/admin/roles', 'GET', '172.19.0.1', '2021-06-03 16:45:20', NULL, '2021-06-03 16:45:20', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (7, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 16:45:20', NULL, '2021-06-03 16:45:20', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (8, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 16:45:21', NULL, '2021-06-03 16:45:21', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (9, 'api/admin/all_role', 'GET', '172.19.0.1', '2021-06-03 16:45:22', NULL, '2021-06-03 16:45:22', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (10, 'api/admin/users', 'POST', '172.19.0.1', '2021-06-03 16:45:35', NULL, '2021-06-03 16:45:35', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (11, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 16:45:35', NULL, '2021-06-03 16:45:35', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (12, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 16:47:14', NULL, '2021-06-03 16:47:14', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (13, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 16:47:28', NULL, '2021-06-03 16:47:28', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (14, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 16:47:35', NULL, '2021-06-03 16:47:35', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (15, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 16:47:55', NULL, '2021-06-03 16:47:55', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (16, 'api/admin/roles', 'GET', '172.19.0.1', '2021-06-03 16:47:57', NULL, '2021-06-03 16:47:57', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (17, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 16:47:57', NULL, '2021-06-03 16:47:57', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (18, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 16:48:03', NULL, '2021-06-03 16:48:03', 1, 'admin', NULL);
+INSERT INTO `admin_log` VALUES (19, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 19:50:34', NULL, '2021-06-03 19:50:34', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (20, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 19:51:36', NULL, '2021-06-03 19:51:36', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (21, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 19:52:01', NULL, '2021-06-03 19:52:01', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (22, 'api/admin/all_permissions', 'GET', '172.19.0.1', '2021-06-03 19:52:03', NULL, '2021-06-03 19:52:03', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (23, 'api/admin/permissions/{id}', 'PUT', '172.19.0.1', '2021-06-03 19:52:05', NULL, '2021-06-03 19:52:05', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (24, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 19:57:28', NULL, '2021-06-03 19:57:28', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (25, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 19:58:55', NULL, '2021-06-03 19:58:55', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (26, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 20:00:22', NULL, '2021-06-03 20:00:22', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (27, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 20:02:26', NULL, '2021-06-03 20:02:26', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (28, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 20:03:42', NULL, '2021-06-03 20:03:42', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (29, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 20:04:19', NULL, '2021-06-03 20:04:19', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (30, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 20:04:53', NULL, '2021-06-03 20:04:53', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (31, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 20:05:01', NULL, '2021-06-03 20:05:01', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (32, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 20:07:11', NULL, '2021-06-03 20:07:11', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (33, 'api/admin/roles', 'GET', '172.19.0.1', '2021-06-03 20:07:12', NULL, '2021-06-03 20:07:12', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (34, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 20:07:12', NULL, '2021-06-03 20:07:12', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (35, 'api/admin/users', 'GET', '172.19.0.1', '2021-06-03 20:07:13', NULL, '2021-06-03 20:07:13', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (36, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 20:07:17', NULL, '2021-06-03 20:07:17', 37, 'Hi叫我李荣浩', NULL);
+INSERT INTO `admin_log` VALUES (37, 'api/admin/permissions', 'GET', '172.19.0.1', '2021-06-03 20:07:19', NULL, '2021-06-03 20:07:19', 37, 'Hi叫我李荣浩', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -141,7 +173,7 @@ CREATE TABLE `casbin_rules` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of casbin_rules
@@ -177,6 +209,8 @@ INSERT INTO `casbin_rules` VALUES (156, 'p', 'permission_4', 'api/admin/permissi
 INSERT INTO `casbin_rules` VALUES (157, 'p', 'permission_4', 'api/admin/roles', 'GET', '14', NULL, NULL, '2021-06-02 15:27:02', '2021-06-02 15:27:02');
 INSERT INTO `casbin_rules` VALUES (158, 'p', 'permission_4', '/system', '*', '21', NULL, NULL, '2021-06-02 15:27:02', '2021-06-02 15:27:02');
 INSERT INTO `casbin_rules` VALUES (159, 'p', 'permission_4', '/terminal', '*', '22', NULL, NULL, '2021-06-02 15:27:02', '2021-06-02 15:27:02');
+INSERT INTO `casbin_rules` VALUES (160, 'g', 'roles_10', '5', 'test', NULL, NULL, NULL, '2021-06-03 16:45:35', '2021-06-03 16:45:35');
+INSERT INTO `casbin_rules` VALUES (170, 'g', 'roles_37', '4', 'demo-user', NULL, NULL, NULL, '2021-06-03 20:07:07', '2021-06-03 20:07:07');
 COMMIT;
 
 -- ----------------------------
@@ -194,7 +228,7 @@ CREATE TABLE `dings` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of dings
@@ -267,26 +301,29 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ding_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `ding_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `oauth_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `oauth_type` tinyint(1) DEFAULT NULL COMMENT '1.微博 2钉钉',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 'admin', 'pltruenine@163.com', NULL, '$2y$10$f1Kf7DY1A8WJ5BpuRMu6yuOs3kOu1EoIjkhotApZxWHE30nF1nlvi', NULL, '2021-01-20 11:42:00', '2021-05-26 11:54:22', 'http://adminapi.test/storage/xXEmZMhpEARYImy1tfGW43poB4geC5MBQIABTrQH.jpg', NULL);
-INSERT INTO `users` VALUES (7, 'pan', '2540463097@qq.com', NULL, '$2y$10$/yLMOcd1wedOE..NQ271c.naLU9pltWnnkYy4EJKC6SYmySd8EQTW', NULL, '2021-02-26 10:23:14', '2021-05-27 13:47:56', 'http://financial_api.test/storage/tU0E3915YWsL3R7NSQaLTQ3dbAZtD1vUPbm9KyG2.jpg', NULL);
-INSERT INTO `users` VALUES (8, 'caiwu', 'caiwu@163.com', NULL, '$2y$10$dhimwV200FCTUYQmjdXkp.h4WNkKskSmF/xGc1BtxznQ0LBBJY3nW', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `users` VALUES (9, 'demo-user', 'admin@gmail.com', NULL, '$2y$10$hK42qF7ODa9IG9SyUqY4jOVNOtEkvIl.J3HrU0zJNgweok5Mvbyey', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (1, 'admin', 'pltruenine@163.com', NULL, '$2y$10$f1Kf7DY1A8WJ5BpuRMu6yuOs3kOu1EoIjkhotApZxWHE30nF1nlvi', NULL, '2021-01-20 11:42:00', '2021-05-26 11:54:22', 'http://adminapi.test/storage/xXEmZMhpEARYImy1tfGW43poB4geC5MBQIABTrQH.jpg', NULL, NULL, NULL);
+INSERT INTO `users` VALUES (7, 'pan', '2540463097@qq.com', NULL, '$2y$10$/yLMOcd1wedOE..NQ271c.naLU9pltWnnkYy4EJKC6SYmySd8EQTW', NULL, '2021-02-26 10:23:14', '2021-05-27 13:47:56', 'http://financial_api.test/storage/tU0E3915YWsL3R7NSQaLTQ3dbAZtD1vUPbm9KyG2.jpg', NULL, NULL, NULL);
+INSERT INTO `users` VALUES (8, 'caiwu', 'caiwu@163.com', NULL, '$2y$10$dhimwV200FCTUYQmjdXkp.h4WNkKskSmF/xGc1BtxznQ0LBBJY3nW', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (9, 'demo-user', 'admin@gmail.com', NULL, '$2y$10$hK42qF7ODa9IG9SyUqY4jOVNOtEkvIl.J3HrU0zJNgweok5Mvbyey', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (10, '34343', 'pltruenine@1633.com', NULL, '$2y$10$0B4MaHcgq0a0CLD85GWljOMlDG3IR8sBlWSw7rFIvkp4is2nSqtXu', NULL, '2021-06-03 16:45:35', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` VALUES (37, 'Hi叫我李荣浩', '', NULL, '$2y$10$F7pwYD.K9b1r4/CPqS28DeRrPrsdDQlid3qZiog2c0uF9.MA/W6sq', NULL, '2021-06-03 19:50:31', '2021-06-03 19:50:31', 'https://tvax2.sinaimg.cn/crop.0.0.1002.1002.180/006pP2Laly8gqcj17wce9j30ru0ru0up.jpg?KID=imgbed,tva&Expires=1622731831&ssig=Xu7sPFw5ou', NULL, '5878370732', NULL);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
