@@ -28,7 +28,7 @@ class WeiBoController extends Controller
             $users= User::query()->create([
                 'name'=>$user->name,
                 'email'=>'',
-                'password'=>Hash::make(123456),
+                'password'=>Hash::make(123456), //默认给个密码呗
                 'avatar'=>$user->avatar_large,
                 'oauth_id'=>$user->id,
                 'bound_oauth'=>1
@@ -37,6 +37,7 @@ class WeiBoController extends Controller
 
         $service->setRoles([4],$users->id);
 
+        //关于授权可以了解一下js的窗口通信 window.postMessage
         return view('loading', [
             'token' => auth('api')->login($users),
             'domain' => env('APP_CALLBACK','https://pltrue.top/'),

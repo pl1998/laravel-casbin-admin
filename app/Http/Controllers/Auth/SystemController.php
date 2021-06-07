@@ -41,7 +41,7 @@ class SystemController extends Controller
     }
 
     /**
-     * 系统终端认证接口 该接口有node服务调用 验证成功创建终端
+     * 系统终端认证接口 该接口由node服务调用 验证成功创建ws链接终端
      * @return \Illuminate\Http\JsonResponse
      */
     public function terminal()
