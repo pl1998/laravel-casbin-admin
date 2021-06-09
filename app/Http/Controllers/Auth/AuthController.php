@@ -100,18 +100,24 @@ class AuthController extends Controller
     {
         $request->validate([
            'name' => ['min:2','max:20'],
-           'new_password' => ['min:6','max:20'],
-           'confirm_password' => ['min:6','max:20','confirmed:confirm_password'],
-           'password' => ['min:6','max:20'],
+           'password' => ['min:6','max:20','confirmed'],
+           'old_password' => ['min:6','max:20'],
+           'password_confirmation' => ['min:6','max:20','same:password'],
+//           'password' => ['min:6','max:20'],
+        ],[
+            'name.confirmed'=>'昵称应该在2-20个字符之间',
+            'name.password'=>'新密码应该在6-20个字符之间',
+            'password.confirmed'=>'确认密码不一致'
         ]);
 
-        if(!empty($request->password) || !empty($request->old_password)) {
-            $credentials = ['email'=>auth('api')->user()->email,'password'=>$request->password];
+        if(!empty($request->old_password) && !empty($request->password)) {
+            $credentials = ['email'=>auth('api')->user()->email,'password'=>$request->old_password];
             if (! $token = auth('api')->attempt($credentials)) {
                 return $this->fail('旧密码错误');
             }
-            $update['password'] = Hash::make($request->new_password);
+            $update['password'] = Hash::make($request->password);
         }
+
 
         $update['name'] = $request->name;
         $update['avatar'] = $request->avatar;

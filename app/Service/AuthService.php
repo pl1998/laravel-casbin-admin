@@ -44,6 +44,7 @@ class AuthService
        if($method != '*') $where['method']=$method;
        $where['url'] = $route;
 
+
        if(Permissions::query()->whereIn('id',$node_array[0])->where('is_menu',0)->where($where)->exists()){
            return true;
        }
