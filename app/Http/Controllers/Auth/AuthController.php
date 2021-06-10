@@ -103,7 +103,6 @@ class AuthController extends Controller
            'password' => ['min:6','max:20','confirmed'],
            'old_password' => ['min:6','max:20'],
            'password_confirmation' => ['min:6','max:20','same:password'],
-//           'password' => ['min:6','max:20'],
         ],[
             'name.confirmed'=>'昵称应该在2-20个字符之间',
             'name.password'=>'新密码应该在6-20个字符之间',
