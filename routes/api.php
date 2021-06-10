@@ -53,7 +53,7 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
        Route::delete('/permissions/{id}',[PermissionsController::class,'delete']); //删除权限
 
        Route::get('/log',[LogController::class,'index']);                   //获取日志列表
-       Route::delete('/log/{id}',[LogController::class,'delete']);          //删除日志
+       Route::delete('/log',[LogController::class,'delete']);          //删除日志
        Route::get('/system',[SystemController::class,'info']);              //系统信息
 
        Route::get('/terminal',[SystemController::class,'terminal']);         //系统终端认证 注意防止漏洞

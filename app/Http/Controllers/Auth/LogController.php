@@ -31,10 +31,12 @@ class LogController extends Controller
         );
 
     }
-    public function delete($id)
+    public function delete(Request $request)
     {
-        Log::query()->where('id',$id)->delete();
-
-        return $this->success();
+        $request->validate([
+            'id'=>'required'
+        ]);
+        Log::query()->whereIn('id',explode(',',$request->id))->delete();
+        return $this->success($request->id);
     }
 }
