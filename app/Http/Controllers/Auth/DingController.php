@@ -105,7 +105,7 @@ class DingController extends Controller
                     return view('loading', [
                         'token' => $token,
                         'domain' => env('APP_CALLBACK','https://pltrue.top/'),
-                        'app_name' => '微博',
+                        'app_name' => '钉钉',
                     ]);
                 }
             }

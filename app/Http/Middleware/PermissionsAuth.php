@@ -26,7 +26,6 @@ class PermissionsAuth
         if(auth('api')->user()->email == 'pltruenine@163.com') {
             return $next($request);
         }
-
         $id = auth('api')->id();
         $authService = new AuthService();
 

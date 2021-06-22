@@ -117,7 +117,6 @@ class AuthController extends Controller
             $update['password'] = Hash::make($request->password);
         }
 
-
         $update['name'] = $request->name;
         $update['avatar'] = $request->avatar;
 

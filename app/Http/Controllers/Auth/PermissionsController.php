@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionStoreRequest;
+use App\Models\CasbinRules;
 use App\Models\Permissions;
 use App\Service\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class PermissionsController extends Controller
 {
@@ -99,11 +101,19 @@ class PermissionsController extends Controller
         if($path && Permissions::query()->where(compact('id'))->doesntExist()) {
             return $this->fail('权限不存在');
         }
+        //更新权限
+        CasbinRules::query()->where('p_type','p')
+            ->where('v1',$url)
+            ->update([
+                'v2'=>$method
+            ]);
 
         Permissions::query()->where('id',$id)->update(compact('hidden','icon','method','name','path','p_id','is_menu','method','title','url'));
 
         return $this->success();
     }
+
+
 
     /**
      * 删除权限

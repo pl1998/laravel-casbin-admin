@@ -22,7 +22,6 @@ class User extends Authenticatable implements JWTSubject
         'name','avatar', 'email', 'password','created_at','ding_id','oauth_id','oauth_type'
     ];
 
-
     public $appends = [
         'roles',
         'introduction'
