@@ -38,13 +38,12 @@ class AuthService
            $node_array[] = $node;
        }
        $where['url'] = $route;
-       if(Permissions::query()->whereIn('id',$node_array[0])->where('is_menu',0)->where($where)
-           ->where(function ($query) use($method){
-               $query->where('method',$method)->orWhere('method',"*");
-           })
-           ->exists()){
-           return true;
-       }
-       return false;
+
+       return
+           Permissions::query()->whereIn('id',$node_array[0])->where('is_menu',0)->where($where)
+               ->where(function ($query) use($method){
+                   $query->where('method',$method)->orWhere('method',"*");
+               })
+               ->exists();
     }
 }
