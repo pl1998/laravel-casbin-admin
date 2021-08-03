@@ -24,7 +24,7 @@ class RolesController extends Controller
     public function index(Request $request,PermissionService $service)
     {
         $page     = $request->get('page',1);
-        $pageSize = $request->get('pageSize',20);
+        $pageSize = $request->get('pageSize',10);
 
         $query = Roles::query();
 

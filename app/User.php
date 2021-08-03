@@ -41,11 +41,10 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-//    protected $casts = [
-//        'email_verified_at' => 'datetime',
-//        'created_at' => 'datetime',
-//        'updated_at' => 'datetime',
-//    ];
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s'
+    ];
 
     /**
      * 获取会储存到 jwt 声明中的标识

@@ -25,7 +25,7 @@ class UsersController extends Controller
     public function index(Request $request,RoleService $service)
     {
         $page = $request->get('page', 1);
-        $pageSize = $request->get('limit', 20);
+        $pageSize = $request->get('limit', 10);
         $email = $request->get('email');
         $name = $request->get('name');
 

@@ -27,6 +27,10 @@ class Admin extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s'
+    ];
 
     /**
      * 获取会储存到 jwt 声明中的标识

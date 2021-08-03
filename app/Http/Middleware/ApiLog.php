@@ -36,6 +36,7 @@ class ApiLog
          * 功能过滤
          */
         if(!in_array($request->route()->uri(),static::$url) && in_array($request->method(),static::$method)){
+
             Log::query()->create([
                 'url'    => $request->route()->uri(),
                 'method' => $request->method(),
