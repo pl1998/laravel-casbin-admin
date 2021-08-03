@@ -63,7 +63,7 @@
 
 ![alt 属性文本](img/command.png)
 
-#### 交流群 暗号「casbin-admin」
+#### 交流群
 
-![alt 属性文本](img/wx.jpeg)
+加我微信:`pan15579458273` 邀请入群 
 
