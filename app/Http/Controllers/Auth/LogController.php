@@ -31,7 +31,7 @@ class LogController extends Controller
         );
 
     }
-    public function delete(Request $request)
+    public function destroy(Request $request)
     {
         $request->validate([
             'id'=>'required'

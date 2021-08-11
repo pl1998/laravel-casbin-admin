@@ -15,22 +15,22 @@ trait ResponseApi
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function success($data = [], string $message='success', $msgCode=200,int $httpCode=200)
-    {
+    public function success($data = [], string $message = 'success', $msgCode = 200,int $httpCode = 200){
         return response()->json([
-            'code' => $msgCode,
+            'code'    => $msgCode,
             'message' => $message,
-            'data' => $data
+            'data'    => $data
         ], $httpCode);
     }
 
-    public function fail($message='error',$msgCode=500,$data=[],$httpCode=200)
+    public function fail($message = 'error', $msgCode = 500, $data = [], $httpCode = 200)
     {
         return response()->json([
             'code' => $msgCode,
             'message' => $message,
             'data' => $data
         ], $httpCode);
+
     }
     /**
      * @param $token

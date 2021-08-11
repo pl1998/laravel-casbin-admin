@@ -120,9 +120,9 @@ class PermissionsController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        Permissions::query()->where('id',$id)->delete();
+        Permissions::destroy($id);
         return $this->success();
     }
 }

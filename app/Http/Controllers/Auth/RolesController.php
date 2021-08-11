@@ -91,8 +91,6 @@ class RolesController extends Controller
 
         Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
 
-
-
         if(!empty($node)) {
             $service->setPermissions($node,$id);
         }
@@ -108,9 +106,9 @@ class RolesController extends Controller
      * @param PermissionService $service
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete($id,PermissionService $service)
+    public function destroy($id,PermissionService $service)
     {
-        Roles::query()->where('id',$id)->delete();
+        Roles::destroy($id);
         $service->delPermissions($id);
         return $this->success();
     }
