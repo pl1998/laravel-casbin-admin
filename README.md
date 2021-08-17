@@ -64,7 +64,8 @@ Integrated rBAC permission management system with front and back end separation
 
 ![alt 属性文本](img/command.png)
 
-#### Communication group
+#### +QQ 进微信群 `2540463097`
 
-wx:`pan15579458273`  
+#### 关于问题和思考
+ 有bug请提issues,框架方面有不懂的问题请自行看laravel文档或者加群提问。私聊不一定会回复。
 
