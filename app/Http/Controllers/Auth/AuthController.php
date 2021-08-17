@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
 use App\Service\PermissionService;

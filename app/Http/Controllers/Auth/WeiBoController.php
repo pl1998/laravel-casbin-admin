@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Service\RoleService;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Pl1998\ThirdpartyOauth\SocialiteAuth;
 
