@@ -67,7 +67,7 @@ class Handler extends ExceptionHandler
             } else if ($exception instanceof NotFoundHttpException) {
                 return $this->fail('路由未找到',10004,[],$exception->getStatusCode());
             } else if ($exception instanceof MethodNotAllowedHttpException) {
-                return $this->fail('请求方法不存在',[],10005,$exception->getStatusCode());
+                return $this->fail('请求方法不存在',10005,[]);
             } else if ($exception instanceof UnauthorizedHttpException) { //这个在jwt.auth 中间件中抛出
                 return $this->fail('无效的访问令牌',10006,null,401);
             } elseif ($exception instanceof AuthenticationException) { //这个异常在 auth:api 中间件中抛出
