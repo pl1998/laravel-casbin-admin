@@ -23,8 +23,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'key' => 'required',
-            'captcha' => 'required',
+//            'key' => 'required',
+//            'captcha' => 'required',
             'email' => 'required|min:2|max:20',
             'password' => 'required|min:6|max:20',
         ], [
@@ -39,9 +39,9 @@ class AuthController extends Controller
             'key.captcha' => '验证码不合格',
         ]);
 
-        if (!captcha_api_check(\request('captcha'), \request('key'))) {
-            return $this->fail('验证码错误', 40001);
-        }
+//        if (!captcha_api_check(\request('captcha'), \request('key'))) {
+//            return $this->fail('验证码错误', 40001);
+//        }
 
         $credentials = request(['email', 'password']);
 
