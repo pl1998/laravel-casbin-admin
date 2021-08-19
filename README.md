@@ -65,11 +65,10 @@ Integrated rBAC permission management system with front and back end separation
 ![alt 属性文本](img/command.png)
 
 
-#### JetBrains Open Source Certificate Support
+## JetBrains Open Source Certificate Support
 
-The 'Laravel-Casbin-admin' project has been developed in a GoLand integrated development environment owned by JetBrains, based on the ** Free JetBrains Open Source License (s)** free license, I would like to express my gratitude.
-![](img/jetbrains-variant-4.png)
+The 'Laravel-Casbin-admin' project has been developed in a Phpstorm integrated development environment owned by JetBrains, based on the ** Free JetBrains Open Source License (s)** free license, I would like to express my gratitude.
 
 <a href="https://www.jetbrains.com/?from=laravel-casbin-admin" target="_blank">
-https://www.jetbrains.com/?from=laravel-casbin-admin
+<img src="img/jetbrains-variant-4.png" width="250" align="middle"/>
 </a>
