@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Http;
 
 class TaskService
 {
-
-
     public function add($id,$cycle,$textarea)
     {
         $url = env('CRON_HOST')."/api/addJob";

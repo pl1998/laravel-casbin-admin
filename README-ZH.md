@@ -65,7 +65,17 @@
 
 ![alt 属性文本](img/command.png)
 
-#### 交流群
+#### +QQ 进微信群 `2540463097`
 
-加我微信:`pan15579458273` 邀请入群 
+#### 关于问题和思考
+ 有bug请提issues,框架方面有不懂的问题请自行看laravel文档或者加群提问。私聊不一定会回复。
 
+
+#### JetBrains 开源证书支持
+
+`laravel-casbin-admin` 项目一直以来都是在 JetBrains 公司旗下的 GoLand 集成开发环境中进行开发，基于 **free JetBrains Open Source license(s)** 正版免费授权，在此表达我的谢意。
+![](img/jetbrains-variant-4.png)
+
+<a href="https://www.jetbrains.com/?from=laravel-casbin-admin" target="_blank">
+https://www.jetbrains.com/?from=laravel-casbin-admin
+</a>

@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Redis;
 
-
-
 if (!function_exists('recursive_make_tree')) {
     /**
      * @param $list

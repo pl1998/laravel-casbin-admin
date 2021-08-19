@@ -64,8 +64,12 @@ Integrated rBAC permission management system with front and back end separation
 
 ![alt 属性文本](img/command.png)
 
-#### +QQ 进微信群 `2540463097`
 
-#### 关于问题和思考
- 有bug请提issues,框架方面有不懂的问题请自行看laravel文档或者加群提问。私聊不一定会回复。
+#### JetBrains Open Source Certificate Support
 
+The 'Laravel-Casbin-admin' project has been developed in a GoLand integrated development environment owned by JetBrains, based on the ** Free JetBrains Open Source License (s)** free license, I would like to express my gratitude.
+![](img/jetbrains-variant-4.png)
+
+<a href="https://www.jetbrains.com/?from=laravel-casbin-admin" target="_blank">
+https://www.jetbrains.com/?from=laravel-casbin-admin
+</a>
