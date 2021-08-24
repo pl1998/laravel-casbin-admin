@@ -120,7 +120,7 @@ class AuthController extends Controller
         $update['avatar'] = $request->avatar;
 
         if ((int)auth('api')->user()->email != 'admin@gmail.com') {
-            User::query()->where('id', auth('api')->id())
+            User::query()->where('id', auth('api')->user()->id)
                 ->update($update);
         }
 
