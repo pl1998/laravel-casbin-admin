@@ -1,8 +1,12 @@
 <h1 align="center">laravel-casbin-admin</h1>
 
 <p align="center">
-<a href="https://packagist.org/packages/pltrue/thirdparty_oauth"><img src="https://img.shields.io/badge/license-MIT-green" /></a> 
-<a href="https://packagist.org/packages/pltrue/thirdparty_oauth"><img src="https://img.shields.io/badge/php-v7.3+-blue" /></a> 
+<img src="https://img.shields.io/badge/license-MIT-green" />
+<img src="https://img.shields.io/badge/php-v7.3+-blue" />
+<img src="https://img.shields.io/github/forks/pl1998/laravel-casbin-admin">
+<img src="https://img.shields.io/github/stars/pl1998/laravel-casbin-admin">
+<img src="https://img.shields.io/github/repo-size/pl1998/laravel-casbin-admin">
+<img src="https://img.shields.io/github/followers/pl1998">
 </p>
 
 <a href="README.md">English</a>

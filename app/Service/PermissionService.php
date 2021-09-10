@@ -46,6 +46,7 @@ class PermissionService
                 }
             })->get(['id','p_id','path','name','title','icon','method','url'])->toArray();
 
+
             $permissionsMenu = get_tree($permissions);
 
             return [$permissionsMenu, $permissions];
