@@ -12,7 +12,7 @@ namespace App\Http\Controllers\Server;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
-use App\Service\TaskService;
+use App\Services\TaskService;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller

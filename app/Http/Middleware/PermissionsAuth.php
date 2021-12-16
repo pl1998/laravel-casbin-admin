@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Service\AuthService;
-use App\Service\PermissionService;
-use App\Service\RoleService;
+use App\Services\AuthService;
+use App\Services\PermissionService;
+use App\Services\RoleService;
 use Closure;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\JsonResponse;

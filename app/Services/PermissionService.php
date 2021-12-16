@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\Services;
 
 
 use App\Models\Permissions;

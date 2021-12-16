@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\Services;
 
 use Lauthz\Facades\Enforcer;
 use App\Models\Roles;

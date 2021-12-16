@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PermissionStoreRequest;
 use App\Models\CasbinRules;
 use App\Models\Permissions;
-use App\Service\PermissionService;
+use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;

@@ -6,7 +6,7 @@
  * Time : 2:15 下午
  **/
 
-namespace App\Service;
+namespace App\Services;
 
 
 use Illuminate\Support\Facades\Http;
