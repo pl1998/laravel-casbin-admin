@@ -176,7 +176,7 @@ return [
     |
     */
 
-    'processes' =>   Hhxsv5\LaravelS\Components\Apollo\Process::getDefinition(),
+    'processes' => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -249,12 +249,7 @@ return [
     |
     */
 
-    'cleaners' => [
-        // 使用jwt需要清理
-        Hhxsv5\LaravelS\Illuminate\Cleaners\SessionCleaner::class,
-        Hhxsv5\LaravelS\Illuminate\Cleaners\AuthCleaner::class,
-        Hhxsv5\LaravelS\Illuminate\Cleaners\JWTCleaner::class,
-    ],
+    'cleaners' => [],
 
     /*
     |--------------------------------------------------------------------------

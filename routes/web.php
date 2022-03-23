@@ -13,3 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/',function (){
+    echo "<h3 style='display: flex;justify-content: center'>
+laravel-casbin-admin 基于laravel8.x开发前后端分离的后台通用框架
+</h3>
+";
+});
+
