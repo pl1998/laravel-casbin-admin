@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Permissions;
+use Lauthz\Facades\Enforcer;
 
 class AuthService
 {
@@ -22,10 +23,15 @@ class AuthService
       return  $this->roleService->getRoles($id);
     }
 
+
     public function checkPermission($id,$method,$route) :bool
     {
+//        if(Enforcer::enforce($this->roleService->getIdentifier($id),$route,$method)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
        $role =  $this->getRoles($id);
-
        if(empty($role)) return false;
 
        $role = $role->map(function ($val){
@@ -37,6 +43,7 @@ class AuthService
           list($node,$permissions) = $this->permissionService->getPermissions($value);
            $node_array[] = $node;
        }
+
        $where['url'] = $route;
 
        return

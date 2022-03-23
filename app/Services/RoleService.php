@@ -8,7 +8,7 @@ use App\Models\Roles;
 
 class RoleService
 {
-    protected function getIdentifier($id)
+    public function getIdentifier($id)
     {
         return "roles_".$id;
     }

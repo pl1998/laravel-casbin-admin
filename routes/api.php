@@ -63,6 +63,7 @@ Route::group(['middleware'=>['jwt.auth','log']],function (){
     Route::post('upload_img',[UsersController::class,'updateImg']);              //头像更新
     Route::post('sshCertification',[UsersController::class,'sshCertification']); //头像更新
 
+
     Route::group(['prefix'=>'server','middleware'=>['permission']],function (){
         Route::get('/tasks',[TaskController::class,'index']);            //任务列表
         Route::post('/tasks',[TaskController::class,'store']);           //添加新任务;

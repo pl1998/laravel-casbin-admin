@@ -26,7 +26,6 @@ class PermissionsController extends Controller
         $allPermission = $service->getAllPermission($keyword);
         $list = $service->permissionTreeNode($allPermission);
 
-
         return $this->success([
             'list'=>$list
         ]);

@@ -53,7 +53,12 @@ return [
             'level' => 'debug',
             'days' => 14,
         ],
-
+        'sql' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/database_sql.log'),
+            'level' => 'debug',
+            'days' => 14,
+        ],
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
