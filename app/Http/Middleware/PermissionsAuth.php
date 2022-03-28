@@ -31,12 +31,7 @@ class PermissionsAuth
 
         $bool = $authService->checkPermission($id,$request->method(),$request->route()->uri());
 
-        if(!$bool) {
-            $response = JsonResponse::fromJsonString(
-                collect(['data' => [], 'code' => 403, 'message' => "没有访问权限"]
-                )->toJson(),200);
-            throw new HttpResponseException($response);
-        }
+        abort_if(!$bool,403,'没有访问权限');
 
         return $next($request);
     }
