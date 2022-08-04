@@ -11,7 +11,7 @@ class Log extends Model
 {
     use SoftDeletes;
 
-    public $table = 'admin_log';
+    public $table = 'admin_logs';
 
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s'

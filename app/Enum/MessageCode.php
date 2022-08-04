@@ -22,4 +22,6 @@ class MessageCode
     public const ROUTE_EXITS = 10004; // 路由404
     public const TOKEN_EXITS = 10006; // TOKEN不存在
     public const PERMISSION_EXITS = 10007; // 无权限访问
+
+    public const USER_ERROR = 40001;
 }

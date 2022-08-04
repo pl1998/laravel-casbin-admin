@@ -2,12 +2,9 @@
 
 namespace App\Console\Commands;
 
-
-use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Hash;
 
-class AdminPassword extends Command
+class AdminInstall extends Command
 {
     /**
      * The name and signature of the console command.
@@ -21,7 +18,7 @@ class AdminPassword extends Command
      *
      * @var string
      */
-    protected $description = '重置admin用户密码';
+    protected $description = '初始化部署命令';
 
     /**
      * Create a new command instance.
@@ -40,14 +37,9 @@ class AdminPassword extends Command
      */
     public function handle()
     {
-       $result = User::query()->where('name','admin')
-           ->update([
-              'password'=>Hash::make(123456)
-           ]);
-       if($result) {
-           $this->info("Success 密码重置成功!");
-       }else{
-           $this->error("Error 用户不存在");
-       }
+        $this->call("key:gen");
+        $this->call("migrate");
+        $this->call("db:seed");
+        $this->call("create:roles:to:users");
     }
 }

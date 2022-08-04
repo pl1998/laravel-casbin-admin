@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enum\MessageCode;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -24,7 +25,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         if (!captcha_api_check(\request('captcha'), $request->input('key'))) {
-            return $this->fail('验证码错误', 40001);
+            return $this->fail('验证码错误', MessageCode::USER_ERROR);
         }
         $credentials = $request->all(['email', 'password']);
 
@@ -46,22 +47,17 @@ class AuthController extends Controller
         $menu = $roleService->getRoles(auth('api')->id());
         $permissions_menu = [];
         $nodes = [];
-
         foreach ($menu as $value) {
-
             list($permissionsMenu, $permissions) = $permissionService->getPermissionMenu($value->id);
             $permissions_menu[] = $permissionsMenu;
             list($node_id, $node) = $permissionService->getPermissions($value->id);
             $nodes = array_merge($nodes, $node);
 
         }
-
         $user = auth('api')->user();
         $user->node = $nodes;
         $user->menu = array_reduce($permissions_menu, 'array_merge', []);
-
         return $this->success($user);
-
     }
 
     public function logout()

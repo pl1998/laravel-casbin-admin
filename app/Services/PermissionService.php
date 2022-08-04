@@ -37,7 +37,6 @@ class PermissionService
         list($node, $permissions) = $this->getPermissions($id);
 
         if (auth('api')->user()->name == 'admin') {
-
             $query = Permissions::query()
                 ->where('status', Permissions::STATUS_OK)
                 ->where('is_menu', Permissions::IS_MENU_YES);
@@ -64,7 +63,9 @@ class PermissionService
                         $getPid = $val->get_pid;
                         unset($val->get_pid);
                         $permissionsMap[$val->id] = $val;
-                        $permissionsMap[$getPid->id] = $getPid;
+                        if($getPid){
+                            $permissionsMap[$getPid->id] = $getPid;
+                        }
                     });
 
                 $permissionsMenu = get_tree($permissionsMap);
