@@ -31,7 +31,7 @@ if (!function_exists('recursive_make_tree')) {
     }
 }
 
-if(!function_exists('redis')) {
+if (!function_exists('redis')) {
     function redis()
     {
         return Redis::connection()->client();

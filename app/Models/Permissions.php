@@ -13,6 +13,12 @@ class Permissions extends Model
 
     protected $table = 'admin_permissions';
 
+    const IS_MENU_YES =1;
+    const IS_MENU_NO =0;
+
+    const STATUS_DOWN =0;
+    const STATUS_OK =1;
+
     public function getIsMenuAttribute($key)
     {
         if($key == 1){

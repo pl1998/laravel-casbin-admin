@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Enum\MessageCode;
 use App\Traits\ResponseApi;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -63,20 +64,20 @@ class Handler extends ExceptionHandler
             if ($exception instanceof ValidationException) {
                 return $this->fail($exception->validator->errors()->first());
             } elseif ($exception instanceof ModelNotFoundException) {
-                return $this->fail("一不小心数据走丢了～～～",10003,[],200);
+                return $this->fail("一不小心数据走丢了～～～",MessageCode::DATA_ERROR,[],MessageCode::HTTP_OK);
             } else if ($exception instanceof NotFoundHttpException) {
-                return $this->fail('路由未找到',10004,[],$exception->getStatusCode());
+                return $this->fail('路由未找到',MessageCode::ROUTE_EXITS,[],$exception->getStatusCode());
             } else if ($exception instanceof MethodNotAllowedHttpException) {
-                return $this->fail('请求方法不存在',10005,[]);
+                return $this->fail('请求方法不存在',MessageCode::FUNCTION_EXITS,[]);
             } else if ($exception instanceof UnauthorizedHttpException) { //这个在jwt.auth 中间件中抛出
-                return $this->fail('无效的访问令牌',10006,null,401);
+                return $this->fail('无效的访问令牌',MessageCode::PERMISSION_EXITS,null,MessageCode::HTTP_PERMISSION);
             } elseif ($exception instanceof AuthenticationException) { //这个异常在 auth:api 中间件中抛出
-                return $this->fail('无效的访问令牌',10006,null,401);
+                return $this->fail('无效的访问令牌',MessageCode::PERMISSION_EXITS,null,MessageCode::HTTP_PERMISSION);
             } elseif ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpException &&
-                $exception->getStatusCode() == 403){
-                return $this->fail('没有访问权限，请联系管理员',10007,null,$exception->getStatusCode());
+                $exception->getStatusCode() == MessageCode::HTTP_REFUSED){
+                return $this->fail('没有访问权限，请联系管理员',MessageCode::PERMISSION_EXITS,null,$exception->getStatusCode());
             }
-           return $this->fail($exception->getMessage().' '.$exception->getFile(). ' '.$exception->getLine(),10001,null);
+           return $this->fail($exception->getMessage().' '.$exception->getFile(). ' '.$exception->getLine(),MessageCode::CODE_ERROR,null);
         }
         return parent::render($request, $exception);
     }

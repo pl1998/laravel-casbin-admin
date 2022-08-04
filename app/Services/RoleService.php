@@ -8,29 +8,33 @@ use App\Models\Roles;
 
 class RoleService
 {
+    /**
+     * @param $id
+     * @return string
+     */
     public function getIdentifier($id)
     {
-        return "roles_".$id;
+        return "roles_" . $id;
     }
 
     /**
-     * 获取用户角色
+     * 设置用户角色
      * @param $roleId
      * @param $id
+     * @return void
      */
-    public function setRoles($roleId,$id)
+    public function setRoles($roleId, $id)
     {
         $id = $this->getIdentifier($id);
-        $roles = Roles::query()->where('status',1)
-            ->whereIn('id',$roleId)
-            ->get(['id','name']);
 
         Enforcer::deleteRolesForUser($id);
 
-        foreach ($roles as $value){
-            Enforcer::addRoleForUser($id, $value['id'], $value['name']);
-        }
-
+        Roles::query()
+            ->where('status', Roles::STATUS_OK)
+            ->whereIn('id', $roleId)
+            ->get(['id', 'name'])->map(function ($value) use ($id) {
+                Enforcer::addRoleForUser($id, $value->id, $value->name);
+            });
     }
 
     /**
@@ -38,15 +42,16 @@ class RoleService
      * @param $id
      * @return mixed
      */
-    public function getRoles($id){
+    public function getRoles($id)
+    {
         $id = $this->getIdentifier($id);
         $roles = Enforcer::getRolesForUser($id);
 
-        if(empty($roles)) return [];
+        if (empty($roles)) return [];
 
-        $roles = Roles::query()->where('status',1)
-            ->whereIn('id',$roles)
-            ->get(['id','name']);
+        $roles = Roles::query()->where('status', 1)
+            ->whereIn('id', $roles)
+            ->get(['id', 'name']);
 
         return $roles;
     }
@@ -55,7 +60,8 @@ class RoleService
      * 删除用户所有角色
      * @param $id
      */
-    public function delRoles($id,$roleId=[]){
+    public function delRoles($id)
+    {
         $id = $this->getIdentifier($id);
         Enforcer::deleteRolesForUser($id);
     }

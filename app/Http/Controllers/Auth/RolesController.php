@@ -21,31 +21,31 @@ class RolesController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(Request $request,PermissionService $service)
+    public function index(Request $request, PermissionService $service)
     {
-        $page     = $request->get('page',1);
-        $pageSize = $request->get('pageSize',10);
+        $page = $request->get('page', 1);
+        $pageSize = $request->get('pageSize', 10);
 
         $query = Roles::query();
 
-        if($keyword = \request('keyword')){
-            $query = $query->where('name','like',"%$keyword%");
+        if ($keyword = \request('keyword')) {
+            $query = $query->where('name', 'like', "%$keyword%");
         }
         $total = $query->count();
 
-        $list = $query->forPage($page,$pageSize)->get();
+        $list = $query->forPage($page, $pageSize)->get();
 
-        foreach ($list as &$value){
+        foreach ($list as &$value) {
 
-            list($node_id,$nodes) = $service->getPermissions($value->id);
+            list($node_id, $nodes) = $service->getPermissions($value->id);
 
             $value->node = $node_id;
             $value->nodes = $nodes;
         }
 
         return $this->success([
-            'list'=>$list,
-            'total'=>$total
+            'list' => $list,
+            'total' => $total
         ]);
     }
 
@@ -54,49 +54,48 @@ class RolesController extends Controller
      * @param RoleStoreRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(RoleStoreRequest $request,PermissionService $service)
+    public function store(RoleStoreRequest $request, PermissionService $service)
     {
-        $name        = $request->get('name');
-        $status      = $request->get('status');
+        $name = $request->get('name');
+        $status = $request->get('status');
         $description = $request->get('description');
-        $node        = $request->get('node',[]);
-        $created_at  =  now()->toDate();
-        $updated_at  =  now()->toDate();
+        $node = $request->get('node', []);
+        $created_at = now()->toDate();
+        $updated_at = now()->toDate();
 
-        if(Roles::query()->where(compact('name','status'))->exists()) {
+        if (Roles::query()->where(compact('name', 'status'))->exists()) {
             return $this->fail('角色已存在');
         }
+        $id = Roles::query()->insertGetId(compact('name', 'status', 'description', 'created_at', 'updated_at'));
 
-        $id        = Roles::query()->insertGetId(compact('name','status','description','created_at','updated_at'));
+        abort_if(!$id, 500, '添加角色错误');
 
-        abort_if(!$id,500,'添加角色错误');
+        !empty($node) && $service->setPermissions($node, $id);
 
-        !empty($node) &&  $service->setPermissions($node,$id);
-
-        return $this->success([],'角色添加成功');
+        return $this->success([], '角色添加成功');
     }
 
-    public function update($id,Request $request,PermissionService $service)
+    public function update($id, Request $request, PermissionService $service)
     {
-        $name        = $request->get('name');
-        $status      = $request->get('status');
+        $name = $request->get('name');
+        $status = $request->get('status');
         $description = $request->get('description');
-        $node        = $request->get('node',[]);
+        $node = $request->get('node', []);
 
-        $updated_at  =  now()->toDate();
+        $updated_at = now()->toDate();
 
-        if(Roles::query()->where(compact('id'))->doesntExist()) {
+        if (Roles::query()->where(compact('id'))->doesntExist()) {
             return $this->fail('角色不存在');
         }
 
-        Roles::query()->where(compact('id'))->update(compact('name','description','updated_at','status'));
+        Roles::query()->where(compact('id'))->update(compact('name', 'description', 'updated_at', 'status'));
 
-        if(!empty($node)) {
-            $service->setPermissions($node,$id);
+        if (!empty($node)) {
+            $service->setPermissions($node, $id);
         }
 
 
-        return $this->success([],'更新成功');
+        return $this->success([], '更新成功');
 
     }
 
@@ -106,7 +105,7 @@ class RolesController extends Controller
      * @param PermissionService $service
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id,PermissionService $service)
+    public function destroy($id, PermissionService $service)
     {
         Roles::destroy($id);
         $service->delPermissions($id);
@@ -120,7 +119,7 @@ class RolesController extends Controller
      */
     public function allRule()
     {
-        $list = Roles::query()->where('status',1)->get(['id','name']);
+        $list = Roles::query()->where('status', 1)->get(['id', 'name']);
 
         return $this->success($list);
     }

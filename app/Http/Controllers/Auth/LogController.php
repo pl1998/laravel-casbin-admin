@@ -11,15 +11,19 @@ use Illuminate\Http\Request;
 
 class LogController extends Controller
 {
+    /**
+     * 获取日志列表
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index(Request $request)
     {
         $page = $request->get('page',1);
         $limit = $request->get('limit',10);
         $query = Log::query();
         $total = $query->count();
-        $list = $query->forPage($page,$limit)->get([ 'url','ip','method','name','u_id','created_at','address','id']);
-
-
+        $list = $query->forPage($page,$limit)
+            ->get([ 'url','ip','method','name','u_id','created_at','address','id']);
         return $this->success(
             [
                 'list' => $list,
@@ -29,7 +33,6 @@ class LogController extends Controller
                 ]
             ]
         );
-
     }
     public function destroy(Request $request)
     {

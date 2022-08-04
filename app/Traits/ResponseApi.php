@@ -4,6 +4,7 @@
 namespace App\Traits;
 
 
+use App\Enum\MessageCode;
 use Illuminate\Http\JsonResponse;
 
 trait ResponseApi
@@ -15,15 +16,16 @@ trait ResponseApi
      * @return \Illuminate\Http\JsonResponse
      */
 
-    public function success($data = [], string $message = 'success', $msgCode = 200,int $httpCode = 200){
+    public function success($data = [], string $message = 'success', $msgCode = MessageCode::HTTP_OK, int $httpCode = MessageCode::HTTP_OK)
+    {
         return response()->json([
-            'code'    => $msgCode,
+            'code' => $msgCode,
             'message' => $message,
-            'data'    => $data
+            'data' => $data
         ], $httpCode);
     }
 
-    public function fail($message = 'error', $msgCode = 500, $data = [], $httpCode = 200)
+    public function fail($message = 'error', $msgCode = MessageCode::HTTP_ERROR, $data = [], $httpCode = MessageCode::HTTP_OK)
     {
         return response()->json([
             'code' => $msgCode,
@@ -32,6 +34,7 @@ trait ResponseApi
         ], $httpCode);
 
     }
+
     /**
      * @param $token
      * @return JsonResponse
@@ -39,7 +42,7 @@ trait ResponseApi
     public function respondWithToken($token)
     {
         return response()->json([
-            'code'=>200,
+            'code' => MessageCode::HTTP_OK,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60

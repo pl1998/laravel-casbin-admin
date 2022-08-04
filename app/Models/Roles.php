@@ -11,6 +11,9 @@ class Roles extends Model
 {
     use SoftDeletes;
 
+    const STATUS_DOWN =0;
+    const STATUS_OK =1;
+
     protected $table = 'admin_roles';
 
     protected $casts = [

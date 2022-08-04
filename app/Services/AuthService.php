@@ -26,11 +26,6 @@ class AuthService
 
     public function checkPermission($id,$method,$route) :bool
     {
-//        if(Enforcer::enforce($this->roleService->getIdentifier($id),$route,$method)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
        $role =  $this->getRoles($id);
        if(empty($role)) return false;
 
@@ -43,11 +38,10 @@ class AuthService
           list($node,$permissions) = $this->permissionService->getPermissions($value);
            $node_array[] = $node;
        }
-
        $where['url'] = $route;
-
        return
-           Permissions::query()->whereIn('id',$node_array[0])->where('is_menu',0)->where($where)
+           Permissions::query()->whereIn('id',$node_array[0])
+               ->where('is_menu',Permissions::IS_MENU_NO)->where($where)
                ->where(function ($query) use($method){
                    $query->where('method',$method)->orWhere('method',"*");
                })

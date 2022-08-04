@@ -45,18 +45,18 @@ class AuthController extends Controller
     {
         $menu = $roleService->getRoles(auth('api')->id());
         $permissions_menu = [];
-        $nodes=[];
+        $nodes = [];
 
         foreach ($menu as $value) {
 
             list($permissionsMenu, $permissions) = $permissionService->getPermissionMenu($value->id);
             $permissions_menu[] = $permissionsMenu;
             list($node_id, $node) = $permissionService->getPermissions($value->id);
-            $nodes= array_merge($nodes,$node);
+            $nodes = array_merge($nodes, $node);
 
         }
 
-        $user       = auth('api')->user();
+        $user = auth('api')->user();
         $user->node = $nodes;
         $user->menu = array_reduce($permissions_menu, 'array_merge', []);
 
@@ -96,7 +96,7 @@ class AuthController extends Controller
         if (!empty($request->old_password) && !empty($request->password)) {
             $credentials = ['email' => auth('api')->user()->email, 'password' => $request->old_password];
             if (!$token = auth('api')->attempt($credentials)) {
-                return  $this->fail('旧密码错误');
+                return $this->fail('旧密码错误');
             }
             $update['password'] = Hash::make($request->password);
         }

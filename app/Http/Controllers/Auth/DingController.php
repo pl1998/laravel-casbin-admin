@@ -85,10 +85,11 @@ class DingController extends Controller
         return $this->fail('相关凭证错误');
     }
 
+
     /**
      * 钉钉授权登录
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|void
      */
     public function DingLogin(Request $request)
     {
