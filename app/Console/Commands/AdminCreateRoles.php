@@ -56,7 +56,7 @@ class AdminCreateRoles extends Command
 
         $this->createAdmin($name,$node);
 
-        $name = 'demo_user';
+        $name = 'demo-user';
 
         $node = Permissions::query()
             ->where('status',Permissions::STATUS_OK)
