@@ -53,9 +53,10 @@ class AdminCreateRoles extends Command
             ->where('status',Permissions::STATUS_OK)
             ->pluck('id')->toArray();
 
+
         $this->createAdmin($name,$node);
 
-        $name = 'demo';
+        $name = 'demo_user';
 
         $node = Permissions::query()
             ->where('status',Permissions::STATUS_OK)
@@ -74,7 +75,7 @@ class AdminCreateRoles extends Command
 
         if(!$roles){
             $status = Roles::STATUS_OK;
-            $description = "超级管理员!";
+            $description = $name =='admin' ?"超级管理员!" :"demo角色";
             $roleId =  Roles::query()->insertGetId(compact('name', 'description', 'status'));
         } else{
             $roleId = $roles->id;

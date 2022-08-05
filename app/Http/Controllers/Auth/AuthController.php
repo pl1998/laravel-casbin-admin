@@ -45,18 +45,17 @@ class AuthController extends Controller
     public function me(PermissionService $permissionService, RoleService $roleService)
     {
         $menu = $roleService->getRoles(auth('api')->id());
-        $permissions_menu = [];
+        $permissionsMenus = [];
         $nodes = [];
         foreach ($menu as $value) {
             list($permissionsMenu, $permissions) = $permissionService->getPermissionMenu($value->id);
-            $permissions_menu[] = $permissionsMenu;
+            $permissionsMenus[] = $permissionsMenu;
             list($node_id, $node) = $permissionService->getPermissions($value->id);
             $nodes = array_merge($nodes, $node);
-
         }
         $user = auth('api')->user();
         $user->node = $nodes;
-        $user->menu = array_reduce($permissions_menu, 'array_merge', []);
+        $user->menu = array_reduce($permissionsMenus, 'array_merge', []);
         return $this->success($user);
     }
 

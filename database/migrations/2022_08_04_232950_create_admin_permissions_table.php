@@ -22,7 +22,7 @@ class CreateAdminPermissionsTable extends Migration
             $table->string('title')->nullable();
             $table->tinyInteger('hidden')->nullable()->comment('是否隐藏 1:是 0否');
             $table->tinyInteger('is_menu')->nullable()->comment('是否菜单 1:是 0否');
-            $table->tinyInteger('p_id')->nullable()->comment('父级节点');
+            $table->tinyInteger('p_id')->nullable()->default(0)->comment('父级节点');
             $table->string('method')->nullable()->default('GET')->comment('请求方法');
             $table->tinyInteger('status')->comment('状态 1正常；0禁用');
             $table->softDeletes();

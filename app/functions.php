@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Redis;
 
-if (!function_exists('recursive_make_tree')) {
+if (!function_exists('get_tree')) {
     /**
      * @param $list
      * @param string $pk
@@ -15,10 +15,12 @@ if (!function_exists('recursive_make_tree')) {
     {
         $tree = [];
         foreach ($list as $key => $val) {
+
             if ($val[$pid] == $root) {
                 //获取当前$pid所有子类
                 unset($list[$key]);
                 if (!empty($list)) {
+
                     $child = get_tree($list, $pk, $pid, $child, $val[$pk]);
                     if (!empty($child)) {
                         $val['children'] = $child;
@@ -27,6 +29,7 @@ if (!function_exists('recursive_make_tree')) {
                 $tree[] = $val;
             }
         }
+
         return $tree;
     }
 }

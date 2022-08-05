@@ -36,8 +36,8 @@ class PermissionService
     {
         list($node, $permissions) = $this->getPermissions($id);
 
-        if (auth('api')->user()->name == 'admin') {
-            $query = Permissions::query()
+        if (auth('api')->user()->name == 'demo') {
+            $query = Permissions::with('getPid')
                 ->where('status', Permissions::STATUS_OK)
                 ->where('is_menu', Permissions::IS_MENU_YES);
             $permissions = $query->where(function ($query) use ($permissions) {
@@ -46,27 +46,26 @@ class PermissionService
                 }
             })->get(['id', 'p_id', 'path', 'name', 'title', 'icon', 'method', 'url'])->toArray();
 
+
             $permissionsMenu = get_tree($permissions);
 
             return [$permissionsMenu, $permissions];
         } else {
             if (!empty($permissions)) {
                 $query = Permissions::query()
-                    ->with('getPid')
                     ->where('status', Permissions::STATUS_OK)
                     ->where('is_menu', Permissions::IS_MENU_YES);
                 $permissionsMap = [];
-
                 $query->whereIn('id', $node)
                     ->get(['id', 'p_id', 'path', 'name', 'title', 'icon', 'method', 'url'])
                     ->map(function ($val) use(&$permissionsMap){
                         $getPid = $val->get_pid;
                         unset($val->get_pid);
-                        $permissionsMap[$val->id] = $val;
+                        $permissionsMap[$val->id] = $val->toArray();
                         if($getPid){
                             $permissionsMap[$getPid->id] = $getPid;
                         }
-                    });
+                    })->toArray();
 
                 $permissionsMenu = get_tree($permissionsMap);
                 return [$permissionsMenu,$permissionsMap];
@@ -106,7 +105,7 @@ class PermissionService
 
         $permissions = Permissions::query()->with('getPid')
             ->where('status', Permissions::STATUS_OK)
-            ->where('p_id', '<>', 0)
+//            ->where('p_id', '<>', 0)
             ->whereIn('id', $nodeId)
             ->groupBy('id')
             ->get(['path', 'method', 'p_id', 'id', 'name', 'is_menu', 'url']);
