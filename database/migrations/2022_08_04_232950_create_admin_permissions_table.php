@@ -8,12 +8,10 @@ class CreateAdminPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('admin_permissions', function (Blueprint $table) {
+        Schema::create('admin_permissions', function (Blueprint $table): void {
             $table->id();
             $table->string('name')->nullable();
             $table->string('icon')->nullable();
@@ -32,10 +30,8 @@ class CreateAdminPermissionsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('admin_permissions');
     }

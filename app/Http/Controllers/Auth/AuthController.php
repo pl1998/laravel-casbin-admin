@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enum\MessageCode;
-use App\Http\Requests\LoginRequest;
-use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 use App\Services\PermissionService;
 use App\Services\RoleService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-
 class AuthController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'DingLogin']]);
@@ -24,7 +22,7 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        if (!captcha_api_check(\request('captcha'), $request->input('key'))) {
+        if (!captcha_api_check(request('captcha'), $request->input('key'))) {
             return $this->fail('验证码错误', MessageCode::USER_ERROR);
         }
         $credentials = $request->all(['email', 'password']);
@@ -37,9 +35,8 @@ class AuthController extends Controller
     }
 
     /**
-     * 获取用户信息
-     * @param PermissionService $permissionService
-     * @param RoleService $roleService
+     * 获取用户信息.
+     *
      * @return JsonResponse
      */
     public function me(PermissionService $permissionService, RoleService $roleService)
@@ -48,20 +45,22 @@ class AuthController extends Controller
         $permissionsMenus = [];
         $nodes = [];
         foreach ($menu as $value) {
-            list($permissionsMenu, $permissions) = $permissionService->getPermissionMenu($value->id);
+            [$permissionsMenu, $permissions] = $permissionService->getPermissionMenu($value->id);
             $permissionsMenus[] = $permissionsMenu;
-            list($node_id, $node) = $permissionService->getPermissions($value->id);
+            [$node_id, $node] = $permissionService->getPermissions($value->id);
             $nodes = array_merge($nodes, $node);
         }
         $user = auth('api')->user();
         $user->node = $nodes;
         $user->menu = array_reduce($permissionsMenus, 'array_merge', []);
+
         return $this->success($user);
     }
 
     public function logout()
     {
         auth('api')->logout();
+
         return $this->success([], 'Successfully logged out');
     }
 
@@ -72,8 +71,9 @@ class AuthController extends Controller
 
     /**
      * @param UserUpdateRequest $request
+     *
      * @return JsonResponse
-     * 更新用户信息
+     *                      更新用户信息
      */
     public function update(Request $request)
     {
@@ -85,7 +85,7 @@ class AuthController extends Controller
         ], [
             'name.confirmed' => '昵称应该在2-20个字符之间',
             'name.password' => '新密码应该在6-20个字符之间',
-            'password.confirmed' => '确认密码不一致'
+            'password.confirmed' => '确认密码不一致',
         ]);
 
         if (!empty($request->old_password) && !empty($request->password)) {
@@ -99,16 +99,15 @@ class AuthController extends Controller
         $update['name'] = $request->name;
         $update['avatar'] = $request->avatar;
 
-        if ((int)auth('api')->user()->email != 'admin@gmail.com') {
+        if ('admin@gmail.com' !== (int) auth('api')->user()->email) {
             User::query()->where('id', auth('api')->user()->id)
-                ->update($update);
+                ->update($update)
+            ;
         }
 
         return $this->success([
             'name' => $request->name,
-            'avatar' => $request->avatar
+            'avatar' => $request->avatar,
         ]);
     }
-
-
 }

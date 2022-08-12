@@ -3,8 +3,8 @@
  * Created By PhpStorm.
  * User : Latent
  * Date : 2022/1/19
- * Time : 4:48 PM
- **/
+ * Time : 4:48 PM.
+ */
 
 namespace App\Http\Requests;
 
@@ -23,7 +23,7 @@ class LoginRequest extends FormRequest
 
     public function messages()
     {
-        return  [
+        return [
             'key.required' => '参数不合格',
             'email.required' => '邮箱不能为空',
             'email.email' => '不是一个正确的邮箱',

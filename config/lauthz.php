@@ -1,15 +1,11 @@
 <?php
 
 return [
-    /*
-     *Default Lauthz driver
-     */
+    // Default Lauthz driver
     'default' => 'basic',
 
     'basic' => [
-        /*
-        * Casbin model setting.
-        */
+        // Casbin model setting.
         'model' => [
             // Available Settings: "file", "text"
             'config_type' => 'file',
@@ -19,14 +15,10 @@ return [
             'config_text' => '',
         ],
 
-        /*
-        * Casbin adapter .
-        */
+        // Casbin adapter .
         'adapter' => Lauthz\Adapters\DatabaseAdapter::class,
 
-        /*
-        * Database setting.
-        */
+        // Database setting.
         'database' => [
             // Database connection for following tables.
             'connection' => '',

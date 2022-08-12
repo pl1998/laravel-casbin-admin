@@ -3,8 +3,8 @@
  * Created By PhpStorm.
  * User : Latent
  * Date : 2022/1/19
- * Time : 4:46 PM
- **/
+ * Time : 4:46 PM.
+ */
 
 namespace App\Listeners;
 
@@ -15,25 +15,19 @@ class QuerySqlListener
 {
     /**
      * Create the event listener.
-     *
-     * @return void
      */
     public function __construct()
     {
-        //
     }
 
     /**
      * Handle the event.
-     *
-     * @param  QueryExecuted  $event
-     * @return void
      */
-    public function handle(QueryExecuted $event)
+    public function handle(QueryExecuted $event): void
     {
-        if(env('APP_DEBUG')) {
-            $sql = str_replace("?","%s",$event->sql);
-            $log= vsprintf($sql,$event->bindings);
+        if (env('APP_DEBUG')) {
+            $sql = str_replace('?', '%s', $event->sql);
+            $log = vsprintf($sql, $event->bindings);
             Log::channel('sql')->info($log);
         }
     }

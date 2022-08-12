@@ -105,19 +105,19 @@ return [
 
     'inotify_reload' => [
         // Whether enable the Inotify Reload to reload all worker processes when your code is modified.
-        'enable'        => env('LARAVELS_INOTIFY_RELOAD', false),
+        'enable' => env('LARAVELS_INOTIFY_RELOAD', false),
 
         // The file path that Inotify watches
-        'watch_path'    => base_path(),
+        'watch_path' => base_path(),
 
         // The file types that Inotify watches
-        'file_types'    => ['.php'],
+        'file_types' => ['.php'],
 
         // The excluded/ignored directories that Inotify watches
         'excluded_dirs' => [],
 
         // Whether output the reload log
-        'log'           => true,
+        'log' => true,
     ],
 
     /*
@@ -190,21 +190,21 @@ return [
     */
 
     'timer' => [
-        'enable'          => env('LARAVELS_TIMER', false),
+        'enable' => env('LARAVELS_TIMER', false),
 
         // The list of cron job
-        'jobs'            => [
+        'jobs' => [
             // Enable LaravelScheduleJob to run `php artisan schedule:run` every 1 minute, replace Linux Crontab
             // Hhxsv5\LaravelS\Illuminate\LaravelScheduleJob::class,
         ],
 
         // Max waiting time of reloading
-        'max_wait_time'   => 5,
+        'max_wait_time' => 5,
 
         // Enable the global lock to ensure that only one instance starts the timer
         // when deploying multiple instances.
         // This feature depends on Redis https://laravel.com/docs/8.x/redis
-        'global_lock'     => false,
+        'global_lock' => false,
         'global_lock_key' => config('app.name', 'Laravel'),
     ],
 
@@ -264,7 +264,7 @@ return [
     */
 
     'destroy_controllers' => [
-        'enable'        => false,
+        'enable' => false,
         'excluded_list' => [],
     ],
 
@@ -282,27 +282,27 @@ return [
     */
 
     'swoole' => [
-        'daemonize'          => env('LARAVELS_DAEMONIZE', false),
-        'dispatch_mode'      => env('LARAVELS_DISPATCH_MODE', 3),
-        'worker_num'         => env('LARAVELS_WORKER_NUM', 30),
-        //'task_worker_num'    => env('LARAVELS_TASK_WORKER_NUM', 10),
-        'task_ipc_mode'      => 1,
-        'task_max_request'   => env('LARAVELS_TASK_MAX_REQUEST', 100000),
-        'task_tmpdir'        => @is_writable('/dev/shm/') ? '/dev/shm' : '/tmp',
-        'max_request'        => env('LARAVELS_MAX_REQUEST', 100000),
-        'open_tcp_nodelay'   => true,
-        'pid_file'           => storage_path('laravels.pid'),
-        'log_level'          => env('LARAVELS_LOG_LEVEL', 4),
-        'log_file'           => storage_path(sprintf('logs/swoole-%s.log', date('Y-m'))),
-        'document_root'      => base_path('public'),
+        'daemonize' => env('LARAVELS_DAEMONIZE', false),
+        'dispatch_mode' => env('LARAVELS_DISPATCH_MODE', 3),
+        'worker_num' => env('LARAVELS_WORKER_NUM', 30),
+        // 'task_worker_num'    => env('LARAVELS_TASK_WORKER_NUM', 10),
+        'task_ipc_mode' => 1,
+        'task_max_request' => env('LARAVELS_TASK_MAX_REQUEST', 100000),
+        'task_tmpdir' => @is_writable('/dev/shm/') ? '/dev/shm' : '/tmp',
+        'max_request' => env('LARAVELS_MAX_REQUEST', 100000),
+        'open_tcp_nodelay' => true,
+        'pid_file' => storage_path('laravels.pid'),
+        'log_level' => env('LARAVELS_LOG_LEVEL', 4),
+        'log_file' => storage_path(sprintf('logs/swoole-%s.log', date('Y-m'))),
+        'document_root' => base_path('public'),
         'buffer_output_size' => 2 * 1024 * 1024,
         'socket_buffer_size' => 8 * 1024 * 1024,
         'package_max_length' => 4 * 1024 * 1024,
-        'reload_async'       => true,
-        'max_wait_time'      => 60,
-        'enable_reuse_port'  => true,
-        'enable_coroutine'   => false,
-        'upload_tmp_dir'     => @is_writable('/dev/shm/') ? '/dev/shm' : '/tmp',
-        'http_compression'   => env('LARAVELS_HTTP_COMPRESSION', false),
+        'reload_async' => true,
+        'max_wait_time' => 60,
+        'enable_reuse_port' => true,
+        'enable_coroutine' => false,
+        'upload_tmp_dir' => @is_writable('/dev/shm/') ? '/dev/shm' : '/tmp',
+        'http_compression' => env('LARAVELS_HTTP_COMPRESSION', false),
     ],
 ];

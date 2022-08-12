@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-         \App\Http\Middleware\TrustHosts::class,
+        \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\CheckForMaintenanceMode::class,
@@ -66,7 +66,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'log' => ApiLog::class,
-        'permission'=>PermissionsAuth::class,
-       // 'refresh.token' => \App\Http\Middleware\RefreshToken::class
+        'permission' => PermissionsAuth::class,
+        // 'refresh.token' => \App\Http\Middleware\RefreshToken::class
     ];
 }

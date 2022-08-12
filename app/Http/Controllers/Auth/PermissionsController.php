@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -9,89 +8,85 @@ use App\Models\CasbinRules;
 use App\Models\Permissions;
 use App\Services\PermissionService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 
 class PermissionsController extends Controller
 {
     /**
-     * 获取权限列表
-     * @param Request $request
-     * @param PermissionService $service
+     * 获取权限列表.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(Request $request,PermissionService $service)
+    public function index(Request $request, PermissionService $service)
     {
         $keyword = $request->get('keyword');
         $allPermission = $service->getAllPermission($keyword);
         $list = $service->permissionTreeNode($allPermission);
 
         return $this->success([
-            'list'=>$list
+            'list' => $list,
         ]);
-
     }
 
     /**
-     * 获取所有权限节点
-     * @param Request $request
-     * @param PermissionService $service
+     * 获取所有权限节点.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function allPermissions(Request $request,PermissionService $service)
+    public function allPermissions(Request $request, PermissionService $service)
     {
         $keyword = $request->get('keyword');
         $allPermission = $service->getAllPermission($keyword);
         $list = $service->permissionTreeNode($allPermission);
 
         return response()->json([
-            'code'=>200,
-            'message'=>'success',
-            'data'=>[
-                'list'=>$list
-            ]
+            'code' => 200,
+            'message' => 'success',
+            'data' => [
+                'list' => $list,
+            ],
         ]);
     }
 
     /**
-     * 添加权限
-     * @param PermissionStoreRequest $request
+     * 添加权限.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(PermissionStoreRequest $request)
     {
-        $hidden = $request->post('hidden',1);
-        $icon   = $request->post('icon');
-        $method = $request->post('method','*');
-        $name   = $request->post('name');
-        $p_id   = $request->post('p_id');
-        $path   = $request->post('path');
+        $hidden = $request->post('hidden', 1);
+        $icon = $request->post('icon');
+        $method = $request->post('method', '*');
+        $name = $request->post('name');
+        $p_id = $request->post('p_id');
+        $path = $request->post('path');
         $is_menu = $request->post('is_menu');
-        $url     = $request->post('url');
+        $url = $request->post('url');
         $title = $request->post('name');
 
-        if($path && Permissions::query()
-                ->where(compact('path','method','p_id','is_menu'))
-                ->exists()) {
+        if ($path && Permissions::query()
+            ->where(compact('path', 'method', 'p_id', 'is_menu'))
+            ->exists()) {
             return $this->fail('权限不存在');
         }
 
-        Permissions::query()->insert(compact('hidden','icon','method','name','path','p_id','is_menu','method','url','title'));
+        Permissions::query()->insert(compact('hidden', 'icon', 'method', 'name', 'path', 'p_id', 'is_menu', 'method', 'url', 'title'));
 
         return $this->success();
     }
 
     /**
-     * 更新权限
+     * 更新权限.
+     *
      * @param $id
-     * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update($id,Request $request)
+    public function update($id, Request $request)
     {
-        $hidden = $request->post('hidden',1);
-        $icon   = $request->post('icon');
-        $method = $request->post('method','*');
+        $hidden = $request->post('hidden', 1);
+        $icon = $request->post('icon');
+        $method = $request->post('method', '*');
         $name = $request->post('name');
         $p_id = $request->post('p_id');
         $path = $request->post('path');
@@ -99,32 +94,35 @@ class PermissionsController extends Controller
         $title = $request->post('name');
         $url = $request->post('url');
 
-        if($path && Permissions::query()->where(compact('id'))->doesntExist()) {
+        if ($path && Permissions::query()->where(compact('id'))->doesntExist()) {
             return $this->fail('权限不存在');
         }
-        //更新权限
-        CasbinRules::query()->where('p_type','p')
-            ->where('v1',$url)
+        // 更新权限
+        CasbinRules::query()->where('p_type', 'p')
+            ->where('v1', $url)
             ->update([
-                'v2'=>$method
-            ]);
+                'v2' => $method,
+            ])
+        ;
 
-        Permissions::query()->where('id',$id)
-            ->update(compact('hidden','icon','method','name','path','p_id','is_menu','method','title','url'));
+        Permissions::query()->where('id', $id)
+            ->update(compact('hidden', 'icon', 'method', 'name', 'path', 'p_id', 'is_menu', 'method', 'title', 'url'))
+        ;
 
         return $this->success();
     }
 
-
-
     /**
-     * 删除权限
+     * 删除权限.
+     *
      * @param $id
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
         Permissions::destroy($id);
+
         return $this->success();
     }
 }

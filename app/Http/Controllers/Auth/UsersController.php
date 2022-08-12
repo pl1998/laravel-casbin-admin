@@ -1,24 +1,20 @@
 <?php
 
-
 namespace App\Http\Controllers\Auth;
-
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Services\RoleService;
 use App\Models\User;
+use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-
 class UsersController extends Controller
 {
-
     /**
-     * 获取用户列表
-     * @param Request $request
+     * 获取用户列表.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request, RoleService $service)
@@ -34,7 +30,7 @@ class UsersController extends Controller
         }
 
         if ($name) {
-            $query->where('name', 'like', "%$name%");
+            $query->where('name', 'like', "%{$name}%");
         }
 
         $total = $query->count();
@@ -49,17 +45,16 @@ class UsersController extends Controller
             'list' => $list,
             'mate' => [
                 'total' => $total,
-                'pageSize' => $pageSize
-            ]
+                'pageSize' => $pageSize,
+            ],
         ]);
     }
 
     /**
-     * 新增用户
-     * @param UserStoreRequest $request
+     * 新增用户.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function store(UserStoreRequest $request, RoleService $service)
     {
         $avatar = $request->post('avatar');
@@ -67,7 +62,6 @@ class UsersController extends Controller
         $name = $request->post('name');
         $roles = $request->post('roles');
         $password = Hash::make($request->post('password'));
-
 
         $created_at = now()->toDateTimeString();
         $id = User::query()->insertGetId(compact('avatar', 'email', 'name', 'password', 'created_at'));
@@ -77,15 +71,13 @@ class UsersController extends Controller
         $service->setRoles($roles, $id);
 
         return $this->success();
-
-
     }
 
     /**
-     * 更新用户信息
+     * 更新用户信息.
+     *
      * @param $id
-     * @param UserUpdateRequest $request
-     * @param RoleService $service
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function update($id, UserUpdateRequest $request, RoleService $service)
@@ -99,28 +91,26 @@ class UsersController extends Controller
 
         $user->email = $email;
         $user->name = $name;
-        !empty($password) && $user->password = Hash::make($password);;
+        !empty($password) && $user->password = Hash::make($password);
         $user->save();
         if (!empty($roles)) {
             $roles = array_column($roles, 'id');
             $service->setRoles($roles, $id);
         }
-        return $this->success([], '更新成功');
 
+        return $this->success([], '更新成功');
     }
 
     public function updateImg(Request $request)
     {
-
         $request->validate([
-            'file' => ['required', 'image']
+            'file' => ['required', 'image'],
         ]);
 
         $path = $request->file('file')->store('public');
 
         return $this->success([
-            'url' => env('APP_URL') . '/storage/' . explode('/', $path)[1]
+            'url' => env('APP_URL').'/storage/'.explode('/', $path)[1],
         ]);
     }
-
 }

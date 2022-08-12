@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Models;
-
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,12 +12,10 @@ class Log extends Model
     public $table = 'admin_logs';
 
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d H:i:s'
+        'created_at' => 'datetime:Y-m-d H:i:s',
     ];
 
-
-
     protected $fillable = [
-      'url','ip','method','name','u_id'
+        'url', 'ip', 'method', 'name', 'u_id',
     ];
 }

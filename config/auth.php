@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -50,7 +49,7 @@ return [
         'admin' => [
             'driver' => 'jwt',
             'provider' => 'admins',
-        ]
+        ],
     ],
 
     /*
@@ -78,7 +77,7 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
-        ]
+        ],
     ],
 
     /*
@@ -117,5 +116,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

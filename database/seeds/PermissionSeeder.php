@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -8,10 +9,8 @@ class PermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::select("INSERT INTO `admin_permissions`(`id`, `name`, `icon`, `path`, `url`, `status`, `created_at`, `method`, `updated_at`, `p_id`, `hidden`, `is_menu`, `title`, `deleted_at`) VALUES (1, '系统管理', 'fa fa-steam-square', '/admin', '/admin', 1, '2021-02-28 11:40:29', '*', '2022-07-13 16:11:06', 0, 1, 1, '系统管理', NULL),
 (2, '权限管理', 'fa fa-pencil-square', '/permission', '/permission', 1, '2021-02-28 11:42:17', '*', '2021-02-28 12:12:08', 1, 1, 1, '权限管理', NULL),

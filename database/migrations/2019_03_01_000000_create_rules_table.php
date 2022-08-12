@@ -8,10 +8,10 @@ class CreateRulesTable extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         $connection = config('lauthz.basic.database.connection') ?: config('database.default');
-        Schema::connection($connection)->create(config('lauthz.basic.database.rules_table'), function (Blueprint $table) {
+        Schema::connection($connection)->create(config('lauthz.basic.database.rules_table'), function (Blueprint $table): void {
             $table->increments('id');
             $table->string('p_type')->nullable();
             $table->string('v0')->nullable();
@@ -27,7 +27,7 @@ class CreateRulesTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         $connection = config('lauthz.basic.database.connection') ?: config('database.default');
         Schema::connection($connection)->dropIfExists(config('lauthz.basic.database.rules_table'));

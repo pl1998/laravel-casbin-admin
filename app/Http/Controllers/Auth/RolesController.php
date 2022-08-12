@@ -1,24 +1,18 @@
 <?php
 
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleStoreRequest;
-use App\Models\Permissions;
 use App\Models\Roles;
 use App\Services\PermissionService;
-use App\Services\RoleService;
 use Illuminate\Http\Request;
-use Lauthz\Facades\Enforcer;
-use function PHPUnit\Framework\isEmpty;
 
 class RolesController extends Controller
 {
-
     /**
-     * 获取角色列表
-     * @param Request $request
+     * 获取角色列表.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request, PermissionService $service)
@@ -28,16 +22,15 @@ class RolesController extends Controller
 
         $query = Roles::query();
 
-        if ($keyword = \request('keyword')) {
-            $query = $query->where('name', 'like', "%$keyword%");
+        if ($keyword = request('keyword')) {
+            $query = $query->where('name', 'like', "%{$keyword}%");
         }
         $total = $query->count();
 
         $list = $query->forPage($page, $pageSize)->get();
 
         foreach ($list as &$value) {
-
-            list($node_id, $nodes) = $service->getPermissions($value->id);
+            [$node_id, $nodes] = $service->getPermissions($value->id);
 
             $value->node = $node_id;
             $value->nodes = $nodes;
@@ -45,13 +38,13 @@ class RolesController extends Controller
 
         return $this->success([
             'list' => $list,
-            'total' => $total
+            'total' => $total,
         ]);
     }
 
     /**
-     * 添加角色
-     * @param RoleStoreRequest $request
+     * 添加角色.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(RoleStoreRequest $request, PermissionService $service)
@@ -94,27 +87,29 @@ class RolesController extends Controller
             $service->setPermissions($node, $id);
         }
 
-
         return $this->success([], '更新成功');
-
     }
 
     /**
-     * 删除角色
+     * 删除角色.
+     *
      * @param $id
-     * @param PermissionService $service
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id, PermissionService $service)
     {
         Roles::destroy($id);
         $service->delPermissions($id);
+
         return $this->success();
     }
 
     /**
-     * 获取所有的角色
+     * 获取所有的角色.
+     *
      * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function allRule()

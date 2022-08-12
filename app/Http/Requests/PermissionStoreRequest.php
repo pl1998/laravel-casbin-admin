@@ -2,13 +2,10 @@
 
 namespace App\Http\Requests;
 
-
-
 use Illuminate\Http\Request;
 
 class PermissionStoreRequest extends FormRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -16,26 +13,24 @@ class PermissionStoreRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        if($request->status == 1) {
+        if (1 === $request->status) {
             return [
                 'name' => 'required|min:2',
                 'icon' => 'required',
                 'path' => 'required',
-                'status'  => 'required|boolean',
-                'method'  => 'required',
-                'p_id'  => 'required',
-                'hidden'  => 'required',
-
-            ];
-        } else{
-            return [
-                'name' => 'required|min:2',
-                'url' => 'required',
-                'method'  => 'required',
-                'p_id'  => 'required',
-                'hidden'  => 'required',
+                'status' => 'required|boolean',
+                'method' => 'required',
+                'p_id' => 'required',
+                'hidden' => 'required',
             ];
         }
 
+        return [
+            'name' => 'required|min:2',
+            'url' => 'required',
+            'method' => 'required',
+            'p_id' => 'required',
+            'hidden' => 'required',
+        ];
     }
 }

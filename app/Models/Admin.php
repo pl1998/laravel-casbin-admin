@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Admin extends Authenticatable implements JWTSubject
@@ -29,11 +29,12 @@ class Admin extends Authenticatable implements JWTSubject
     ];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
-        'updated_at' => 'datetime:Y-m-d H:i:s'
+        'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 
     /**
-     * 获取会储存到 jwt 声明中的标识
+     * 获取会储存到 jwt 声明中的标识.
+     *
      * @return mixed
      */
     public function getJWTIdentifier()
@@ -42,7 +43,8 @@ class Admin extends Authenticatable implements JWTSubject
     }
 
     /**
-     * 返回包含要添加到 jwt 声明中的自定义键值对数组
+     * 返回包含要添加到 jwt 声明中的自定义键值对数组.
+     *
      * @return array
      */
     public function getJWTCustomClaims()

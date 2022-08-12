@@ -1,85 +1,75 @@
 <?php
 
-
 namespace App\Services;
-
 
 use App\Models\Permissions;
 use Lauthz\Facades\Enforcer;
 
 class PermissionService
 {
-    protected function getIdentifier($id)
-    {
-        return "permission_" . $id;
-    }
-
-    protected function setIdentifier($id)
-    {
-        return explode('_', $id)[1];
-    }
-
     public function permissionTreeNode($permission): array
     {
         $permissions = get_tree($permission);
         foreach ($permissions as &$permission) {
-            if ($permission['p_id'] == 0) {
+            if (0 === $permission['p_id']) {
                 $permission['root'] = true;
             } else {
                 $permission['root'] = false;
             }
         }
+
         return $permissions;
     }
 
     public function getPermissionMenu($id): array
     {
-        list($node, $permissions) = $this->getPermissions($id);
+        [$node, $permissions] = $this->getPermissions($id);
 
-        if (auth('api')->user()->name == 'demo') {
+        if ('demo' === auth('api')->user()->name) {
             $query = Permissions::with('getPid')
                 ->where('status', Permissions::STATUS_OK)
-                ->where('is_menu', Permissions::IS_MENU_YES);
-            $permissions = $query->where(function ($query) use ($permissions) {
+                ->where('is_menu', Permissions::IS_MENU_YES)
+            ;
+            $permissions = $query->where(function ($query) use ($permissions): void {
                 foreach ($permissions as $value) {
                     $query->whereOr('id', $value[3]);
                 }
             })->get(['id', 'p_id', 'path', 'name', 'title', 'icon', 'method', 'url'])->toArray();
 
-
             $permissionsMenu = get_tree($permissions);
 
             return [$permissionsMenu, $permissions];
-        } else {
-            if (!empty($permissions)) {
-                $query = Permissions::query()
-                    ->where('status', Permissions::STATUS_OK)
-                    ->where('is_menu', Permissions::IS_MENU_YES);
-                $permissionsMap = [];
-                $query->whereIn('id', $node)
-                    ->get(['id', 'p_id', 'path', 'name', 'title', 'icon', 'method', 'url'])
-                    ->map(function ($val) use(&$permissionsMap){
+        }
+        if (!empty($permissions)) {
+            $query = Permissions::query()
+                ->where('status', Permissions::STATUS_OK)
+                ->where('is_menu', Permissions::IS_MENU_YES)
+            ;
+            $permissionsMap = [];
+            $query->whereIn('id', $node)
+                ->get(['id', 'p_id', 'path', 'name', 'title', 'icon', 'method', 'url'])
+                ->map(function ($val) use (&$permissionsMap): void {
                         $getPid = $val->get_pid;
-                        unset($val->get_pid);
+                        $val->get_pid = null;
                         $permissionsMap[$val->id] = $val->toArray();
-                        if($getPid){
+                        if ($getPid) {
                             $permissionsMap[$getPid->id] = $getPid;
                         }
                     })->toArray();
 
-                $permissionsMenu = get_tree($permissionsMap);
-                return [$permissionsMenu,$permissionsMap];
+            $permissionsMenu = get_tree($permissionsMap);
 
-            } else {
-                return [[], []];
-            }
+            return [$permissionsMenu, $permissionsMap];
         }
+
+        return [[], []];
     }
 
-
     /**
-     * 获取节点数据
+     * 获取节点数据.
+     *
      * @param $permissions
+     *
      * @return array
      */
     public function getNodeId($permissions)
@@ -89,17 +79,17 @@ class PermissionService
         foreach ($node as $value) {
             $nodeId[] = $this->setIdentifier($value);
         }
+
         return $nodeId;
     }
 
-
     /**
-     * 设置用户权限
+     * 设置用户权限.
+     *
      * @param $nodeId
      * @param $id
-     * @return void
      */
-    public function setPermissions($nodeId, $id)
+    public function setPermissions($nodeId, $id): void
     {
         $id = $this->getIdentifier($id);
 
@@ -108,53 +98,64 @@ class PermissionService
 //            ->where('p_id', '<>', 0)
             ->whereIn('id', $nodeId)
             ->groupBy('id')
-            ->get(['path', 'method', 'p_id', 'id', 'name', 'is_menu', 'url']);
+            ->get(['path', 'method', 'p_id', 'id', 'name', 'is_menu', 'url'])
+        ;
 
         Enforcer::deletePermissionsForUser($id);
 
-        $permissions->map(function ($value) use($id){
-            $path = $value->is_menu == Permissions::IS_MENU_NO ? $value->url : $value->path;
+        $permissions->map(function ($value) use ($id): void {
+            $path = Permissions::IS_MENU_NO === $value->is_menu ? $value->url : $value->path;
             Enforcer::addPermissionForUser($id, $path, $value['method'], $value['id']);
         });
     }
 
-
     /**
-     * 根据角色id获取权限
+     * 根据角色id获取权限.
+     *
      * @param $id
-     * @return array
      */
     public function getPermissions($id): array
     {
-
         $id = $this->getIdentifier($id);
         $permissions = Enforcer::getPermissionsForUser($id);
-        if (empty($permissions)) return [[], []];
-        $node[] = array_map(function ($value) {
-            return (int)$value[3];
-        }, $permissions);
+        if (empty($permissions)) {
+            return [[], []];
+        }
+        $node[] = array_map(fn ($value) => (int) $value[3], $permissions);
 
         sort($node[0]);
+
         return [$node[0], $permissions];
     }
 
-    //获取所有权限
+    // 获取所有权限
     public function getAllPermission($keyword = null)
     {
         return Permissions::query()
             ->where('status', Permissions::STATUS_OK)
             ->get(['id', 'name', 'icon', 'path', 'url', 'method', 'p_id', 'hidden', 'is_menu', 'title', 'status'])
-            ->toArray();
+            ->toArray()
+        ;
     }
 
     /**
-     * 删除所属角色的权限
+     * 删除所属角色的权限.
+     *
      * @param $id
      */
-    public function delPermissions($id)
+    public function delPermissions($id): void
     {
         $id = $this->getIdentifier($id);
         Enforcer::deletePermissionsForUser($id);
     }
 
+    protected function getIdentifier($id)
+    {
+        return 'permission_'.$id;
+    }
+
+    protected function setIdentifier($id)
+    {
+        return explode('_', $id)[1];
+    }
 }

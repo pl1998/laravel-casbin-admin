@@ -3,15 +3,14 @@
  * Created By PhpStorm.
  * User : Latent
  * Date : 2021/6/3
- * Time : 5:56 下午
- **/
+ * Time : 5:56 下午.
+ */
 
 namespace App\Http\Controllers\Auth;
 
-
 use App\Http\Controllers\Controller;
-use App\Services\RoleService;
 use App\Models\User;
+use App\Services\RoleService;
 use Illuminate\Support\Facades\Hash;
 use Pl1998\ThirdpartyOauth\SocialiteAuth;
 
@@ -28,15 +27,15 @@ class WeiBoController extends Controller
             $users = User::query()->create([
                 'name' => $user->name,
                 'email' => '',
-                'password' => Hash::make(123456), //默认给个密码呗
+                'password' => Hash::make(123456), // 默认给个密码呗
                 'avatar' => $user->avatar_large,
                 'oauth_id' => $user->id,
-                'bound_oauth' => 1
+                'bound_oauth' => 1,
             ]);
         }
         $service->setRoles([4], $users->id);
 
-        //关于授权可以了解一下js的窗口通信 window.postMessage
+        // 关于授权可以了解一下js的窗口通信 window.postMessage
         return view('loading', [
             'token' => auth('api')->login($users),
             'domain' => env('APP_CALLBACK', 'https://pltrue.top/'),

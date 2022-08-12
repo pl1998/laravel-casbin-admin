@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
-
 class UserStoreRequest extends FormRequest
 {
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -15,14 +13,13 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:20|unique:users,name',
-            'email'=>'required|email|unique:users,email',
-            //'avatar'=>'required',
-            'password'=>'required|min:6|max:20|confirmed:password_confirmation',
-            'roles'=>'required'
-            //'password_confirmation'=>'required|min:6|max:20'
+            'email' => 'required|email|unique:users,email',
+            // 'avatar'=>'required',
+            'password' => 'required|min:6|max:20|confirmed:password_confirmation',
+            'roles' => 'required',
+            // 'password_confirmation'=>'required|min:6|max:20'
         ];
     }
-
 
     public function messages()
     {
@@ -38,7 +35,7 @@ class UserStoreRequest extends FormRequest
             'avatar.required' => '头像不能为空',
             'password.required' => '密码不能为空',
             'password.min' => '密码不能低于6位数',
-            'password.max' => '密码不能大于20位数'
+            'password.max' => '密码不能大于20位数',
         ];
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
@@ -25,8 +24,6 @@ class AdminCreateUser extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -40,32 +37,32 @@ class AdminCreateUser extends Command
      */
     public function handle()
     {
-        $users = User::query()->where('name','admin')->first();
+        $users = User::query()->where('name', 'admin')->first();
 
-        if($users) {
+        if ($users) {
             $users->password = Hash::make('123456');
             $users->save();
-            $this->info("Success 密码重置成功!");
+            $this->info('Success 密码重置成功!');
         } else {
             $email = 'pltruenine@163.com';
             $password = '123456';
             User::query()->create([
-               'name'=>'admin',
-               'email'=>$email,
-               'password'=>Hash::make($password),
-               'email_verified_at'=>now()->toDateTimeString(),
+                'name' => 'admin',
+                'email' => $email,
+                'password' => Hash::make($password),
+                'email_verified_at' => now()->toDateTimeString(),
             ]);
-            $this->info("用户创建成功 ! 账号:$email 密码:$password !");
+            $this->info("用户创建成功 ! 账号:{$email} 密码:{$password} !");
         }
 
-        $result = User::query()->where('name','admin')
+        $result = User::query()->where('name', 'admin')
             ->update([
-                'password'=>Hash::make(123456)
-            ]);
-        if($result) {
-
-        }else{
-            $this->error("Error 用户不存在");
+                'password' => Hash::make(123456),
+            ])
+        ;
+        if ($result) {
+        } else {
+            $this->error('Error 用户不存在');
         }
     }
 }

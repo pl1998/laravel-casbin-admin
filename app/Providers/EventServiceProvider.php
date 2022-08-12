@@ -8,7 +8,6 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -20,21 +19,16 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        QueryExecuted::class=>[
-            QuerySqlListener::class
-        ]
-
+        QueryExecuted::class => [
+            QuerySqlListener::class,
+        ],
     ];
 
     /**
      * Register any events for your application.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
-
-        //
     }
 }

@@ -46,5 +46,5 @@ return [
         'blur' => 2,
         'invert' => true,
         'contrast' => -5,
-    ]
+    ],
 ];

@@ -22,8 +22,6 @@ class AdminInstall extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -37,9 +35,9 @@ class AdminInstall extends Command
      */
     public function handle()
     {
-        $this->call("key:gen");
-        $this->call("migrate");
-        $this->call("db:seed");
-        $this->call("create:roles:to:users");
+        $this->call('key:gen');
+        $this->call('migrate');
+        $this->call('db:seed');
+        $this->call('create:roles:to:users');
     }
 }

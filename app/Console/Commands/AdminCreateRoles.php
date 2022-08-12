@@ -25,67 +25,65 @@ class AdminCreateRoles extends Command
      */
     protected $description = '创建角色';
 
+    protected $permissionService;
+    protected $roleService;
+
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         parent::__construct();
     }
 
-    protected $permissionService;
-    protected $roleService;
-
     /**
      * Execute the console command.
      *
      * @return int
      */
-    public function handle( PermissionService $permissionService,RoleService $roleService)
+    public function handle(PermissionService $permissionService, RoleService $roleService)
     {
         $this->permissionService = $permissionService;
         $this->roleService = $roleService;
 
         $name = 'admin';
         $node = Permissions::query()
-            ->where('status',Permissions::STATUS_OK)
+            ->where('status', Permissions::STATUS_OK)
             ->pluck('id')->toArray();
 
-
-        $this->createAdmin($name,$node);
+        $this->createAdmin($name, $node);
 
         $name = 'demo-user';
 
         $node = Permissions::query()
-            ->where('status',Permissions::STATUS_OK)
-            ->where(function ($query){
-                $query->where('method',Permissions::HTTP_REQUEST_GET)
-                    ->orWhere('is_menu',Permissions::IS_MENU_YES);
+            ->where('status', Permissions::STATUS_OK)
+            ->where(function ($query): void {
+                $query->where('method', Permissions::HTTP_REQUEST_GET)
+                    ->orWhere('is_menu', Permissions::IS_MENU_YES)
+                ;
             })
             ->pluck('id')->toArray();
 
-        $this->createAdmin($name,$node);
+        $this->createAdmin($name, $node);
     }
 
-    public function createAdmin($name,$node)
+    public function createAdmin($name, $node): void
     {
-        $roles = Roles::query()->where('name',$name)->first();
+        $roles = Roles::query()->where('name', $name)->first();
 
-        if(!$roles){
+        if (!$roles) {
             $status = Roles::STATUS_OK;
-            $description = $name =='admin' ?"超级管理员!" :"demo角色";
-            $roleId =  Roles::query()->insertGetId(compact('name', 'description', 'status'));
-        } else{
+            $description = 'admin' === $name ? '超级管理员!' : 'demo角色';
+            $roleId = Roles::query()->insertGetId(compact('name', 'description', 'status'));
+        } else {
             $roleId = $roles->id;
         }
         if (!empty($node)) {
             // 添加角色
             $this->permissionService->setPermissions($node, $roleId);
         }
-        $userId = User::query()->where('name',$name)->value('id');
-        $this->roleService->setRoles([$roleId],$userId);
-        $this->info("给demo用户赋予角色: $name");
+        $userId = User::query()->where('name', $name)->value('id');
+        $this->roleService->setRoles([$roleId], $userId);
+        $this->info("给demo用户赋予角色: {$name}");
     }
 }

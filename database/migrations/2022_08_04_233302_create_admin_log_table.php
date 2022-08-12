@@ -8,12 +8,10 @@ class CreateAdminLogTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('admin_logs', function (Blueprint $table) {
+        Schema::create('admin_logs', function (Blueprint $table): void {
             $table->id();
             $table->string('url')->nullable();
             $table->string('method')->nullable();
@@ -27,10 +25,8 @@ class CreateAdminLogTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('admin_logs');
     }
