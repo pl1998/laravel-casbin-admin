@@ -13,8 +13,8 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         DB::table('admin_permissions')->truncate();
-
-        DB::select("INSERT INTO `admin_permissions`(`id`, `name`, `icon`, `path`, `url`, `status`, `created_at`, `method`, `updated_at`, `p_id`, `hidden`, `is_menu`, `title`, `deleted_at`) VALUES (1, '系统管理', 'fa fa-steam-square', '/admin', '/admin', 1, '2021-02-28 11:40:29', '*', '2022-07-13 16:11:06', 0, 1, 1, '系统管理', NULL),
+        DB::select("INSERT INTO `admin_permissions`(`id`, `name`, `icon`, `path`, `url`, `status`, `created_at`, `method`, `updated_at`, `p_id`, `hidden`, `is_menu`, `title`, `deleted_at`) VALUES
+(1, '系统管理', 'fa fa-steam-square', '/admin', '/admin', 1, '2021-02-28 11:40:29', '*', '2022-07-13 16:11:06', 0, 1, 1, '系统管理', NULL),
 (2, '权限管理', 'fa fa-pencil-square', '/permission', '/permission', 1, '2021-02-28 11:42:17', '*', '2021-02-28 12:12:08', 1, 1, 1, '权限管理', NULL),
 (3, '角色管理', 'fa fa-user-secret', '/role', '/role', 1, '2021-02-28 11:43:15', '*', '2022-06-01 20:07:37', 1, 1, 1, '角色管理', NULL),
 (4, '用户管理', 'fa fa-users', '/user', '/user', 1, '2021-02-28 11:43:59', '*', '2021-02-28 12:12:22', 1, 1, 1, '用户管理', NULL),
@@ -40,5 +40,6 @@ class PermissionSeeder extends Seeder
 (24, '系统工具', 'fa fa-dedent', '/Tools', '/Tools', 1, '2021-06-03 02:14:29', '*', '2021-06-03 10:33:31', 0, 1, 1, '系统工具', '2021-06-03 10:33:31'),
 (25, '代码生成', 'fa fa-file-code-o', '/code', '/code', 1, '2021-06-03 02:15:20', '*', '2021-06-03 13:30:43', 1, 1, 1, '代码生成', '2021-06-03 13:30:43'),
 (26, '新增权限', NULL, '/permission', '/permission', 1, '2022-06-28 16:00:37', '*', '2022-06-28 16:00:37', 2, 1, 1, '新增权限', NULL)");
+
     }
 }
