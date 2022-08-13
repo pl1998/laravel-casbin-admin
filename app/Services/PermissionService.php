@@ -105,7 +105,7 @@ class PermissionService
 
         $permissions->map(function ($value) use ($id): void {
             $path = Permissions::IS_MENU_NO === $value->is_menu ? $value->url : $value->path;
-            Enforcer::addPermissionForUser($id, $path, $value['method'], $value['id']);
+            Enforcer::addPermissionForUser($id, $path ?? '', $value['method'], $value['id']);
         });
     }
 
