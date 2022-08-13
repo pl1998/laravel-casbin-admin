@@ -12,6 +12,8 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('admin_permissions')->truncate();
+
         DB::select("INSERT INTO `admin_permissions`(`id`, `name`, `icon`, `path`, `url`, `status`, `created_at`, `method`, `updated_at`, `p_id`, `hidden`, `is_menu`, `title`, `deleted_at`) VALUES (1, '系统管理', 'fa fa-steam-square', '/admin', '/admin', 1, '2021-02-28 11:40:29', '*', '2022-07-13 16:11:06', 0, 1, 1, '系统管理', NULL),
 (2, '权限管理', 'fa fa-pencil-square', '/permission', '/permission', 1, '2021-02-28 11:42:17', '*', '2021-02-28 12:12:08', 1, 1, 1, '权限管理', NULL),
 (3, '角色管理', 'fa fa-user-secret', '/role', '/role', 1, '2021-02-28 11:43:15', '*', '2022-06-01 20:07:37', 1, 1, 1, '角色管理', NULL),
