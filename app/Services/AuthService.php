@@ -34,10 +34,13 @@ class AuthService
             [$node, $permissions] = $this->permissionService->getPermissions($value);
             $node_array[] = $node;
         }
+        $permissionNodes=[];
+        foreach ($node_array as $value) {
+            $permissionNodes = array_merge($permissionNodes,$value);
+        }
         $where['url'] = $route;
-
         return
-           Permissions::query()->whereIn('id', $node_array[0])
+           Permissions::query()->whereIn('id', array_unique($permissionNodes))
                ->where('is_menu', Permissions::IS_MENU_NO)->where($where)
                ->where(function ($query) use ($method): void {
                    $query->where('method', $method)->orWhere('method', '*');
