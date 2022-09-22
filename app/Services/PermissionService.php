@@ -121,7 +121,9 @@ class PermissionService
         if (empty($permissions)) {
             return [[], []];
         }
-        $node[] = array_map(fn ($value) => (int) $value[3], $permissions);
+        $node[] = array_map(function ($value) {
+            return (int)$value[3];
+        }, $permissions);
 
         sort($node[0]);
 
