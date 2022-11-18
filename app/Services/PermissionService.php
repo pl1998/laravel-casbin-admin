@@ -32,7 +32,7 @@ class PermissionService
             ;
             $permissions = $query->where(function ($query) use ($permissions): void {
                 foreach ($permissions as $value) {
-                    $query->whereOr('id', $value[3]);
+                    $query->whereOr('id', $value[2]);
                 }
             })->get(['id', 'p_id', 'path', 'name', 'title', 'icon', 'method', 'url'])->toArray();
 

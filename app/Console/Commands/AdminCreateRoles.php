@@ -48,7 +48,6 @@ class AdminCreateRoles extends Command
 
         $name = 'admin';
         $node = Permissions::query()
-            ->where('status', Permissions::STATUS_OK)
             ->pluck('id')->toArray();
 
         $this->createAdmin($name, $node);
@@ -57,7 +56,7 @@ class AdminCreateRoles extends Command
 
         $node = Permissions::query()
             ->where('status', Permissions::STATUS_OK)
-            ->where(function ($query): void {
+            ->orWhere(function ($query): void {
                 $query->where('method', Permissions::HTTP_REQUEST_GET)
                     ->orWhere('is_menu', Permissions::IS_MENU_YES)
                 ;
