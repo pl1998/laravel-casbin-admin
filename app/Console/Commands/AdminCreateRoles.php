@@ -28,6 +28,9 @@ class AdminCreateRoles extends Command
     protected $permissionService;
     protected $roleService;
 
+    protected const ADMIN_NAME='admin';
+    protected const DEMO_NAME='demo-user';
+
     /**
      * Create a new command instance.
      */
@@ -46,34 +49,39 @@ class AdminCreateRoles extends Command
         $this->permissionService = $permissionService;
         $this->roleService = $roleService;
 
-        $name = 'admin';
-        $node = Permissions::query()
-            ->pluck('id')->toArray();
-
-        $this->createAdmin($name, $node);
-
-        $name = 'demo-user';
 
         $node = Permissions::query()
             ->where('status', Permissions::STATUS_OK)
-            ->orWhere(function ($query): void {
-                $query->where('method', Permissions::HTTP_REQUEST_GET)
-                    ->orWhere('is_menu', Permissions::IS_MENU_YES)
-                ;
+            ->pluck('id')->toArray();
+
+        $this->createAdmin(self::ADMIN_NAME, $node);
+
+        $node = Permissions::query()
+            ->where('status',Permissions::STATUS_OK)
+            ->where('is_menu', Permissions::IS_MENU_YES)
+            ->orWhere(function ($query){
+                $query
+                    ->where('is_menu', Permissions::IS_MENU_NO)
+                    ->orWhere('method',Permissions::HTTP_REQUEST_GET);
             })
             ->pluck('id')->toArray();
 
-        $this->createAdmin($name, $node);
+        $this->createAdmin(self::ADMIN_NAME, $node);
     }
 
     public function createAdmin($name, $node): void
     {
         $roles = Roles::query()->where('name', $name)->first();
-
+        $description = 'admin' === $name ? '超级管理员!' : 'demo角色';
         if (!$roles) {
-            $status = Roles::STATUS_OK;
-            $description = 'admin' === $name ? '超级管理员!' : 'demo角色';
-            $roleId = Roles::query()->insertGetId(compact('name', 'description', 'status'));
+
+            $roleId = Roles::query()->insertGetId([
+                'name' => $name,
+                'description' => $description,
+                'status' => Roles::STATUS_OK,
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString(),
+            ]);
         } else {
             $roleId = $roles->id;
         }
@@ -83,6 +91,6 @@ class AdminCreateRoles extends Command
         }
         $userId = User::query()->where('name', $name)->value('id');
         $this->roleService->setRoles([$roleId], $userId);
-        $this->info("给demo用户赋予角色: {$name}");
+        $this->info("给{$description}用户赋予角色: {$name}");
     }
 }

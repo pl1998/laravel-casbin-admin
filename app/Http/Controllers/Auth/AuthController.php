@@ -44,6 +44,7 @@ class AuthController extends Controller
         $menu = $roleService->getRoles(auth('api')->id());
         $permissionsMenus = [];
         $nodes = [];
+
         foreach ($menu as $value) {
             [$permissionsMenu, $permissions] = $permissionService->getPermissionMenu($value->id);
             $permissionsMenus[] = $permissionsMenu;

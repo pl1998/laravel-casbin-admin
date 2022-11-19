@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Permissions;
+use Illuminate\Support\Facades\Log;
 
 class AuthService
 {
@@ -22,25 +23,13 @@ class AuthService
 
     public function checkPermission($id, $method, $route): bool
     {
-        $role = $this->getRoles($id);
-        if (empty($role)) {
-            return false;
-        }
-
-        $role = $role->map(fn ($val) => $val['id'])->toArray();
-
-        $node_array = [];
-        foreach ($role as $value) {
-            [$node, $permissions] = $this->permissionService->getPermissions($value);
-            $node_array[] = $node;
-        }
-        $permissionNodes=[];
-        foreach ($node_array as $value) {
-            $permissionNodes = array_merge($permissionNodes,$value);
-        }
+        $roles = $this->roleService->getUserRoles();
+        if($roles->isEmpty()) return false;
+        $nodeMaps = $this->permissionService->getRolePermissions($roles);
+        if($nodeMaps->isEmpty()) return false;
         $where['url'] = $route;
         return
-           Permissions::query()->whereIn('id', array_unique($permissionNodes))
+           Permissions::query()->whereIn('id', $nodeMaps)
                ->where('is_menu', Permissions::IS_MENU_NO)->where($where)
                ->where(function ($query) use ($method): void {
                    $query->where('method', $method)->orWhere('method', '*');

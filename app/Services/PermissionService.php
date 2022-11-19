@@ -2,11 +2,23 @@
 
 namespace App\Services;
 
+use App\Models\CasbinRules;
 use App\Models\Permissions;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Lauthz\Facades\Enforcer;
 
 class PermissionService
 {
+    protected $allPermissions =[];
+
+    public function __construct()
+    {
+        if(empty($allPermissions)) {
+            $this->allPermissions = Permissions::query()->pluck('is_menu','id')->toArray();
+        }
+    }
+
     public function permissionTreeNode($permission): array
     {
         $permissions = get_tree($permission);
@@ -24,7 +36,7 @@ class PermissionService
     public function getPermissionMenu($id): array
     {
         [$node, $permissions] = $this->getPermissions($id);
-
+        Log::info('test',$node);
         if ('demo' === auth('api')->user()->name) {
             $query = Permissions::with('getPid')
                 ->where('status', Permissions::STATUS_OK)
@@ -94,12 +106,9 @@ class PermissionService
         $id = $this->getIdentifier($id);
 
         $permissions = Permissions::query()->with('getPid')
-            ->where('status', Permissions::STATUS_OK)
-//            ->where('p_id', '<>', 0)
             ->whereIn('id', $nodeId)
             ->groupBy('id')
-            ->get(['path', 'method', 'p_id', 'id', 'name', 'is_menu', 'url'])
-        ;
+            ->get(['path', 'method', 'p_id', 'id', 'name', 'is_menu', 'url']);
 
         Enforcer::deletePermissionsForUser($id);
 
@@ -121,13 +130,50 @@ class PermissionService
         if (empty($permissions)) {
             return [[], []];
         }
-        $node[] = array_map(function ($value) {
-            return (int)$value[3];
-        }, $permissions);
+        return [array_column($permissions,3), $permissions];
+    }
 
-        sort($node[0]);
+    /**
+     * 根据角色获取权限
+     * @param  $roleIds
+     * @return \Illuminate\Support\Collection
+     */
+    public function getRolePermissions( $roleIds)
+    {
+        $permissions=[];
+        foreach ($roleIds as $roleId) {
+            $permissions[]=$this->getIdentifier($roleId);
+        }
+        $nodes = CasbinRules::query()->whereIn('v0',$permissions)
+            ->where('p_type','p')
+            ->pluck('v3');
+        return $nodes;
 
-        return [$node[0], $permissions];
+    }
+
+
+    /**
+     * 获取角色的菜单和权限
+     * @param $roleId
+     * @return array[]
+     */
+    public function getRolePermissionAndMenu( $roleId)
+    {
+
+        $nodes = $this->getRolePermissions([$roleId]);
+
+        $permissions=[];
+        $menus=[];
+
+        foreach ($nodes as $node) {
+            if(!isset($this->allPermissions[$node])) continue;
+            if($this->allPermissions[$node] == Permissions::IS_MENU_NO) {
+                $permissions[]=$node;
+            }else{
+                $menus[]=$node;
+            }
+        }
+        return [$menus,$permissions];
     }
 
     // 获取所有权限

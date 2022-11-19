@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\CasbinRules;
 use App\Models\Roles;
 use Lauthz\Facades\Enforcer;
 
@@ -57,6 +58,19 @@ class RoleService
             ->whereIn('id', $roles)
             ->get(['id', 'name'])
         ;
+    }
+
+    /**
+     * 获取用角色
+     * @return \Illuminate\Support\Collection
+     */
+    public function getUserRoles()
+    {
+        $nodes = CasbinRules::query()
+            ->where('v0',$this->getIdentifier(auth('api')->id()))
+            ->where('p_type','g')
+            ->pluck('v1');
+        return $nodes;
     }
 
     /**

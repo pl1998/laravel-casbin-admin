@@ -30,10 +30,7 @@ class RolesController extends Controller
         $list = $query->forPage($page, $pageSize)->get();
 
         foreach ($list as &$value) {
-            [$node_id, $nodes] = $service->getPermissions($value->id);
-
-            $value->node = $node_id;
-            $value->nodes = $nodes;
+            $value->node = $service->getRolePermissions([$value->id]);
         }
 
         return $this->success([
@@ -53,8 +50,8 @@ class RolesController extends Controller
         $status = $request->get('status');
         $description = $request->get('description');
         $node = $request->get('node', []);
-        $created_at = now()->toDate();
-        $updated_at = now()->toDate();
+        $created_at = now()->toDateTimeString();
+        $updated_at = now()->toDateTimeString();
 
         if (Roles::query()->where(compact('name', 'status'))->exists()) {
             return $this->fail('角色已存在');
@@ -75,7 +72,7 @@ class RolesController extends Controller
         $description = $request->get('description');
         $node = $request->get('node', []);
 
-        $updated_at = now()->toDate();
+        $updated_at = now()->toDateTimeString();
 
         if (Roles::query()->where(compact('id'))->doesntExist()) {
             return $this->fail('角色不存在');

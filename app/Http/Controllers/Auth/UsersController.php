@@ -60,7 +60,7 @@ class UsersController extends Controller
         $avatar = $request->post('avatar');
         $email = $request->post('email');
         $name = $request->post('name');
-        $roles = $request->post('roles');
+        $roles = array_column($request->post('roles'),'id');
         $password = Hash::make($request->post('password'));
 
         $created_at = now()->toDateTimeString();
