@@ -29,7 +29,7 @@ class AdminCreateRoles extends Command
     protected $roleService;
 
     protected const ADMIN_NAME='admin';
-    protected const DEMO_NAME='demo-user';
+    protected const DEMO_NAME='demo';
 
     /**
      * Create a new command instance.
@@ -62,11 +62,11 @@ class AdminCreateRoles extends Command
             ->orWhere(function ($query){
                 $query
                     ->where('is_menu', Permissions::IS_MENU_NO)
-                    ->orWhere('method',Permissions::HTTP_REQUEST_GET);
+                    ->where('method',Permissions::HTTP_REQUEST_GET);
             })
             ->pluck('id')->toArray();
 
-        $this->createAdmin(self::ADMIN_NAME, $node);
+        $this->createAdmin(self::DEMO_NAME, $node);
     }
 
     public function createAdmin($name, $node): void
