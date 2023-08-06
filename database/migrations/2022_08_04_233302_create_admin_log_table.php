@@ -16,10 +16,11 @@ class CreateAdminLogTable extends Migration
             $table->string('url')->nullable();
             $table->string('method')->nullable();
             $table->string('ip')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->integer('u_id')->nullable();
             $table->string('name')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
