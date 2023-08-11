@@ -17,11 +17,12 @@ class LogController extends Controller
     {
         $page = $request->get('page', 1);
         $limit = $request->get('limit', 10);
+        $direction = $request->get('direction') === 'asc' ? 'asc': 'desc';
         $query = Log::query();
         $total = $query->count();
         $list = $query->forPage($page, $limit)
-            ->get(['url', 'ip', 'method', 'name', 'u_id', 'created_at', 'address', 'id'])
-        ;
+            ->orderBy('id', $direction)
+            ->get(['url', 'ip', 'method', 'name', 'u_id', 'created_at', 'address', 'id']);
 
         return $this->success(
             [
